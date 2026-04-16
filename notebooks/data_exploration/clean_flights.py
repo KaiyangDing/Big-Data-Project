@@ -20,7 +20,7 @@ spark = (
     .getOrCreate()
 )
 spark.sparkContext.setLogLevel("WARN")
-print("✅ Spark 启动成功")
+print("Spark 启动成功")
 
 # ─────────────────────────────────────────
 # 1. 路径配置
@@ -60,7 +60,7 @@ KEEP_COLS = [
 # ─────────────────────────────────────────
 # 3. 用 Python glob 列出所有文件
 # ─────────────────────────────────────────
-print("📂 正在扫描 CSV 文件...")
+print("正在扫描 CSV 文件...")
 flight_files = glob.glob(os.path.join(INPUT_DIR, "*.csv"))
 print(f"   找到文件数 : {len(flight_files)}")
 
@@ -75,7 +75,7 @@ print(f"   ...")
 # ─────────────────────────────────────────
 # 4. 读取所有 CSV
 # ─────────────────────────────────────────
-print("\n⏳ 正在读取所有 CSV（72个文件，请耐心等待）...")
+print("\n正在读取所有 CSV（72个文件，请耐心等待）...")
 raw_df = spark.read.csv(
     flight_files,
     header=True,
@@ -90,7 +90,7 @@ print(f"   原始字段数 : {len(raw_df.columns)}")
 existing_cols = set(raw_df.columns)
 missing_cols  = [c for c in KEEP_COLS if c not in existing_cols]
 if missing_cols:
-    print(f"⚠️  以下字段在 CSV 中不存在，将跳过：{missing_cols}")
+    print(f"以下字段在 CSV 中不存在，将跳过：{missing_cols}")
 
 select_cols = [c for c in KEEP_COLS if c in existing_cols]
 df = raw_df.select(select_cols)
@@ -130,7 +130,7 @@ df = (
 # ─────────────────────────────────────────
 # 7. 过滤取消 & 备降航班
 # ─────────────────────────────────────────
-print("\n✂️  过滤取消/备降航班...")
+print("\n过滤取消/备降航班...")
 total_before = df.count()
 print(f"   过滤前记录数 : {total_before:>10,}")
 
@@ -167,7 +167,7 @@ df = (
 # 10. 数据质量简报
 # ─────────────────────────────────────────
 final_count = df.count()
-print(f"\n📊 清洗后数据概览")
+print(f"\n清洗后数据概览")
 print(f"   最终记录数 : {final_count:>10,}")
 print(f"   最终字段数 : {len(df.columns):>10}")
 
@@ -191,7 +191,7 @@ df.groupBy("Reporting_Airline").count() \
 # ─────────────────────────────────────────
 # 11. 写出 Parquet（按 Year / Month 分区）
 # ─────────────────────────────────────────
-print(f"\n💾 正在写出 Parquet 到：{OUTPUT_PATH}")
+print(f"\n正在写出 Parquet 到：{OUTPUT_PATH}")
 print("   （按 Year/Month 分区，共约 72 个分区，请耐心等待...）")
 (
     df.write
@@ -199,12 +199,12 @@ print("   （按 Year/Month 分区，共约 72 个分区，请耐心等待...）
     .mode("overwrite")
     .parquet(OUTPUT_PATH)
 )
-print("✅ 写出完成！")
+print("写出完成！")
 
 # ─────────────────────────────────────────
 # 12. 验证写出结果
 # ─────────────────────────────────────────
-print("\n🔍 验证输出文件...")
+print("\n验证输出文件...")
 verify_df = spark.read.parquet(OUTPUT_PATH)
 print(f"   读回记录数 : {verify_df.count():>10,}")
 print(f"   读回字段数 : {len(verify_df.columns):>10}")
@@ -212,4 +212,4 @@ print("\n   Schema：")
 verify_df.printSchema()
 
 spark.stop()
-print("\n🎉 全部完成，Spark 已关闭。")
+print("\n全部完成，Spark 已关闭。")

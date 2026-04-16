@@ -42,16 +42,16 @@
 | `DepDelay` | Float | 起飞延误分钟数 | `7.0`, `-3.0` | 负数表示提前，正数表示晚点 |
 | `CRSArrTime` | Int | 计划到达时间 | `1720` | HHMM 格式 |
 | `ArrTime` | Int | 实际到达时间 | `1731` | HHMM 格式 |
-| `ArrDelay` | Float | 到达延误分钟数 | `11.0`, `-5.0` | 核心预测目标 ⭐ |
+| `ArrDelay` | Float | 到达延误分钟数 | `11.0`, `-5.0` | 核心预测目标 |
 | `Cancelled` | Int | 是否取消 | `0` | 清洗后全部为 0（已过滤取消） |
 | `CancellationCode` | String | 取消原因代码 | `null` | 清洗后全部为 null；原始含义：A=航司，B=天气，C=NAS，D=安全 |
 | `Diverted` | Int | 是否备降 | `0` | 清洗后全部为 0（已过滤备降） |
 | `Distance` | Float | 飞行距离 | `347.0` | 单位：英里 |
-| `CarrierDelay` | Float | 航司原因延误分钟数 | `45.0`, `null` | 无延误时为 null，正常现象 ⭐ |
-| `WeatherDelay` | Float | 天气原因延误分钟数 | `0.0`, `null` | 无延误时为 null ⭐ |
+| `CarrierDelay` | Float | 航司原因延误分钟数 | `45.0`, `null` | 无延误时为 null，正常现象 |
+| `WeatherDelay` | Float | 天气原因延误分钟数 | `0.0`, `null` | 无延误时为 null |
 | `NASDelay` | Float | 空管原因延误分钟数 | `12.0`, `null` | NAS = National Airspace System |
 | `SecurityDelay` | Float | 安检原因延误分钟数 | `0.0`, `null` | 极少发生 |
-| `LateAircraftDelay` | Float | 前序航班延误分钟数 | `38.0`, `null` | 涟漪效应的直接证据 ⭐ |
+| `LateAircraftDelay` | Float | 前序航班延误分钟数 | `38.0`, `null` | 涟漪效应的直接证据 |
 | `Year` | Int | 年（衍生字段） | `2019` ~ `2024` | 由 FlightDate 提取，同时作为分区键 |
 | `Month` | Int | 月（衍生字段） | `1` ~ `12` | 由 FlightDate 提取，同时作为分区键 |
 | `DayOfWeek` | Int | 星期几（衍生字段） | `1`=周日，`7`=周六 | Spark dayofweek() 约定 |

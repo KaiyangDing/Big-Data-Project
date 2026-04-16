@@ -20,7 +20,7 @@ spark = (
     .getOrCreate()
 )
 spark.sparkContext.setLogLevel("WARN")
-print("✅ Spark 启动成功")
+print("Spark 启动成功")
 
 # ─────────────────────────────────────────
 # 1. 路径配置
@@ -32,7 +32,7 @@ OUTPUT_PATH   = r"D:\bigdata\task1\data\processed\weather_clean"
 # ─────────────────────────────────────────
 # 2. 用 glob 列出所有天气文件
 # ─────────────────────────────────────────
-print("📂 正在扫描天气 CSV 文件...")
+print("正在扫描天气 CSV 文件...")
 weather_files = glob.glob(os.path.join(WEATHER_DIR, "*.csv"))
 print(f"   找到文件数 : {len(weather_files)}")
 if len(weather_files) == 0:
@@ -43,7 +43,7 @@ for f in sorted(weather_files):
 # ─────────────────────────────────────────
 # 3. 读取所有天气 CSV
 # ─────────────────────────────────────────
-print("\n⏳ 正在读取天气数据...")
+print("\n正在读取天气数据...")
 weather_df = spark.read.csv(
     weather_files,
     header=True,
@@ -70,7 +70,7 @@ weather_df = (
 # 5. 解析时间
 #    IEM 实际格式：'2019/1/1 0:51'（月日不补零，小时不补零）
 # ─────────────────────────────────────────
-print("\n🕐 解析时间字段...")
+print("\n解析时间字段...")
 weather_df = weather_df.withColumn(
     "obs_time",
     F.coalesce(
@@ -95,7 +95,7 @@ print(f"   时间解析失败 : {time_null:,} 条 ({time_null/total*100:.2f}%)")
 #    'T'      → 0.0   （微量降水 Trace）
 #    '#NAME?' → null  （Excel 打开时误转的公式错误）
 # ─────────────────────────────────────────
-print("\n🔢 处理数值字段...")
+print("\n处理数值字段...")
 NUMERIC_COLS = ["tmpf", "dwpf", "relh", "drct", "sknt", "p01i", "vsby"]
 
 for col in NUMERIC_COLS:
@@ -112,7 +112,7 @@ for col in NUMERIC_COLS:
         )
         print(f"   ✓ {col}")
     else:
-        print(f"   ⚠️  字段 {col} 不存在，跳过")
+        print(f"     字段 {col} 不存在，跳过")
 
 # wxcodes 保留为 String，清理无效值
 if "wxcodes" in weather_df.columns:
@@ -129,7 +129,7 @@ if "wxcodes" in weather_df.columns:
 # ─────────────────────────────────────────
 # 7. 过滤无效记录
 # ─────────────────────────────────────────
-print("\n✂️  过滤无效记录...")
+print("\n过滤无效记录...")
 before = weather_df.count()
 weather_df = weather_df.filter(
     F.col("obs_time").isNotNull() &
@@ -144,7 +144,7 @@ print(f"   过滤后 : {after:>10,}  (移除 {before - after:,} 条)")
 # 8. 加载机场映射表，补充经纬度等信息
 #    IEM iata_code 直接 join airports 的 iata_code
 # ─────────────────────────────────────────
-print(f"\n🗺️  加载机场映射表：{AIRPORTS_PATH}")
+print(f"\n加载机场映射表：{AIRPORTS_PATH}")
 try:
     airports_df = spark.read.csv(
         AIRPORTS_PATH,
@@ -173,7 +173,7 @@ try:
     print(f"   机场代码匹配率  : {matched/total_w*100:.1f}%  ({matched:,}/{total_w:,})")
 
 except Exception as e:
-    print(f"⚠️  机场映射表加载失败，跳过：{e}")
+    print(f"机场映射表加载失败，跳过：{e}")
     weather_df = (
         weather_df
         .withColumn("airport_name",  F.lit(None).cast("string"))
@@ -185,7 +185,7 @@ except Exception as e:
 # 9. 数据质量简报
 # ─────────────────────────────────────────
 final_count = weather_df.count()
-print(f"\n📊 清洗后数据概览")
+print(f"\n清洗后数据概览")
 print(f"   最终记录数 : {final_count:>10,}")
 print(f"   最终字段数 : {len(weather_df.columns)}")
 
@@ -214,19 +214,19 @@ weather_df = (
     .withColumn("Month", F.month("obs_date"))
 )
 
-print(f"\n💾 正在写出 Parquet 到：{OUTPUT_PATH}")
+print(f"\n正在写出 Parquet 到：{OUTPUT_PATH}")
 (
     weather_df.write
     .partitionBy("Year", "Month")
     .mode("overwrite")
     .parquet(OUTPUT_PATH)
 )
-print("✅ 天气数据清洗完成！")
+print("天气数据清洗完成！")
 
 # ─────────────────────────────────────────
 # 11. 验证写出结果
 # ─────────────────────────────────────────
-print("\n🔍 验证输出文件...")
+print("\n验证输出文件...")
 verify_df = spark.read.parquet(OUTPUT_PATH)
 print(f"   读回记录数 : {verify_df.count():>10,}")
 print(f"   读回字段数 : {len(verify_df.columns)}")
@@ -234,4 +234,4 @@ print("\n   Schema：")
 verify_df.printSchema()
 
 spark.stop()
-print("\n🎉 全部完成，Spark 已关闭。")
+print("\n全部完成，Spark 已关闭。")

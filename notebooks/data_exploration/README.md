@@ -14,24 +14,24 @@ WARNING: Using incubator modules: jdk.incubator.vector
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-✅ Spark 启动成功
-📂 正在扫描 CSV 文件...
+Spark 启动成功
+正在扫描 CSV 文件...
    找到文件数 : 72
    示例文件  : flights_2019_01.csv
    示例文件  : flights_2019_02.csv
    示例文件  : flights_2019_03.csv
    ...
 
-⏳ 正在读取所有 CSV（72个文件，请耐心等待）...
+正在读取所有 CSV（72个文件，请耐心等待）...
    原始字段数 : 110                                                             
    保留字段数 : 23
 
-✂️  过滤取消/备降航班...
+过滤取消/备降航班...
    过滤前记录数 : 38,761,873                                                    
    过滤后记录数 : 37,786,692  (移除 975,181 条)                                 
    去除关键字段缺失后 : 37,786,688                                              
                                                                                 
-📊 清洗后数据概览
+清洗后数据概览
    最终记录数 : 37,786,688
    最终字段数 :         27
 
@@ -68,12 +68,12 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 +-----------------+-------+
 only showing top 10 rows
 
-💾 正在写出 Parquet 到：D:\bigdata\task1\data\processed\flights_clean
+正在写出 Parquet 到：D:\bigdata\task1\data\processed\flights_clean
    （按 Year/Month 分区，共约 72 个分区，请耐心等待...）
 26/04/16 01:31:28 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
-✅ 写出完成！                                                                   
+写出完成！                                                                   
 
-🔍 验证输出文件...
+验证输出文件...
    读回记录数 : 37,786,688                                                      
    读回字段数 :         27
 
@@ -108,7 +108,7 @@ root
  |-- Month: integer (nullable = true)
 
 
-🎉 全部完成，Spark 已关闭。
+全部完成，Spark 已关闭。
 ```
 
 
@@ -178,8 +178,8 @@ WARNING: Using incubator modules: jdk.incubator.vector
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-✅ Spark 启动成功
-📂 正在扫描天气 CSV 文件...
+Spark 启动成功
+正在扫描天气 CSV 文件...
    找到文件数 : 16
    weather_AZ.csv
    weather_CA.csv
@@ -198,15 +198,15 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
    weather_TX.csv
    weather_WA.csv
 
-⏳ 正在读取天气数据...
+正在读取天气数据...
    原始记录数 :  1,474,205                                                      
    原始字段数 : 10
    字段列表   : ['station', 'valid', 'tmpf', 'dwpf', 'relh', 'drct', 'sknt', 'p01i', 'vsby', 'wxcodes']
 
-🕐 解析时间字段...
+解析时间字段...
    时间解析失败 : 167 条 (0.01%)                                                
 
-🔢 处理数值字段...
+处理数值字段...
    ✓ tmpf
    ✓ dwpf
    ✓ relh
@@ -216,15 +216,15 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
    ✓ vsby
    ✓ wxcodes（保留为 String）
 
-✂️  过滤无效记录...
+过滤无效记录...
    过滤前 :  1,474,205                                                          
    过滤后 :  1,474,038  (移除 167 条)
 
-🗺️  加载机场映射表：D:\bigdata\task1\data\raw\airports.csv
+加载机场映射表：D:\bigdata\task1\data\raw\airports.csv
    机场映射表记录数 : 9,062
    机场代码匹配率  : 100.0%  (1,474,038/1,474,038)                              
                                                                                 
-📊 清洗后数据概览
+清洗后数据概览
    最终记录数 :  1,474,038
    最终字段数 : 15
 
@@ -276,10 +276,10 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 +---------+-----+
 
 
-💾 正在写出 Parquet 到：D:\bigdata\task1\data\processed\weather_clean
-✅ 天气数据清洗完成！                                                           
+正在写出 Parquet 到：D:\bigdata\task1\data\processed\weather_clean
+天气数据清洗完成！                                                           
 
-🔍 验证输出文件...
+验证输出文件...
    读回记录数 :  1,474,038                                                      
    读回字段数 : 17
 
@@ -304,7 +304,7 @@ root
  |-- Month: integer (nullable = true)
 
 
-🎉 全部完成，Spark 已关闭。
+全部完成，Spark 已关闭。
 PS D:\bigdata\task1> 成功: 已终止 PID 7952 (属于 PID 32192 子进程)的进程。
 成功: 已终止 PID 32192 (属于 PID 3084 子进程)的进程。
 成功: 已终止 PID 3084 (属于 PID 12688 子进程)的进程。

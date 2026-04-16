@@ -26,10 +26,10 @@ for year in range(2019, 2025):
                     dst.write(src.read())
 
             size_mb = os.path.getsize(out_csv) / 1024 / 1024
-            print(f"✓  {size_mb:.1f} MB")
+            print(f"{size_mb:.1f} MB")
 
         except Exception as e:
-            print(f"✗ 失败: {e}")
+            print(f"失败: {e}")
 
         time.sleep(1.5)
 
