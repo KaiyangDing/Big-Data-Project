@@ -1,0 +1,61 @@
+services:
+
+  # ─────────────────────────────────────────
+  # Spark Master 节点（与 Jupyter 同版本 3.5.0）
+  # ─────────────────────────────────────────
+  spark-master:
+    image: apache/spark:3.5.0
+    container_name: spark-master
+    user: root
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    environment:
+      - SPARK_MASTER_HOST=spark-master
+      - SPARK_MASTER_PORT=7077
+      - SPARK_MASTER_WEBUI_PORT=8080
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - ./data:/data            # ← 统一用 /data
+      - ./notebooks:/notebooks
+      - ./docs:/docs
+
+  # ─────────────────────────────────────────
+  # Spark Worker 节点
+  # ─────────────────────────────────────────
+  spark-worker:
+    image: apache/spark:3.5.0
+    container_name: spark-worker
+    user: root
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    environment:
+      - SPARK_WORKER_MEMORY=4g
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_WEBUI_PORT=8081
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./data:/data            # ← 统一用 /data
+      - ./notebooks:/notebooks
+      - ./docs:/docs
+    depends_on:
+      - spark-master
+
+  # ─────────────────────────────────────────
+  # Jupyter（内置 Spark 3.5.0，版本与上面一致）
+  # ─────────────────────────────────────────
+  jupyter:
+    image: jupyter/pyspark-notebook:spark-3.5.0
+    container_name: jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=bigdata2024
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/data            # ← 统一用 /data
+      - ./notebooks:/notebooks
+      - ./docs:/docs
+    depends_on:
+      - spark-master
+      - spark-worker
