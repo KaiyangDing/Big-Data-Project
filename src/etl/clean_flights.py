@@ -1,9 +1,6 @@
 import os
 import glob
 
-os.environ['HADOOP_HOME'] = r'C:\hadoop'
-os.environ['PATH'] += r';C:\hadoop\bin'
-
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType, FloatType
@@ -23,10 +20,10 @@ spark.sparkContext.setLogLevel("WARN")
 print("Spark 启动成功")
 
 # ─────────────────────────────────────────
-# 1. 路径配置
+# 1. 路径配置（Docker 容器内路径）
 # ─────────────────────────────────────────
-INPUT_DIR   = r"D:\bigdata\task1\data\raw\flights"
-OUTPUT_PATH = r"D:\bigdata\task1\data\processed\flights_clean"
+INPUT_DIR   = "/data/raw/flights"
+OUTPUT_PATH = "/data/processed/flights_clean"
 
 # ─────────────────────────────────────────
 # 2. 目标字段（共 23 个）

@@ -1,9 +1,6 @@
 import os
 import glob
 
-os.environ['HADOOP_HOME'] = r'C:\hadoop'
-os.environ['PATH'] += r';C:\hadoop\bin'
-
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import FloatType
@@ -23,11 +20,11 @@ spark.sparkContext.setLogLevel("WARN")
 print("Spark 启动成功")
 
 # ─────────────────────────────────────────
-# 1. 路径配置
+# 1. 路径配置（Docker 容器内路径）
 # ─────────────────────────────────────────
-WEATHER_DIR   = r"D:\bigdata\task1\data\raw\weather"
-AIRPORTS_PATH = r"D:\bigdata\task1\data\raw\airports.csv"
-OUTPUT_PATH   = r"D:\bigdata\task1\data\processed\weather_clean"
+WEATHER_DIR   = "/data/raw/weather"
+AIRPORTS_PATH = "/data/raw/airports.csv"
+OUTPUT_PATH   = "/data/processed/weather_clean"
 
 # ─────────────────────────────────────────
 # 2. 用 glob 列出所有天气文件

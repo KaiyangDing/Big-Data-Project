@@ -1,6 +1,6 @@
 import requests, zipfile, os, time, io
 
-OUT_DIR = "data/raw/flights"
+OUT_DIR = "/data/raw/flights"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 BASE = "https://transtats.bts.gov/PREZIP/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_{}_{}.zip"

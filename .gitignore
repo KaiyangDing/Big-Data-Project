@@ -1,0 +1,43 @@
+# ─── Data (too large for Git) ───
+data/raw/flights/
+data/raw/weather/
+data/processed/
+!data/raw/airports.csv
+
+# ─── Spark / Java ───
+*.class
+*.jar
+metastore_db/
+spark-warehouse/
+derby.log
+
+# ─── Python ───
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# ─── Jupyter ───
+.ipynb_checkpoints/
+
+# ─── Node / Frontend ───
+node_modules/
+frontend/build/
+frontend/dist/
+
+# ─── IDE ───
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ─── OS ───
+.DS_Store
+Thumbs.db
+
+# ─── Models (large binary files) ───
+models/*.bin
+models/*.pkl
