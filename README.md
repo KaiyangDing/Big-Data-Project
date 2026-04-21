@@ -60,7 +60,7 @@ Big-Data-Project/
 
 ### Prerequisites
 
-- Docker & Docker Compose
+- **Docker Desktop** (Windows / macOS) or Docker Engine (Linux)
 - 16 GB+ RAM recommended (Spark driver uses 8 GB)
 
 ### 1. Setup Environment
@@ -68,8 +68,15 @@ Big-Data-Project/
 ```bash
 git clone git@github.com:KaiyangDing/Big-Data-Project.git
 cd Big-Data-Project
-bash scripts/setup.sh
 ```
+
+| OS | Command |
+|----|---------|
+| **macOS / Linux** | `bash scripts/setup.sh` |
+| **Windows (PowerShell)** | `powershell -ExecutionPolicy Bypass -File scripts\setup.ps1` |
+| **Windows (CMD)** | Double-click `scripts\setup.bat` |
+
+> **Windows note**: Make sure Docker Desktop is running and shows "Engine running" before running the script.
 
 This starts three containers:
 | Service | URL | Description |
