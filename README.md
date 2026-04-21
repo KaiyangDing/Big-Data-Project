@@ -20,9 +20,10 @@ The system ingests 37M+ U.S. domestic flight records (2019-2024) and meteorologi
 Big-Data-Project/
 ├── docker-compose.yml          # Spark + Jupyter environment
 ├── scripts/
-│   ├── setup.sh                # One-click environment setup
-│   ├── download_data.sh        # Data download instructions & verification
-│   └── run_etl.sh              # Run ETL pipeline inside container
+│   ├── setup.sh / setup.ps1 / setup.bat   # One-click environment setup (Docker + dirs)
+│   ├── setup_data.sh / setup_data.ps1     # Extract team data.zip into data/
+│   ├── download_data.sh                   # Manual download instructions & verification
+│   └── run_etl.sh                         # Run ETL pipeline inside container
 ├── data/
 │   ├── raw/
 │   │   ├── flights/            # BTS monthly CSVs (72 files, ~20 GB)
@@ -53,7 +54,8 @@ Big-Data-Project/
 │   └── figures/                # Charts and plots
 ├── models/                     # Saved ML models
 └── docs/
-    └── data_dictionary.md      # Field definitions for all datasets
+    ├── data_dictionary.md      # Field definitions for all datasets
+    └── final_proposal.pdf      # Project proposal
 ```
 
 ## Quick Start
@@ -87,36 +89,56 @@ This starts one container with Jupyter Lab + PySpark (Spark runs in local mode):
 
 ### 2. Get the Data
 
-**Option A: Download pre-processed data (recommended)**
+**Option A: One-click setup from team `data.zip` (recommended)**
 
-The cleaned Parquet datasets are hosted on Mega (~5 GB compressed):
+1. Download `data.zip` from Mega (~2.4 GB):
 
-> https://mega.nz/file/GR93WLxJ#1ZrVip0o4_IyUySZhk_vwzEj8ikQvN4W_djRNrXq_cs
+   > https://mega.nz/file/GR93WLxJ#1ZrVip0o4_IyUySZhk_vwzEj8ikQvN4W_djRNrXq_cs
 
-Download and extract so that you have:
-```
-data/processed/flights_clean/   (Parquet, partitioned by Year/Month)
-data/processed/weather_clean/   (Parquet, partitioned by Year/Month)
-```
+2. Place `data.zip` **next to this repo** (as a sibling folder), so the layout is:
+   ```
+   your_workspace/
+   ├── Big-Data-Project/      <-- this repo
+   └── data.zip               <-- put it here (or inside the repo, also works)
+   ```
 
-**Option B: Build from raw data**
+3. Run the setup script:
+
+   | OS | Command |
+   |----|---------|
+   | **macOS / Linux / Git Bash** | `bash scripts/setup_data.sh` |
+   | **Windows (PowerShell)** | `powershell -ExecutionPolicy Bypass -File scripts\setup_data.ps1` |
+
+   The script will:
+   - Auto-detect `data.zip` at `../data.zip` or `./data.zip` (or pass a path explicitly)
+   - Extract to a temp dir and move contents into `data/processed/` and `data/raw/`
+   - Skip targets that already have data (won't overwrite your work)
+   - Preserve the repo-tracked `data/raw/airports.csv` (the zip's copy is ignored)
+   - Verify parquet file counts at the end
+
+   After it runs you should have:
+   ```
+   data/processed/flights_clean/     (162 parquet files, 37,786,688 rows)
+   data/processed/weather_clean/     (Parquet, 1,474,038 rows, 24 hub airports)
+   data/raw/flights/                 (72 monthly CSVs, ~20 GB)
+   data/raw/weather/                 (16 state CSVs, ~200 MB)
+   data/raw/airports.csv             (already in repo)
+   ```
+
+**Option B: Build from raw data (rerun ETL)**
 
 ```bash
 # Enter the Jupyter container
 docker exec -it skypath-jupyter bash
 
-# Install download dependency
+# If you don't have raw CSVs yet, download them first:
 pip install requests
+python /src/etl/download_flights.py   # ~15-20 GB, takes a while
+python /src/etl/download_weather.py   # ~200 MB
 
-# Download raw CSVs (~20 GB flights + ~200 MB weather)
-python /src/etl/download_flights.py
-python /src/etl/download_weather.py
-
-# Run ETL to produce Parquet
-bash /src/../scripts/run_etl.sh
-# Or run individually:
-#   spark-submit --master local[*] --driver-memory 8g /src/etl/clean_flights.py
-#   spark-submit --master local[*] --driver-memory 8g /src/etl/clean_weather.py
+# Run ETL to produce Parquet:
+spark-submit --master local[*] --driver-memory 8g /src/etl/clean_flights.py
+spark-submit --master local[*] --driver-memory 8g /src/etl/clean_weather.py
 ```
 
 ### 3. Verify Data
