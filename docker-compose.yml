@@ -1,63 +1,23 @@
 services:
 
   # ─────────────────────────────────────────
-  # Spark Master
-  # ─────────────────────────────────────────
-  spark-master:
-    image: apache/spark:3.5.0
-    container_name: spark-master
-    user: root
-    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
-    environment:
-      - SPARK_MASTER_HOST=spark-master
-      - SPARK_MASTER_PORT=7077
-      - SPARK_MASTER_WEBUI_PORT=8080
-    ports:
-      - "8080:8080"   # Spark Master UI
-      - "7077:7077"   # Spark Master RPC
-    volumes:
-      - ./data:/data
-      - ./src:/src
-      - ./notebooks:/notebooks
-      - ./results:/results
-      - ./models:/models
-      - ./docs:/docs
-
-  # ─────────────────────────────────────────
-  # Spark Worker
-  # ─────────────────────────────────────────
-  spark-worker:
-    image: apache/spark:3.5.0
-    container_name: spark-worker
-    user: root
-    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
-    environment:
-      - SPARK_WORKER_MEMORY=4g
-      - SPARK_WORKER_CORES=2
-      - SPARK_WORKER_WEBUI_PORT=8081
-    ports:
-      - "8081:8081"   # Spark Worker UI
-    volumes:
-      - ./data:/data
-      - ./src:/src
-      - ./notebooks:/notebooks
-      - ./results:/results
-      - ./models:/models
-    depends_on:
-      - spark-master
-
-  # ─────────────────────────────────────────
-  # Jupyter Lab (PySpark 3.5.0)
+  # Jupyter Lab + PySpark (Spark local mode)
+  #
+  # The pyspark-notebook image ships with Spark 3.5.0 built in.
+  # Spark runs in local[*] mode inside this single container,
+  # which is sufficient for our dataset size (~37M flight records).
+  # No separate master/worker needed.
   # ─────────────────────────────────────────
   jupyter:
     image: jupyter/pyspark-notebook:spark-3.5.0
-    container_name: jupyter
+    container_name: skypath-jupyter
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - JUPYTER_TOKEN=bigdata2024
+      - SPARK_OPTS=--driver-memory 8g
     ports:
       - "8888:8888"   # Jupyter Lab
-      - "4040:4040"   # Spark Application UI
+      - "4040:4040"   # Spark UI (visible while a Spark job is running)
     volumes:
       - ./data:/data
       - ./src:/src
@@ -65,6 +25,3 @@ services:
       - ./results:/results
       - ./models:/models
       - ./docs:/docs
-    depends_on:
-      - spark-master
-      - spark-worker

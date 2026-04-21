@@ -78,12 +78,12 @@ cd Big-Data-Project
 
 > **Windows note**: Make sure Docker Desktop is running and shows "Engine running" before running the script.
 
-This starts three containers:
+This starts one container with Jupyter Lab + PySpark (Spark runs in local mode):
+
 | Service | URL | Description |
 |---------|-----|-------------|
 | Jupyter Lab | http://localhost:8888 | Notebook environment (token: `bigdata2024`) |
-| Spark Master | http://localhost:8080 | Cluster manager UI |
-| Spark Worker | http://localhost:8081 | Worker status |
+| Spark UI | http://localhost:4040 | Visible while a Spark job is running |
 
 ### 2. Get the Data
 
@@ -103,7 +103,7 @@ data/processed/weather_clean/   (Parquet, partitioned by Year/Month)
 
 ```bash
 # Enter the Jupyter container
-docker exec -it jupyter bash
+docker exec -it skypath-jupyter bash
 
 # Install download dependency
 pip install requests
