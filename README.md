@@ -32,11 +32,9 @@ Big-Data-Project/
 │   └── processed/
 │       ├── flights_clean/      # Cleaned flight data (Parquet, partitioned by Year/Month)
 │       ├── weather_clean/      # Cleaned weather data (Parquet, partitioned by Year/Month)
-│       ├── flights_with_weather/   # Flights joined with weather features
+│       ├── flights_with_weather/   # Intermediate checkpoint from feature engineering
 │       └── features/
-│           ├── ripple/         # Tail Number Tracking features
-│           ├── historical/     # Route/carrier/airport historical stats
-│           └── final/          # Complete feature set for ML
+│           └── final/          # Complete feature set for analysis & ML (57 cols)
 ├── src/
 │   ├── etl/                    # Data download & cleaning scripts
 │   │   ├── download_flights.py
@@ -47,7 +45,9 @@ Big-Data-Project/
 │   ├── analysis/               # Statistical analysis code
 │   └── models/                 # ML training & inference code
 ├── notebooks/                  # Jupyter notebooks (exploratory & pipeline)
-│   └── 04_feature_engineering.ipynb   # Zeshen: weather join + ripple + historical features
+│   ├── 04_feature_engineering.ipynb   # Zeshen: weather join + ripple + historical features ✅
+│   ├── 05_analysis.ipynb              # Ruznhe: statistical analysis + Spark SQL + Dask (TBD)
+│   └── 06_modeling.ipynb              # Xingyu: ML training & evaluation (TBD)
 ├── api/                        # REST API for prediction serving
 ├── frontend/                   # React dashboard
 ├── results/
@@ -126,6 +126,32 @@ This starts one container with Jupyter Lab + PySpark (Spark runs in local mode):
    data/raw/airports.csv             (already in repo)
    ```
 
+**Option A+: skip feature engineering too (recommended for Ruznhe / Xingyu)**
+
+If you're picking up from Stage 3+ and don't want to run Zeshen's feature engineering
+notebook (15-30 min on 8 GB driver), also grab the pre-computed feature table:
+
+1. Download `features.zip` from Mega (~3 GB, contains `processed/features/final/` only):
+
+   > https://mega.nz/file/Lm513YZI#yVipg-JgrCyvGj3dxJMrz162kpxx_Wf6yw2SIiNeuhw
+
+2. The zip's top-level entries are `Year=2019/` ... `Year=2024/` (no wrapper folders),
+   so extract it **into `data/processed/features/final/`**:
+
+   | OS | Command |
+   |----|---------|
+   | **Windows (PowerShell, 10+)** | `mkdir data\processed\features\final -Force; tar -xf features.zip -C data\processed\features\final` |
+   | **macOS / Linux** | `mkdir -p data/processed/features/final && unzip features.zip -d data/processed/features/final` |
+   | **GUI fallback** | Create the folder `Big-Data-Project\data\processed\features\final\`, then extract `features.zip` into it |
+
+3. Verify:
+   ```
+   data/processed/features/final/   (should contain Year=2019..2024 subfolders, 37,786,688 rows × 57 cols)
+   ```
+
+You still need `data.zip` (Option A) if you want the raw CSVs or the clean flight/weather
+parquet — but for analysis and ML those aren't strictly required.
+
 **Option B: Build from raw data (rerun ETL)**
 
 ```bash
@@ -144,24 +170,33 @@ spark-submit --master local[*] --driver-memory 8g /src/etl/clean_weather.py
 
 ### 3. Verify Data
 
-Open Jupyter Lab (http://localhost:8888, token: `bigdata2024`) and run:
+Open Jupyter Lab (http://localhost:8888, token: `bigdata2024`) and run the cell that
+matches what you downloaded:
 
 ```python
+import os
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.appName("verify").getOrCreate()
 
-flights = spark.read.parquet("/data/processed/flights_clean")
-weather = spark.read.parquet("/data/processed/weather_clean")
+# If you downloaded data.zip (Option A) — verify Kaiyang's outputs:
+if os.path.isdir("/data/processed/flights_clean"):
+    flights = spark.read.parquet("/data/processed/flights_clean")
+    weather = spark.read.parquet("/data/processed/weather_clean")
+    print(f"Flights: {flights.count():,} rows, {len(flights.columns)} cols")
+    print(f"Weather: {weather.count():,} rows, {len(weather.columns)} cols")
 
-print(f"Flights: {flights.count():,} rows, {len(flights.columns)} cols")
-print(f"Weather: {weather.count():,} rows, {len(weather.columns)} cols")
+# If you downloaded features.zip (Option A+) — verify Zeshen's feature table:
+if os.path.isdir("/data/processed/features/final"):
+    features = spark.read.parquet("/data/processed/features/final")
+    print(f"Features: {features.count():,} rows, {len(features.columns)} cols")
 ```
 
-Expected output:
+Expected output (any combination depending on what you downloaded):
 ```
-Flights: 37,786,688 rows, 27 cols
-Weather: 1,474,038 rows, 17 cols
+Flights:  37,786,688 rows, 27 cols
+Weather:   1,474,038 rows, 17 cols
+Features: 37,786,688 rows, 57 cols
 ```
 
 ### 4. Stop Environment
@@ -208,6 +243,23 @@ docker compose down
 
 > **Note on weather coverage**: Weather data covers 24 major hub airports (ATL, ORD, DFW, DEN, LAX, JFK, LGA, EWR, SFO, SEA, MIA, MCO, FLL, CLT, PHX, LAS, BOS, MSP, DTW, IAH, AUS, PHL, MDW, SAN). Flights from other airports will have null weather fields after the join. Tail Number Tracking and historical features are computed on the full 37.8M dataset regardless of weather coverage.
 
+**features/final** (57 columns, 37,786,688 rows) — the main feature table Ruznhe and Xingyu read from. Full derivation logic lives in [notebooks/04_feature_engineering.ipynb](notebooks/04_feature_engineering.ipynb); the 57 columns break down by purpose:
+
+| Group | # cols | Key fields | Source |
+|-------|-------:|------------|--------|
+| Original flight fields | 23 | `FlightDate`, `Reporting_Airline`, `Tail_Number`, `Origin`, `Dest`, `ArrDelay`, `DepDelay`, `CarrierDelay` / `WeatherDelay` / `NASDelay` / `SecurityDelay` / `LateAircraftDelay` | Kaiyang's `flights_clean` |
+| Derived time | 4 | `Year`, `Month`, `DayOfWeek`, `DepHour` | Kaiyang |
+| Timezone alignment | 4 | `origin_tz`, `dep_utc_ts`, `dep_utc_date`, `dep_utc_hour` | Zeshen — flight local time → UTC via IATA→IANA map for 24 hubs |
+| Weather (joined) | 8 | `temperature`, `dewpoint`, `humidity`, `wind_direction`, `wind_speed`, `visibility`, `precipitation`, `weather_codes` | Zeshen — UTC-aligned hourly left join |
+| Weather derived | 4 | `has_weather_data` (0/1), `is_low_visibility`, `is_high_wind`, `has_precipitation` (null-safe — null = unknown, not "clear") | Zeshen |
+| Ripple / Tail Number Tracking | 7 | `flight_leg`, `prev_arr_delay`, `prev_origin`, `prev_dest`, `cumulative_delay`, `inherited_delay`, `delay_recovery` | Zeshen — window over `(Tail_Number, FlightDate)` ordered by `CRSDepTime` |
+| Historical aggregates (leak-safe) | 7 | `route_total_flights`, `route_avg_delay`, `route_on_time_rate`, `carrier_avg_delay`, `carrier_on_time_rate`, `origin_avg_dep_delay`, `origin_std_dep_delay` | Zeshen — computed on `Year <= 2023` subset only, so 2024 predictions don't leak |
+
+Two caveats that affect downstream code:
+
+- **Weather columns are null for non-hub origin airports** (~43.8% of rows). Use the `has_weather_data` flag to decide whether to filter or impute.
+- **Historical aggregates are computed on 2019-2023 only.** Safe to use as features when training on the same years; they intentionally omit 2024 so it stays a clean test set.
+
 ## Pipeline Architecture
 
 ```
@@ -243,62 +295,48 @@ Each stage reads from the previous stage's output. If you're picking up a task b
 need to run from your stage onward — upstream outputs are already in `data/` once you've run
 `setup_data.{sh,ps1}`.
 
+> **Note on HDFS paths.** The shared task document specifies HDFS paths
+> (`hdfs://namenode:9000/...`) for storage. **We're deferring HDFS setup — for now, read and
+> write using local paths `/data/processed/...`.** The data is already on local disk in the
+> expected layout. When HDFS is brought up later, Kaiyang will `hdfs dfs -put` the existing
+> parquet into HDFS and each member swaps one path prefix in their code; no re-run needed.
+> Don't wait for HDFS, just start.
+
 | Stage | Owner | Status | Reads from | Produces |
 |-------|-------|--------|-----------|----------|
 | 1. ETL | Kaiyang | ✅ done | `data/raw/flights/`, `data/raw/weather/`, `data/raw/airports.csv` | `data/processed/flights_clean/`, `data/processed/weather_clean/` |
-| 2. Feature engineering | Zeshen | 🟡 notebook written, needs a run | `data/processed/flights_clean/`, `data/processed/weather_clean/` | `data/processed/flights_with_weather/`, `data/processed/features/final/` |
+| 2. Feature engineering | Zeshen | ✅ done | `data/processed/flights_clean/`, `data/processed/weather_clean/` | `data/processed/features/final/` (37.8M rows, 57 cols) |
 | 3. Statistical analysis | Ruznhe | 🔜 not started | `data/processed/features/final/` | `results/analysis/*.json`, `results/figures/*` |
 | 4. ML training + API | Xingyu | 🔜 not started | `data/processed/features/final/` | `models/`, `api/` (REST service) |
 | 5. Dashboard | Yiqi | 🔜 not started | `results/analysis/*.json`, REST API | `frontend/` (React app) |
 
 ### Per-member quick start
 
-#### Zeshen — run the feature engineering notebook
-```bash
-# Start Docker env (if not already running)
-docker compose up -d
-# Open http://localhost:8888 (token: bigdata2024)
-# Run notebooks/04_feature_engineering.ipynb top-to-bottom (~15-30 min on 8GB driver)
-```
-The notebook handles timezone alignment (UTC ← origin local time), hourly weather aggregation,
-the weather left join, Tail-Number-based ripple features, and leak-safe historical aggregates.
-Output parquet lands at `/data/processed/features/final/`.
+#### Zeshen — ✅ done
+The feature notebook has been run. `data/processed/features/final/` has 37,786,688 rows × 57
+columns, with 56.2% weather-matched (≈100% on hub-origin flights) and 100% ripple feature
+coverage. Downstream can proceed.
 
 #### Ruznhe — statistical analysis
-Wait until `data/processed/features/final/` exists, then create
-`notebooks/05_analysis.ipynb`. Expected outputs per the proposal:
-- `results/analysis/overview.json` — total flights, on-time rate, monthly trend
-- `results/analysis/carriers.json` — per-carrier on-time rate + delay-cause breakdown
-  (use `CarrierDelay` / `WeatherDelay` / `NASDelay` / `SecurityDelay` / `LateAircraftDelay`)
-- `results/analysis/airports.json` — per-airport delay stats for the map + ranking table
-- `results/analysis/routes.json` — per-route stats (aggregated from `route_*` columns)
-
-The dataset already has `LateAircraftDelay` (BTS's own ripple proxy) plus our derived
+Read `data/processed/features/final/` and produce the JSON outputs listed in the shared task
+doc. The dataset already has `LateAircraftDelay` (BTS's own ripple proxy) plus our derived
 `inherited_delay` / `delay_recovery` / `cumulative_delay`, so causal-propagation analysis
 doesn't need any extra computation.
 
 #### Xingyu — ML & REST API
-Wait until `data/processed/features/final/` exists. Create `notebooks/06_modeling.ipynb`
-and put inference code in `api/`. Key points:
+Read `data/processed/features/final/`. Two things worth flagging that aren't obvious from the
+data alone:
 
 - **Don't leak 2024 into training.** Use `Year <= 2023` for train, `Year == 2024` for test.
   The `route_*` / `carrier_*` / `origin_*` columns in the feature table are already computed
   on 2019-2023 only, so they're safe to use as features.
 - **Weather-null rows**: either filter to `has_weather_data == 1` (hub airports only), or
   impute and keep `has_weather_data` as a feature — up to you, but document the choice.
-- Two task heads are in scope: binary classification (`ArrDelay > 15`) and regression
-  (`ArrDelay` in minutes). GBT / Random Forest via Spark MLlib.
-- API endpoints expected by the dashboard: `/predict` (POST flight info → delay prob + ETA),
-  `/route/{origin}/{dest}` (historical stats for a route). See frontend spec in the proposal.
 
 #### Yiqi — React Dashboard
-You don't need the Docker / Spark environment. Work from `frontend/` with Node 18+.
-Data contract:
-- Page "Overview / Airlines / Airports / Routes" read the JSON files at
-  `results/analysis/*.json` (committed once Ruznhe produces them — not huge, can go in git)
-- Page "Predict" calls Xingyu's REST API. Coordinate the exact payload shape with him.
-- Airport lat/lon for the map come from `data/raw/airports.csv` (already in repo) —
-  filter by `iata_code` from the analysis JSONs.
+You don't need the Docker / Spark environment. Work from `frontend/` with Node 18+. Data
+contract is the REST API (Xingyu) + the analysis JSONs (Ruznhe). Airport lat/lon for the map
+come from `data/raw/airports.csv` (already in repo).
 
 ## Tech Stack
 
