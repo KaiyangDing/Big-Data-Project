@@ -25,3 +25,13 @@ services:
       - ./results:/results
       - ./models:/models
       - ./docs:/docs
+    # Symlink the mounted dirs into /home/jovyan so they show up in the
+    # Jupyter Lab file browser (which is rooted at /home/jovyan).
+    # Absolute paths like /data/... still work for any script that uses them.
+    command: >
+      bash -c "
+      for d in data src notebooks results models docs; do
+        ln -sfn /$$d /home/jovyan/$$d;
+      done &&
+      exec start-notebook.sh
+      "

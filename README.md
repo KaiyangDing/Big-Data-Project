@@ -47,6 +47,7 @@ Big-Data-Project/
 │   ├── analysis/               # Statistical analysis code
 │   └── models/                 # ML training & inference code
 ├── notebooks/                  # Jupyter notebooks (exploratory & pipeline)
+│   └── 04_feature_engineering.ipynb   # Zeshen: weather join + ripple + historical features
 ├── api/                        # REST API for prediction serving
 ├── frontend/                   # React dashboard
 ├── results/
@@ -235,6 +236,69 @@ OurAirports CSV ─────────────────────�
                                               ▼
                                       React Dashboard
 ```
+
+## Pipeline Status & Team Handoff
+
+Each stage reads from the previous stage's output. If you're picking up a task below, you only
+need to run from your stage onward — upstream outputs are already in `data/` once you've run
+`setup_data.{sh,ps1}`.
+
+| Stage | Owner | Status | Reads from | Produces |
+|-------|-------|--------|-----------|----------|
+| 1. ETL | Kaiyang | ✅ done | `data/raw/flights/`, `data/raw/weather/`, `data/raw/airports.csv` | `data/processed/flights_clean/`, `data/processed/weather_clean/` |
+| 2. Feature engineering | Zeshen | 🟡 notebook written, needs a run | `data/processed/flights_clean/`, `data/processed/weather_clean/` | `data/processed/flights_with_weather/`, `data/processed/features/final/` |
+| 3. Statistical analysis | Ruznhe | 🔜 not started | `data/processed/features/final/` | `results/analysis/*.json`, `results/figures/*` |
+| 4. ML training + API | Xingyu | 🔜 not started | `data/processed/features/final/` | `models/`, `api/` (REST service) |
+| 5. Dashboard | Yiqi | 🔜 not started | `results/analysis/*.json`, REST API | `frontend/` (React app) |
+
+### Per-member quick start
+
+#### Zeshen — run the feature engineering notebook
+```bash
+# Start Docker env (if not already running)
+docker compose up -d
+# Open http://localhost:8888 (token: bigdata2024)
+# Run notebooks/04_feature_engineering.ipynb top-to-bottom (~15-30 min on 8GB driver)
+```
+The notebook handles timezone alignment (UTC ← origin local time), hourly weather aggregation,
+the weather left join, Tail-Number-based ripple features, and leak-safe historical aggregates.
+Output parquet lands at `/data/processed/features/final/`.
+
+#### Ruznhe — statistical analysis
+Wait until `data/processed/features/final/` exists, then create
+`notebooks/05_analysis.ipynb`. Expected outputs per the proposal:
+- `results/analysis/overview.json` — total flights, on-time rate, monthly trend
+- `results/analysis/carriers.json` — per-carrier on-time rate + delay-cause breakdown
+  (use `CarrierDelay` / `WeatherDelay` / `NASDelay` / `SecurityDelay` / `LateAircraftDelay`)
+- `results/analysis/airports.json` — per-airport delay stats for the map + ranking table
+- `results/analysis/routes.json` — per-route stats (aggregated from `route_*` columns)
+
+The dataset already has `LateAircraftDelay` (BTS's own ripple proxy) plus our derived
+`inherited_delay` / `delay_recovery` / `cumulative_delay`, so causal-propagation analysis
+doesn't need any extra computation.
+
+#### Xingyu — ML & REST API
+Wait until `data/processed/features/final/` exists. Create `notebooks/06_modeling.ipynb`
+and put inference code in `api/`. Key points:
+
+- **Don't leak 2024 into training.** Use `Year <= 2023` for train, `Year == 2024` for test.
+  The `route_*` / `carrier_*` / `origin_*` columns in the feature table are already computed
+  on 2019-2023 only, so they're safe to use as features.
+- **Weather-null rows**: either filter to `has_weather_data == 1` (hub airports only), or
+  impute and keep `has_weather_data` as a feature — up to you, but document the choice.
+- Two task heads are in scope: binary classification (`ArrDelay > 15`) and regression
+  (`ArrDelay` in minutes). GBT / Random Forest via Spark MLlib.
+- API endpoints expected by the dashboard: `/predict` (POST flight info → delay prob + ETA),
+  `/route/{origin}/{dest}` (historical stats for a route). See frontend spec in the proposal.
+
+#### Yiqi — React Dashboard
+You don't need the Docker / Spark environment. Work from `frontend/` with Node 18+.
+Data contract:
+- Page "Overview / Airlines / Airports / Routes" read the JSON files at
+  `results/analysis/*.json` (committed once Ruznhe produces them — not huge, can go in git)
+- Page "Predict" calls Xingyu's REST API. Coordinate the exact payload shape with him.
+- Airport lat/lon for the map come from `data/raw/airports.csv` (already in repo) —
+  filter by `iata_code` from the analysis JSONs.
 
 ## Tech Stack
 
