@@ -279,15 +279,26 @@ OurAirports CSV ─────────────────────�
                                         │           │
                                         ▼           ▼
                                   ML Training   Statistical Analysis
-                                   (GBT, RF)    (delay attribution)
+                                   (Spark MLlib)  (Spark SQL; Dask benchmark)
                                         │           │
                                         ▼           ▼
-                                   REST API     Analysis JSON
+                                   Model metrics   Analysis JSON
                                         │           │
                                         └─────┬─────┘
                                               ▼
+                                          MongoDB
+                                              │
+                                              ▼
+                                        FastAPI (REST)
+                                              │
+                                              ▼
                                       React Dashboard
 ```
+
+The full pipeline (ETL → feature engineering → training) is orchestrated via a Prefect
+flow (`src/etl/pipeline.py`) — parallel tasks for the two cleaning jobs, sequential downstream.
+Phase 1 stores Parquet on the local filesystem; Phase 2 moves it to HDFS
+(`hdfs://namenode:9000/...`) without touching any Spark code other than path prefixes.
 
 ## Pipeline Status & Team Handoff
 
@@ -342,9 +353,11 @@ come from `data/raw/airports.csv` (already in repo).
 
 | Layer | Technology |
 |-------|-----------|
-| Compute | Apache Spark 3.5.0 (PySpark) |
-| Storage | Parquet on local filesystem (HDFS-compatible) |
+| Compute | Apache Spark 3.5.0 (PySpark + Spark SQL); Dask as a benchmark comparison on one analysis query |
+| Bulk storage | Parquet on local filesystem (Phase 1) → HDFS via namenode + datanode (Phase 2) |
+| Serving storage | MongoDB — `skypath.model_metrics`, `skypath.analysis`, `skypath.predictions` collections |
 | ML | Spark MLlib (GBT, Random Forest) |
-| API | Python (Flask/FastAPI) |
+| API | FastAPI (Python, reads from MongoDB) |
+| Orchestration | Prefect (`@flow` / `@task`) — one-command end-to-end pipeline |
 | Frontend | React.js, ECharts, Mapbox GL JS |
 | Infrastructure | Docker Compose |
