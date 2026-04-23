@@ -252,7 +252,8 @@ docker compose down
 | Timezone alignment | 4 | `origin_tz`, `dep_utc_ts`, `dep_utc_date`, `dep_utc_hour` | Zeshen — flight local time → UTC via IATA→IANA map for 24 hubs |
 | Weather (joined) | 8 | `temperature`, `dewpoint`, `humidity`, `wind_direction`, `wind_speed`, `visibility`, `precipitation`, `weather_codes` | Zeshen — UTC-aligned hourly left join |
 | Weather derived | 4 | `has_weather_data` (0/1), `is_low_visibility`, `is_high_wind`, `has_precipitation` (null-safe — null = unknown, not "clear") | Zeshen |
-| Ripple / Tail Number Tracking | 7 | `flight_leg`, `prev_arr_delay`, `prev_origin`, `prev_dest`, `cumulative_delay`, `inherited_delay`, `delay_recovery` | Zeshen — window over `(Tail_Number, FlightDate)` ordered by `CRSDepTime` |
+| Ripple (safe for prediction) | 5 | `flight_leg`, `prev_arr_delay`, `prev_origin`, `prev_dest`, `inherited_delay` | Zeshen — window over `(Tail_Number, FlightDate)` ordered by `CRSDepTime` |
+| Ripple ⚠️ **analysis-only** | 2 | `cumulative_delay`, `delay_recovery` | Zeshen — **these two include the current row's `ArrDelay` in their formula, so using them as features for an `ArrDelay` prediction model is leakage.** Use them for Ruznhe's descriptive statistics only. If Xingyu wants a "prior cumulative" signal, derive it inline: `cumulative_delay - ArrDelay`. |
 | Historical aggregates (leak-safe) | 7 | `route_total_flights`, `route_avg_delay`, `route_on_time_rate`, `carrier_avg_delay`, `carrier_on_time_rate`, `origin_avg_dep_delay`, `origin_std_dep_delay` | Zeshen — computed on `Year <= 2023` subset only, so 2024 predictions don't leak |
 
 Two caveats that affect downstream code:
