@@ -46,7 +46,7 @@ Big-Data-Project/
 │   └── models/                 # ML training & inference code
 ├── notebooks/                  # Jupyter notebooks (exploratory & pipeline)
 │   ├── 04_feature_engineering.ipynb   # Zeshen: weather join + ripple + historical features ✅
-│   ├── 05_analysis.ipynb              # Ruznhe: statistical analysis + Spark SQL + Dask (TBD)
+│   ├── 05_analysis.ipynb              # Ruznhe: statistical analysis + Spark SQL + Dask ✅
 │   └── 06_modeling.ipynb              # Xingyu: ML training & evaluation (TBD)
 ├── api/                        # REST API for prediction serving
 ├── frontend/                   # React dashboard
@@ -318,7 +318,7 @@ need to run from your stage onward — upstream outputs are already in `data/` o
 |-------|-------|--------|-----------|----------|
 | 1. ETL | Kaiyang | ✅ done | `data/raw/flights/`, `data/raw/weather/`, `data/raw/airports.csv` | `data/processed/flights_clean/`, `data/processed/weather_clean/` |
 | 2. Feature engineering | Zeshen | ✅ done | `data/processed/flights_clean/`, `data/processed/weather_clean/` | `data/processed/features/final/` (37.8M rows, 57 cols) |
-| 3. Statistical analysis | Ruznhe | 🔜 not started | `data/processed/features/final/` | `results/analysis/*.json`, `results/figures/*` |
+| 3. Statistical analysis | Ruznhe | ✅ done | `data/processed/features/final/` | `results/analysis/*.json`, `results/figures/*` |
 | 4. ML training + API | Xingyu | 🔜 not started | `data/processed/features/final/` | `models/`, `api/` (REST service) |
 | 5. Dashboard | Yiqi | 🔜 not started | `results/analysis/*.json`, REST API | `frontend/` (React app) |
 
@@ -329,11 +329,21 @@ The feature notebook has been run. `data/processed/features/final/` has 37,786,6
 columns, with 56.2% weather-matched (≈100% on hub-origin flights) and 100% ripple feature
 coverage. Downstream can proceed.
 
-#### Ruznhe — statistical analysis
-Read `data/processed/features/final/` and produce the JSON outputs listed in the shared task
-doc. The dataset already has `LateAircraftDelay` (BTS's own ripple proxy) plus our derived
-`inherited_delay` / `delay_recovery` / `cumulative_delay`, so causal-propagation analysis
-doesn't need any extra computation.
+#### Ruznhe — ✅ done
+All 8 analysis tasks completed on the full 37,786,688-row dataset. Outputs in `results/analysis/`:
+
+| File | Content |
+|------|---------|
+| `overview.json` | 37.8M flights, 81.99% on-time rate, avg arrival delay 4.65 min |
+| `carriers.json` | Per-airline on-time rate & delay cause breakdown (all carriers) |
+| `airports.json` | Per-airport departure / arrival delay rate (382 airports) |
+| `temporal.json` | Delay patterns by month, day-of-week, and departure hour |
+| `attribution.json` | Delay cause shares: Late Aircraft 38.3%, Carrier 36.4%, NAS 19.2%, Weather 5.8% |
+| `ripple.json` | Propagation rate & avg recovery speed, overall and per airline |
+| `routes.json` | Per-route stats for 8,403 Origin-Dest pairs |
+| `spark_vs_dask.json` | Spark SQL 218 s vs Dask 380 s on the same aggregation query (1.74× speedup) |
+
+Charts (PNG) also in `results/analysis/`: `carrier_ontime.png`, `monthly_delay.png`, `attribution_pie.png`, `spark_vs_dask.png`.
 
 #### Xingyu — ML & REST API
 Read `data/processed/features/final/`. Two things worth flagging that aren't obvious from the
