@@ -352,12 +352,12 @@ Two GBT model versions trained on 30.8M flights (2019–2023) and evaluated on 6
 - **Post-departure model** (with `DepDelay`): classifier AUC 0.9345, F1 0.8876; regressor RMSE 20.70 min, R² 0.9199
 - **Pre-departure model** (without `DepDelay`): classifier AUC 0.8102, F1 0.7633; regressor RMSE 64.62 min, R² 0.2192
 
-A FastAPI service (`api/app.py`) loads both models at startup and exposes prediction + analysis endpoints on port 8000. All results are stored in MongoDB.
+A FastAPI service (`api/app.py`) loads both models at startup and exposes prediction + analysis endpoints on port 8000. On first startup the API automatically seeds MongoDB from the JSON files in `results/` — no manual initialization step is needed.
 
 **Detailed documentation:**
 - [docs/ml_modeling.md](docs/ml_modeling.md) — feature selection rationale, two-model design, hyperparameters, evaluation metrics, feature importance
 - [docs/api_reference.md](docs/api_reference.md) — all 7 endpoints with request/response schemas, example `curl` calls, and test results
-- [docs/how_to_run.md](docs/how_to_run.md) — Docker startup sequence, MongoDB initialization (when required and when not), and troubleshooting
+- [docs/how_to_run.md](docs/how_to_run.md) — Docker startup sequence, automatic MongoDB seeding, and troubleshooting
 
 #### Yiqi — React Dashboard
 You don't need the Docker / Spark environment. Work from `frontend/` with Node 18+. Data

@@ -86,25 +86,23 @@ The `depends_on` constraint in `docker-compose.yml` ensures `skypath-api` starts
 
 ## MongoDB Initialization — Do You Need to Run It Every Time?
 
-**No.** MongoDB uses a named Docker volume (`mongo_data`) that persists across container restarts. Once data is written, it survives `docker compose down` and `docker compose up` cycles.
+**No, and no manual step is needed at all.** The API container seeds MongoDB automatically on startup.
 
-You need to run the initialization notebook only in these situations:
+When `skypath-api` starts, it checks whether the `analysis` and `model_metrics` collections are empty. If they are, it reads the JSON files already committed to the repository and inserts them before accepting requests:
+
+| Source file | Target collection | Documents |
+|-------------|-------------------|-----------|
+| `results/analysis/*.json` | `skypath.analysis` | 8 documents (one per analysis name) |
+| `results/model_evaluation.json` | `skypath.model_metrics` | 2 documents (pre- and post-departure) |
+
+MongoDB also uses a named Docker volume (`mongo_data`) that persists across restarts, so seeding only happens when the volume is genuinely empty.
 
 | Situation | Action needed |
 |-----------|--------------|
-| First time ever starting the project | Run the last cell of `notebooks/ml.ipynb` |
-| The `mongo_data` volume was explicitly deleted (`docker volume rm`) | Re-run the initialization cell |
-| Analysis JSON files in `/results/analysis/` were updated | Re-run the initialization cell to push updates to MongoDB |
-| Model metrics changed after retraining | Re-run the initialization cell (writes are idempotent via `replace_one(..., upsert=True)`) |
-
-### Running the Initialization
-
-1. Open JupyterLab at `http://localhost:8888` (token: `bigdata2024`).
-2. Open `notebooks/ml.ipynb`.
-3. Find the last section titled **"Load the existing models, run evaluation, and write the results to MongoDB"**.
-4. Run that section's cells. They load the saved models, evaluate on the 2024 test set, and upsert results into MongoDB. They also import all seven analysis JSON files from `/results/analysis/`.
-
-The writes are **idempotent** — running the cells multiple times is safe and will not create duplicate records.
+| Fresh clone on a new machine | None — `docker compose up -d` is sufficient |
+| Volume deleted with `docker compose down -v` | None — API re-seeds on next startup |
+| Analysis JSONs updated and you want MongoDB to reflect the change | `docker compose down -v && docker compose up -d` (volume wipe forces a reseed) |
+| Model metrics changed after retraining | Same as above |
 
 ---
 
@@ -146,7 +144,7 @@ curl -s -X POST http://localhost:8000/predict/post \
        "Month":6,"DayOfWeek":1,"DepHour":9,"CRSDepTime":900,
        "Distance":2475.0,"DepDelay":20.0}'
 
-# Check a pre-computed analysis document (requires MongoDB init)
+# Check a pre-computed analysis document
 curl http://localhost:8000/api/analysis/carriers
 
 # Check airports list
@@ -174,7 +172,11 @@ Common causes:
 
 ### `"detail": "'name' not found"` from `/api/analysis/{name}`
 
-MongoDB has not been initialized. Follow the MongoDB initialization steps above.
+The analysis file for that name is missing from `results/analysis/`. Check that the corresponding `<name>.json` file exists under `results/analysis/`. If you recently did `docker compose down -v` and the file is present, restart the API container so it re-seeds:
+
+```bash
+docker compose restart skypath-api
+```
 
 ### `skypath-mongo` DNS not resolving
 

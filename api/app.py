@@ -1,3 +1,5 @@
+import glob
+import json
 import os
 import datetime
 from contextlib import asynccontextmanager
@@ -13,13 +15,41 @@ from pyspark.ml import PipelineModel
 from pyspark.ml.classification import GBTClassificationModel
 from pyspark.ml.regression import GBTRegressionModel
 
-# ---------------------------------------------------------------------------
-# Startup: load models and connect to MongoDB once, reuse for every request
-# ---------------------------------------------------------------------------
 
 _spark    = None
 _mongo_db = None
 _models   = {}   # keyed by "post" / "pre"
+
+_ANALYSIS_NAMES = {
+    "airports", "carriers", "overview", "temporal",
+    "attribution", "ripple", "routes", "spark_vs_dask",
+}
+
+
+def _seed_mongo(db) -> None:
+    """Populate MongoDB from result JSON files on first startup (when collections are empty)."""
+    if db.analysis.count_documents({}) == 0:
+        analysis_dir = "/results/analysis"
+        for path in glob.glob(f"{analysis_dir}/*.json"):
+            name = os.path.splitext(os.path.basename(path))[0]
+            if name not in _ANALYSIS_NAMES:
+                continue
+            with open(path) as f:
+                data = json.load(f)
+            db.analysis.replace_one({"name": name}, {"name": name, "data": data}, upsert=True)
+        print(f"[seed] analysis collection populated from {analysis_dir}")
+
+    if db.model_metrics.count_documents({}) == 0:
+        eval_path = "/results/model_evaluation.json"
+        if os.path.exists(eval_path):
+            with open(eval_path) as f:
+                combined = json.load(f)
+            for key in ("post_departure", "pre_departure"):
+                if key in combined:
+                    db.model_metrics.replace_one(
+                        {"model_type": key}, combined[key], upsert=True
+                    )
+            print(f"[seed] model_metrics collection populated from {eval_path}")
 
 
 @asynccontextmanager
@@ -48,6 +78,8 @@ async def lifespan(app: FastAPI):
 
     mongo_uri = os.getenv("MONGO_URI", "mongodb://skypath-mongo:27017/")
     _mongo_db = MongoClient(mongo_uri)["skypath"]
+
+    _seed_mongo(_mongo_db)
 
     yield
 
