@@ -1,0 +1,3440 @@
+[
+  {
+    "airport_code": "MGW",
+    "total_departures": 37,
+    "avg_dep_delay_min": 72.62,
+    "dep_delay_rate_pct": 40.54,
+    "avg_arr_delay_min": 69.05,
+    "arr_delay_rate_pct": 45.95,
+    "city": "Morgantown, WV"
+  },
+  {
+    "airport_code": "PPG",
+    "total_departures": 470,
+    "avg_dep_delay_min": 33.1,
+    "dep_delay_rate_pct": 24.47,
+    "avg_arr_delay_min": 32.04,
+    "arr_delay_rate_pct": 27.45,
+    "city": "Pago Pago, TT"
+  },
+  {
+    "airport_code": "MMH",
+    "total_departures": 650,
+    "avg_dep_delay_min": 28.72,
+    "dep_delay_rate_pct": 27.69,
+    "avg_arr_delay_min": 26.85,
+    "arr_delay_rate_pct": 31.23,
+    "city": "Mammoth Lakes, CA"
+  },
+  {
+    "airport_code": "BIH",
+    "total_departures": 842,
+    "avg_dep_delay_min": 28.14,
+    "dep_delay_rate_pct": 26.72,
+    "avg_arr_delay_min": 17.33,
+    "arr_delay_rate_pct": 23.99,
+    "city": "Bishop, CA"
+  },
+  {
+    "airport_code": "HTS",
+    "total_departures": 2868,
+    "avg_dep_delay_min": 24.95,
+    "dep_delay_rate_pct": 31.9,
+    "avg_arr_delay_min": 23.79,
+    "arr_delay_rate_pct": 32.95,
+    "city": "Ashland, WV"
+  },
+  {
+    "airport_code": "HYA",
+    "total_departures": 783,
+    "avg_dep_delay_min": 24.83,
+    "dep_delay_rate_pct": 27.2,
+    "avg_arr_delay_min": 22.8,
+    "arr_delay_rate_pct": 30.4,
+    "city": "Hyannis, MA"
+  },
+  {
+    "airport_code": "OTH",
+    "total_departures": 1994,
+    "avg_dep_delay_min": 23.52,
+    "dep_delay_rate_pct": 22.82,
+    "avg_arr_delay_min": 18.44,
+    "arr_delay_rate_pct": 22.22,
+    "city": "North Bend/Coos Bay, OR"
+  },
+  {
+    "airport_code": "ASE",
+    "total_departures": 34967,
+    "avg_dep_delay_min": 23.45,
+    "dep_delay_rate_pct": 26.73,
+    "avg_arr_delay_min": 19.11,
+    "arr_delay_rate_pct": 28.34,
+    "city": "Aspen, CO"
+  },
+  {
+    "airport_code": "ILG",
+    "total_departures": 158,
+    "avg_dep_delay_min": 22.96,
+    "dep_delay_rate_pct": 36.08,
+    "avg_arr_delay_min": 23.43,
+    "arr_delay_rate_pct": 39.87,
+    "city": "Wilmington, DE"
+  },
+  {
+    "airport_code": "HGR",
+    "total_departures": 1232,
+    "avg_dep_delay_min": 22.69,
+    "dep_delay_rate_pct": 30.44,
+    "avg_arr_delay_min": 21.0,
+    "arr_delay_rate_pct": 30.6,
+    "city": "Hagerstown, MD"
+  },
+  {
+    "airport_code": "OGS",
+    "total_departures": 1932,
+    "avg_dep_delay_min": 20.95,
+    "dep_delay_rate_pct": 16.82,
+    "avg_arr_delay_min": 14.68,
+    "arr_delay_rate_pct": 17.55,
+    "city": "Ogdensburg, NY"
+  },
+  {
+    "airport_code": "SMX",
+    "total_departures": 983,
+    "avg_dep_delay_min": 20.8,
+    "dep_delay_rate_pct": 25.43,
+    "avg_arr_delay_min": 21.16,
+    "arr_delay_rate_pct": 26.86,
+    "city": "Santa Maria, CA"
+  },
+  {
+    "airport_code": "BQN",
+    "total_departures": 11882,
+    "avg_dep_delay_min": 20.47,
+    "dep_delay_rate_pct": 30.72,
+    "avg_arr_delay_min": 15.48,
+    "arr_delay_rate_pct": 28.22,
+    "city": "Aguadilla, PR"
+  },
+  {
+    "airport_code": "SCK",
+    "total_departures": 3911,
+    "avg_dep_delay_min": 20.36,
+    "dep_delay_rate_pct": 29.71,
+    "avg_arr_delay_min": 20.19,
+    "arr_delay_rate_pct": 31.76,
+    "city": "Stockton, CA"
+  },
+  {
+    "airport_code": "CKB",
+    "total_departures": 3796,
+    "avg_dep_delay_min": 19.8,
+    "dep_delay_rate_pct": 20.34,
+    "avg_arr_delay_min": 14.27,
+    "arr_delay_rate_pct": 21.6,
+    "city": "Clarksburg/Fairmont, WV"
+  },
+  {
+    "airport_code": "SWF",
+    "total_departures": 4527,
+    "avg_dep_delay_min": 19.67,
+    "dep_delay_rate_pct": 26.91,
+    "avg_arr_delay_min": 15.67,
+    "arr_delay_rate_pct": 28.45,
+    "city": "Newburgh/Poughkeepsie, NY"
+  },
+  {
+    "airport_code": "LCK",
+    "total_departures": 5927,
+    "avg_dep_delay_min": 19.66,
+    "dep_delay_rate_pct": 27.47,
+    "avg_arr_delay_min": 19.28,
+    "arr_delay_rate_pct": 30.34,
+    "city": "Columbus, OH"
+  },
+  {
+    "airport_code": "MVY",
+    "total_departures": 4907,
+    "avg_dep_delay_min": 19.54,
+    "dep_delay_rate_pct": 23.97,
+    "avg_arr_delay_min": 16.23,
+    "arr_delay_rate_pct": 25.43,
+    "city": "Martha's Vineyard, MA"
+  },
+  {
+    "airport_code": "BLV",
+    "total_departures": 6408,
+    "avg_dep_delay_min": 19.46,
+    "dep_delay_rate_pct": 26.12,
+    "avg_arr_delay_min": 18.27,
+    "arr_delay_rate_pct": 27.79,
+    "city": "Belleville, IL"
+  },
+  {
+    "airport_code": "UIN",
+    "total_departures": 593,
+    "avg_dep_delay_min": 19.14,
+    "dep_delay_rate_pct": 21.08,
+    "avg_arr_delay_min": 13.53,
+    "arr_delay_rate_pct": 19.9,
+    "city": "Quincy, IL"
+  },
+  {
+    "airport_code": "USA",
+    "total_departures": 5713,
+    "avg_dep_delay_min": 18.78,
+    "dep_delay_rate_pct": 27.5,
+    "avg_arr_delay_min": 18.47,
+    "arr_delay_rate_pct": 29.6,
+    "city": "CONCORD, NC"
+  },
+  {
+    "airport_code": "EGE",
+    "total_departures": 16320,
+    "avg_dep_delay_min": 18.69,
+    "dep_delay_rate_pct": 21.05,
+    "avg_arr_delay_min": 13.81,
+    "arr_delay_rate_pct": 22.61,
+    "city": "Eagle, CO"
+  },
+  {
+    "airport_code": "CIU",
+    "total_departures": 4192,
+    "avg_dep_delay_min": 18.64,
+    "dep_delay_rate_pct": 15.0,
+    "avg_arr_delay_min": 8.6,
+    "arr_delay_rate_pct": 14.36,
+    "city": "Sault Ste. Marie, MI"
+  },
+  {
+    "airport_code": "CDB",
+    "total_departures": 240,
+    "avg_dep_delay_min": 17.78,
+    "dep_delay_rate_pct": 42.08,
+    "avg_arr_delay_min": 20.94,
+    "arr_delay_rate_pct": 51.25,
+    "city": "Cold Bay, AK"
+  },
+  {
+    "airport_code": "HOB",
+    "total_departures": 2210,
+    "avg_dep_delay_min": 17.57,
+    "dep_delay_rate_pct": 15.25,
+    "avg_arr_delay_min": 13.67,
+    "arr_delay_rate_pct": 15.75,
+    "city": "Hobbs, NM"
+  },
+  {
+    "airport_code": "MQT",
+    "total_departures": 6338,
+    "avg_dep_delay_min": 17.5,
+    "dep_delay_rate_pct": 16.41,
+    "avg_arr_delay_min": 10.46,
+    "arr_delay_rate_pct": 17.7,
+    "city": "Marquette, MI"
+  },
+  {
+    "airport_code": "CMX",
+    "total_departures": 4026,
+    "avg_dep_delay_min": 17.47,
+    "dep_delay_rate_pct": 17.44,
+    "avg_arr_delay_min": 11.73,
+    "arr_delay_rate_pct": 18.93,
+    "city": "Hancock/Houghton, MI"
+  },
+  {
+    "airport_code": "MEI",
+    "total_departures": 4205,
+    "avg_dep_delay_min": 17.44,
+    "dep_delay_rate_pct": 17.19,
+    "avg_arr_delay_min": 9.2,
+    "arr_delay_rate_pct": 18.05,
+    "city": "Meridian, MS"
+  },
+  {
+    "airport_code": "ACK",
+    "total_departures": 7740,
+    "avg_dep_delay_min": 17.18,
+    "dep_delay_rate_pct": 21.76,
+    "avg_arr_delay_min": 13.29,
+    "arr_delay_rate_pct": 22.88,
+    "city": "Nantucket, MA"
+  },
+  {
+    "airport_code": "XWA",
+    "total_departures": 6902,
+    "avg_dep_delay_min": 17.05,
+    "dep_delay_rate_pct": 16.26,
+    "avg_arr_delay_min": 11.2,
+    "arr_delay_rate_pct": 19.08,
+    "city": "Williston, ND"
+  },
+  {
+    "airport_code": "ORH",
+    "total_departures": 6415,
+    "avg_dep_delay_min": 17.02,
+    "dep_delay_rate_pct": 21.33,
+    "avg_arr_delay_min": 13.19,
+    "arr_delay_rate_pct": 23.63,
+    "city": "Worcester, MA"
+  },
+  {
+    "airport_code": "IAG",
+    "total_departures": 2767,
+    "avg_dep_delay_min": 16.94,
+    "dep_delay_rate_pct": 25.8,
+    "avg_arr_delay_min": 14.61,
+    "arr_delay_rate_pct": 27.5,
+    "city": "Niagara Falls, NY"
+  },
+  {
+    "airport_code": "PBG",
+    "total_departures": 4569,
+    "avg_dep_delay_min": 16.83,
+    "dep_delay_rate_pct": 20.53,
+    "avg_arr_delay_min": 13.05,
+    "arr_delay_rate_pct": 23.13,
+    "city": "Plattsburgh, NY"
+  },
+  {
+    "airport_code": "ACV",
+    "total_departures": 9894,
+    "avg_dep_delay_min": 16.72,
+    "dep_delay_rate_pct": 15.93,
+    "avg_arr_delay_min": 13.14,
+    "arr_delay_rate_pct": 18.59,
+    "city": "Arcata/Eureka, CA"
+  },
+  {
+    "airport_code": "DEC",
+    "total_departures": 3771,
+    "avg_dep_delay_min": 16.56,
+    "dep_delay_rate_pct": 13.84,
+    "avg_arr_delay_min": 9.95,
+    "arr_delay_rate_pct": 14.27,
+    "city": "Decatur, IL"
+  },
+  {
+    "airport_code": "RFD",
+    "total_departures": 4435,
+    "avg_dep_delay_min": 16.52,
+    "dep_delay_rate_pct": 24.58,
+    "avg_arr_delay_min": 14.0,
+    "arr_delay_rate_pct": 25.43,
+    "city": "Rockford, IL"
+  },
+  {
+    "airport_code": "MCW",
+    "total_departures": 2197,
+    "avg_dep_delay_min": 16.48,
+    "dep_delay_rate_pct": 15.7,
+    "avg_arr_delay_min": 7.73,
+    "arr_delay_rate_pct": 16.29,
+    "city": "Mason City, IA"
+  },
+  {
+    "airport_code": "JAC",
+    "total_departures": 29853,
+    "avg_dep_delay_min": 16.17,
+    "dep_delay_rate_pct": 18.73,
+    "avg_arr_delay_min": 11.45,
+    "arr_delay_rate_pct": 21.08,
+    "city": "Jackson, WY"
+  },
+  {
+    "airport_code": "APN",
+    "total_departures": 3441,
+    "avg_dep_delay_min": 16.04,
+    "dep_delay_rate_pct": 15.75,
+    "avg_arr_delay_min": 7.72,
+    "arr_delay_rate_pct": 15.14,
+    "city": "Alpena, MI"
+  },
+  {
+    "airport_code": "SHD",
+    "total_departures": 2639,
+    "avg_dep_delay_min": 15.93,
+    "dep_delay_rate_pct": 15.04,
+    "avg_arr_delay_min": 9.53,
+    "arr_delay_rate_pct": 15.92,
+    "city": "Staunton, VA"
+  },
+  {
+    "airport_code": "SLN",
+    "total_departures": 4403,
+    "avg_dep_delay_min": 15.92,
+    "dep_delay_rate_pct": 16.92,
+    "avg_arr_delay_min": 11.1,
+    "arr_delay_rate_pct": 17.28,
+    "city": "Salina, KS"
+  },
+  {
+    "airport_code": "GRI",
+    "total_departures": 5584,
+    "avg_dep_delay_min": 15.9,
+    "dep_delay_rate_pct": 18.93,
+    "avg_arr_delay_min": 12.05,
+    "arr_delay_rate_pct": 20.9,
+    "city": "Grand Island, NE"
+  },
+  {
+    "airport_code": "PSM",
+    "total_departures": 2086,
+    "avg_dep_delay_min": 15.78,
+    "dep_delay_rate_pct": 23.68,
+    "avg_arr_delay_min": 13.42,
+    "arr_delay_rate_pct": 27.85,
+    "city": "Portsmouth, NH"
+  },
+  {
+    "airport_code": "DVL",
+    "total_departures": 3631,
+    "avg_dep_delay_min": 15.74,
+    "dep_delay_rate_pct": 14.05,
+    "avg_arr_delay_min": 11.08,
+    "arr_delay_rate_pct": 15.73,
+    "city": "Devils Lake, ND"
+  },
+  {
+    "airport_code": "COD",
+    "total_departures": 2968,
+    "avg_dep_delay_min": 15.72,
+    "dep_delay_rate_pct": 19.27,
+    "avg_arr_delay_min": 11.95,
+    "arr_delay_rate_pct": 21.93,
+    "city": "Cody, WY"
+  },
+  {
+    "airport_code": "ART",
+    "total_departures": 209,
+    "avg_dep_delay_min": 15.56,
+    "dep_delay_rate_pct": 22.97,
+    "avg_arr_delay_min": 8.64,
+    "arr_delay_rate_pct": 21.53,
+    "city": "Watertown, NY"
+  },
+  {
+    "airport_code": "DDC",
+    "total_departures": 2888,
+    "avg_dep_delay_min": 15.46,
+    "dep_delay_rate_pct": 12.47,
+    "avg_arr_delay_min": 12.4,
+    "arr_delay_rate_pct": 14.65,
+    "city": "Dodge City, KS"
+  },
+  {
+    "airport_code": "OGD",
+    "total_departures": 314,
+    "avg_dep_delay_min": 15.43,
+    "dep_delay_rate_pct": 31.21,
+    "avg_arr_delay_min": 14.86,
+    "arr_delay_rate_pct": 30.57,
+    "city": "Ogden, UT"
+  },
+  {
+    "airport_code": "SJU",
+    "total_departures": 170698,
+    "avg_dep_delay_min": 15.37,
+    "dep_delay_rate_pct": 21.76,
+    "avg_arr_delay_min": 10.9,
+    "arr_delay_rate_pct": 22.41,
+    "city": "San Juan, PR"
+  },
+  {
+    "airport_code": "JST",
+    "total_departures": 2816,
+    "avg_dep_delay_min": 15.37,
+    "dep_delay_rate_pct": 15.55,
+    "avg_arr_delay_min": -1.14,
+    "arr_delay_rate_pct": 15.13,
+    "city": "Johnstown, PA"
+  },
+  {
+    "airport_code": "COU",
+    "total_departures": 9345,
+    "avg_dep_delay_min": 15.25,
+    "dep_delay_rate_pct": 18.77,
+    "avg_arr_delay_min": 11.38,
+    "arr_delay_rate_pct": 20.55,
+    "city": "Columbia, MO"
+  },
+  {
+    "airport_code": "LWB",
+    "total_departures": 2338,
+    "avg_dep_delay_min": 15.13,
+    "dep_delay_rate_pct": 16.72,
+    "avg_arr_delay_min": 8.3,
+    "arr_delay_rate_pct": 17.07,
+    "city": "Lewisburg, WV"
+  },
+  {
+    "airport_code": "FLL",
+    "total_departures": 502760,
+    "avg_dep_delay_min": 15.11,
+    "dep_delay_rate_pct": 23.69,
+    "avg_arr_delay_min": 9.46,
+    "arr_delay_rate_pct": 23.09,
+    "city": "Fort Lauderdale, FL"
+  },
+  {
+    "airport_code": "PRC",
+    "total_departures": 4411,
+    "avg_dep_delay_min": 14.99,
+    "dep_delay_rate_pct": 17.21,
+    "avg_arr_delay_min": 11.03,
+    "arr_delay_rate_pct": 19.34,
+    "city": "Prescott, AZ"
+  },
+  {
+    "airport_code": "HPN",
+    "total_departures": 57798,
+    "avg_dep_delay_min": 14.96,
+    "dep_delay_rate_pct": 19.69,
+    "avg_arr_delay_min": 8.94,
+    "arr_delay_rate_pct": 20.75,
+    "city": "White Plains, NY"
+  },
+  {
+    "airport_code": "PLN",
+    "total_departures": 5013,
+    "avg_dep_delay_min": 14.95,
+    "dep_delay_rate_pct": 15.24,
+    "avg_arr_delay_min": 6.81,
+    "arr_delay_rate_pct": 14.18,
+    "city": "Pellston, MI"
+  },
+  {
+    "airport_code": "EWR",
+    "total_departures": 667338,
+    "avg_dep_delay_min": 14.88,
+    "dep_delay_rate_pct": 22.38,
+    "avg_arr_delay_min": 7.47,
+    "arr_delay_rate_pct": 22.58,
+    "city": "Newark, NJ"
+  },
+  {
+    "airport_code": "TTN",
+    "total_departures": 11974,
+    "avg_dep_delay_min": 14.88,
+    "dep_delay_rate_pct": 24.06,
+    "avg_arr_delay_min": 10.11,
+    "arr_delay_rate_pct": 24.63,
+    "city": "Trenton, NJ"
+  },
+  {
+    "airport_code": "FOD",
+    "total_departures": 2210,
+    "avg_dep_delay_min": 14.78,
+    "dep_delay_rate_pct": 15.29,
+    "avg_arr_delay_min": 5.44,
+    "arr_delay_rate_pct": 15.38,
+    "city": "Fort Dodge, IA"
+  },
+  {
+    "airport_code": "MCO",
+    "total_departures": 820465,
+    "avg_dep_delay_min": 14.77,
+    "dep_delay_rate_pct": 22.96,
+    "avg_arr_delay_min": 9.89,
+    "arr_delay_rate_pct": 22.8,
+    "city": "Orlando, FL"
+  },
+  {
+    "airport_code": "ESC",
+    "total_departures": 3855,
+    "avg_dep_delay_min": 14.73,
+    "dep_delay_rate_pct": 14.94,
+    "avg_arr_delay_min": 9.22,
+    "arr_delay_rate_pct": 16.71,
+    "city": "Escanaba, MI"
+  },
+  {
+    "airport_code": "EYW",
+    "total_departures": 42909,
+    "avg_dep_delay_min": 14.54,
+    "dep_delay_rate_pct": 21.99,
+    "avg_arr_delay_min": 11.37,
+    "arr_delay_rate_pct": 22.12,
+    "city": "Key West, FL"
+  },
+  {
+    "airport_code": "MIA",
+    "total_departures": 544457,
+    "avg_dep_delay_min": 14.48,
+    "dep_delay_rate_pct": 21.74,
+    "avg_arr_delay_min": 9.64,
+    "arr_delay_rate_pct": 22.77,
+    "city": "Miami, FL"
+  },
+  {
+    "airport_code": "ALS",
+    "total_departures": 950,
+    "avg_dep_delay_min": 14.25,
+    "dep_delay_rate_pct": 10.11,
+    "avg_arr_delay_min": -1.02,
+    "arr_delay_rate_pct": 9.37,
+    "city": "Alamosa, CO"
+  },
+  {
+    "airport_code": "JLN",
+    "total_departures": 4772,
+    "avg_dep_delay_min": 14.13,
+    "dep_delay_rate_pct": 15.59,
+    "avg_arr_delay_min": 7.23,
+    "arr_delay_rate_pct": 17.35,
+    "city": "Joplin, MO"
+  },
+  {
+    "airport_code": "PBI",
+    "total_departures": 141927,
+    "avg_dep_delay_min": 14.01,
+    "dep_delay_rate_pct": 20.8,
+    "avg_arr_delay_min": 9.11,
+    "arr_delay_rate_pct": 20.9,
+    "city": "West Palm Beach/Palm Beach, FL"
+  },
+  {
+    "airport_code": "RIW",
+    "total_departures": 2429,
+    "avg_dep_delay_min": 13.87,
+    "dep_delay_rate_pct": 12.27,
+    "avg_arr_delay_min": 10.87,
+    "arr_delay_rate_pct": 15.73,
+    "city": "Riverton/Lander, WY"
+  },
+  {
+    "airport_code": "HDN",
+    "total_departures": 11940,
+    "avg_dep_delay_min": 13.8,
+    "dep_delay_rate_pct": 19.35,
+    "avg_arr_delay_min": 9.12,
+    "arr_delay_rate_pct": 23.02,
+    "city": "Hayden, CO"
+  },
+  {
+    "airport_code": "DFW",
+    "total_departures": 1634837,
+    "avg_dep_delay_min": 13.7,
+    "dep_delay_rate_pct": 21.35,
+    "avg_arr_delay_min": 9.21,
+    "arr_delay_rate_pct": 21.82,
+    "city": "Dallas/Fort Worth, TX"
+  },
+  {
+    "airport_code": "PVU",
+    "total_departures": 7615,
+    "avg_dep_delay_min": 13.67,
+    "dep_delay_rate_pct": 19.12,
+    "avg_arr_delay_min": 13.79,
+    "arr_delay_rate_pct": 24.32,
+    "city": "Provo, UT"
+  },
+  {
+    "airport_code": "CRW",
+    "total_departures": 19137,
+    "avg_dep_delay_min": 13.48,
+    "dep_delay_rate_pct": 16.95,
+    "avg_arr_delay_min": 8.77,
+    "arr_delay_rate_pct": 18.53,
+    "city": "Charleston/Dunbar, WV"
+  },
+  {
+    "airport_code": "JMS",
+    "total_departures": 4689,
+    "avg_dep_delay_min": 13.35,
+    "dep_delay_rate_pct": 13.52,
+    "avg_arr_delay_min": 8.95,
+    "arr_delay_rate_pct": 14.5,
+    "city": "Jamestown, ND"
+  },
+  {
+    "airport_code": "MDW",
+    "total_departures": 433813,
+    "avg_dep_delay_min": 13.31,
+    "dep_delay_rate_pct": 25.41,
+    "avg_arr_delay_min": 5.33,
+    "arr_delay_rate_pct": 21.55,
+    "city": "Chicago, IL"
+  },
+  {
+    "airport_code": "PSE",
+    "total_departures": 4039,
+    "avg_dep_delay_min": 13.29,
+    "dep_delay_rate_pct": 23.17,
+    "avg_arr_delay_min": 11.58,
+    "arr_delay_rate_pct": 25.55,
+    "city": "Ponce, PR"
+  },
+  {
+    "airport_code": "BWI",
+    "total_departures": 517624,
+    "avg_dep_delay_min": 13.19,
+    "dep_delay_rate_pct": 24.73,
+    "avg_arr_delay_min": 5.54,
+    "arr_delay_rate_pct": 21.21,
+    "city": "Baltimore, MD"
+  },
+  {
+    "airport_code": "CYS",
+    "total_departures": 2463,
+    "avg_dep_delay_min": 13.17,
+    "dep_delay_rate_pct": 12.91,
+    "avg_arr_delay_min": 4.35,
+    "arr_delay_rate_pct": 13.89,
+    "city": "Cheyenne, WY"
+  },
+  {
+    "airport_code": "JFK",
+    "total_departures": 641375,
+    "avg_dep_delay_min": 13.14,
+    "dep_delay_rate_pct": 19.85,
+    "avg_arr_delay_min": 3.46,
+    "arr_delay_rate_pct": 20.33,
+    "city": "New York, NY"
+  },
+  {
+    "airport_code": "SUX",
+    "total_departures": 4956,
+    "avg_dep_delay_min": 13.13,
+    "dep_delay_rate_pct": 17.51,
+    "avg_arr_delay_min": 7.17,
+    "arr_delay_rate_pct": 18.93,
+    "city": "Sioux City, IA"
+  },
+  {
+    "airport_code": "DEN",
+    "total_departures": 1540883,
+    "avg_dep_delay_min": 13.12,
+    "dep_delay_rate_pct": 22.4,
+    "avg_arr_delay_min": 7.24,
+    "arr_delay_rate_pct": 21.58,
+    "city": "Denver, CO"
+  },
+  {
+    "airport_code": "HYS",
+    "total_departures": 4650,
+    "avg_dep_delay_min": 13.03,
+    "dep_delay_rate_pct": 14.32,
+    "avg_arr_delay_min": 10.02,
+    "arr_delay_rate_pct": 15.74,
+    "city": "Hays, KS"
+  },
+  {
+    "airport_code": "GUC",
+    "total_departures": 3848,
+    "avg_dep_delay_min": 13.03,
+    "dep_delay_rate_pct": 16.22,
+    "avg_arr_delay_min": 10.23,
+    "arr_delay_rate_pct": 19.93,
+    "city": "Gunnison, CO"
+  },
+  {
+    "airport_code": "GCC",
+    "total_departures": 3972,
+    "avg_dep_delay_min": 12.93,
+    "dep_delay_rate_pct": 12.21,
+    "avg_arr_delay_min": 8.1,
+    "arr_delay_rate_pct": 14.68,
+    "city": "Gillette, WY"
+  },
+  {
+    "airport_code": "SPI",
+    "total_departures": 5035,
+    "avg_dep_delay_min": 12.87,
+    "dep_delay_rate_pct": 18.05,
+    "avg_arr_delay_min": 8.84,
+    "arr_delay_rate_pct": 20.81,
+    "city": "Springfield, IL"
+  },
+  {
+    "airport_code": "DAL",
+    "total_departures": 385012,
+    "avg_dep_delay_min": 12.75,
+    "dep_delay_rate_pct": 24.4,
+    "avg_arr_delay_min": 5.26,
+    "arr_delay_rate_pct": 20.54,
+    "city": "Dallas, TX"
+  },
+  {
+    "airport_code": "LAR",
+    "total_departures": 3512,
+    "avg_dep_delay_min": 12.62,
+    "dep_delay_rate_pct": 12.3,
+    "avg_arr_delay_min": 8.37,
+    "arr_delay_rate_pct": 15.8,
+    "city": "Laramie, WY"
+  },
+  {
+    "airport_code": "CNY",
+    "total_departures": 3181,
+    "avg_dep_delay_min": 12.53,
+    "dep_delay_rate_pct": 13.42,
+    "avg_arr_delay_min": 8.66,
+    "arr_delay_rate_pct": 15.88,
+    "city": "Moab, UT"
+  },
+  {
+    "airport_code": "FWA",
+    "total_departures": 30875,
+    "avg_dep_delay_min": 12.52,
+    "dep_delay_rate_pct": 17.28,
+    "avg_arr_delay_min": 5.79,
+    "arr_delay_rate_pct": 18.05,
+    "city": "Fort Wayne, IN"
+  },
+  {
+    "airport_code": "PIB",
+    "total_departures": 3734,
+    "avg_dep_delay_min": 12.51,
+    "dep_delay_rate_pct": 13.98,
+    "avg_arr_delay_min": 4.69,
+    "arr_delay_rate_pct": 14.33,
+    "city": "Hattiesburg/Laurel, MS"
+  },
+  {
+    "airport_code": "FAR",
+    "total_departures": 34952,
+    "avg_dep_delay_min": 12.49,
+    "dep_delay_rate_pct": 16.17,
+    "avg_arr_delay_min": 6.8,
+    "arr_delay_rate_pct": 17.86,
+    "city": "Fargo, ND"
+  },
+  {
+    "airport_code": "BGM",
+    "total_departures": 3070,
+    "avg_dep_delay_min": 12.41,
+    "dep_delay_rate_pct": 12.21,
+    "avg_arr_delay_min": 5.71,
+    "arr_delay_rate_pct": 13.75,
+    "city": "Binghamton, NY"
+  },
+  {
+    "airport_code": "ABR",
+    "total_departures": 4284,
+    "avg_dep_delay_min": 12.16,
+    "dep_delay_rate_pct": 11.93,
+    "avg_arr_delay_min": 3.76,
+    "arr_delay_rate_pct": 12.04,
+    "city": "Aberdeen, SD"
+  },
+  {
+    "airport_code": "IAH",
+    "total_departures": 745827,
+    "avg_dep_delay_min": 12.1,
+    "dep_delay_rate_pct": 18.43,
+    "avg_arr_delay_min": 6.58,
+    "arr_delay_rate_pct": 18.97,
+    "city": "Houston, TX"
+  },
+  {
+    "airport_code": "LAS",
+    "total_departures": 950315,
+    "avg_dep_delay_min": 12.08,
+    "dep_delay_rate_pct": 21.95,
+    "avg_arr_delay_min": 6.34,
+    "arr_delay_rate_pct": 20.89,
+    "city": "Las Vegas, NV"
+  },
+  {
+    "airport_code": "WYS",
+    "total_departures": 1842,
+    "avg_dep_delay_min": 12.04,
+    "dep_delay_rate_pct": 11.07,
+    "avg_arr_delay_min": 6.97,
+    "arr_delay_rate_pct": 11.13,
+    "city": "West Yellowstone, MT"
+  },
+  {
+    "airport_code": "SRQ",
+    "total_departures": 77396,
+    "avg_dep_delay_min": 11.98,
+    "dep_delay_rate_pct": 19.14,
+    "avg_arr_delay_min": 8.15,
+    "arr_delay_rate_pct": 19.44,
+    "city": "Sarasota/Bradenton, FL"
+  },
+  {
+    "airport_code": "LNK",
+    "total_departures": 7177,
+    "avg_dep_delay_min": 11.88,
+    "dep_delay_rate_pct": 15.02,
+    "avg_arr_delay_min": 6.71,
+    "arr_delay_rate_pct": 16.48,
+    "city": "Lincoln, NE"
+  },
+  {
+    "airport_code": "ORD",
+    "total_departures": 1524777,
+    "avg_dep_delay_min": 11.84,
+    "dep_delay_rate_pct": 18.74,
+    "avg_arr_delay_min": 6.37,
+    "arr_delay_rate_pct": 20.46,
+    "city": "Chicago, IL"
+  },
+  {
+    "airport_code": "RAP",
+    "total_departures": 28224,
+    "avg_dep_delay_min": 11.83,
+    "dep_delay_rate_pct": 15.4,
+    "avg_arr_delay_min": 6.69,
+    "arr_delay_rate_pct": 17.28,
+    "city": "Rapid City, SD"
+  },
+  {
+    "airport_code": "HOU",
+    "total_departures": 305061,
+    "avg_dep_delay_min": 11.74,
+    "dep_delay_rate_pct": 22.63,
+    "avg_arr_delay_min": 4.4,
+    "arr_delay_rate_pct": 18.97,
+    "city": "Houston, TX"
+  },
+  {
+    "airport_code": "ISP",
+    "total_departures": 26433,
+    "avg_dep_delay_min": 11.73,
+    "dep_delay_rate_pct": 19.57,
+    "avg_arr_delay_min": 4.5,
+    "arr_delay_rate_pct": 18.84,
+    "city": "Islip, NY"
+  },
+  {
+    "airport_code": "MGM",
+    "total_departures": 16241,
+    "avg_dep_delay_min": 11.69,
+    "dep_delay_rate_pct": 16.22,
+    "avg_arr_delay_min": 5.49,
+    "arr_delay_rate_pct": 16.45,
+    "city": "Montgomery, AL"
+  },
+  {
+    "airport_code": "AUS",
+    "total_departures": 424453,
+    "avg_dep_delay_min": 11.68,
+    "dep_delay_rate_pct": 19.24,
+    "avg_arr_delay_min": 6.37,
+    "arr_delay_rate_pct": 18.67,
+    "city": "Austin, TX"
+  },
+  {
+    "airport_code": "AVL",
+    "total_departures": 54710,
+    "avg_dep_delay_min": 11.68,
+    "dep_delay_rate_pct": 18.61,
+    "avg_arr_delay_min": 6.99,
+    "arr_delay_rate_pct": 19.59,
+    "city": "Asheville, NC"
+  },
+  {
+    "airport_code": "IMT",
+    "total_departures": 4199,
+    "avg_dep_delay_min": 11.62,
+    "dep_delay_rate_pct": 14.17,
+    "avg_arr_delay_min": 4.26,
+    "arr_delay_rate_pct": 14.41,
+    "city": "Iron Mountain/Kingsfd, MI"
+  },
+  {
+    "airport_code": "MOT",
+    "total_departures": 13608,
+    "avg_dep_delay_min": 11.62,
+    "dep_delay_rate_pct": 14.24,
+    "avg_arr_delay_min": 4.74,
+    "arr_delay_rate_pct": 15.65,
+    "city": "Minot, ND"
+  },
+  {
+    "airport_code": "PWM",
+    "total_departures": 58823,
+    "avg_dep_delay_min": 11.59,
+    "dep_delay_rate_pct": 16.4,
+    "avg_arr_delay_min": 5.23,
+    "arr_delay_rate_pct": 17.28,
+    "city": "Portland, ME"
+  },
+  {
+    "airport_code": "CID",
+    "total_departures": 45554,
+    "avg_dep_delay_min": 11.46,
+    "dep_delay_rate_pct": 16.22,
+    "avg_arr_delay_min": 6.67,
+    "arr_delay_rate_pct": 17.81,
+    "city": "Cedar Rapids/Iowa City, IA"
+  },
+  {
+    "airport_code": "STC",
+    "total_departures": 763,
+    "avg_dep_delay_min": 11.46,
+    "dep_delay_rate_pct": 21.76,
+    "avg_arr_delay_min": 6.49,
+    "arr_delay_rate_pct": 21.76,
+    "city": "St. Cloud, MN"
+  },
+  {
+    "airport_code": "SBN",
+    "total_departures": 34493,
+    "avg_dep_delay_min": 11.44,
+    "dep_delay_rate_pct": 16.48,
+    "avg_arr_delay_min": 4.12,
+    "arr_delay_rate_pct": 17.27,
+    "city": "South Bend, IN"
+  },
+  {
+    "airport_code": "SGF",
+    "total_departures": 44338,
+    "avg_dep_delay_min": 11.44,
+    "dep_delay_rate_pct": 16.93,
+    "avg_arr_delay_min": 7.39,
+    "arr_delay_rate_pct": 18.55,
+    "city": "Springfield, MO"
+  },
+  {
+    "airport_code": "DLH",
+    "total_departures": 12471,
+    "avg_dep_delay_min": 11.43,
+    "dep_delay_rate_pct": 13.62,
+    "avg_arr_delay_min": 4.06,
+    "arr_delay_rate_pct": 14.34,
+    "city": "Duluth, MN"
+  },
+  {
+    "airport_code": "LGA",
+    "total_departures": 792144,
+    "avg_dep_delay_min": 11.34,
+    "dep_delay_rate_pct": 18.44,
+    "avg_arr_delay_min": 2.26,
+    "arr_delay_rate_pct": 19.01,
+    "city": "New York, NY"
+  },
+  {
+    "airport_code": "MSY",
+    "total_departures": 267765,
+    "avg_dep_delay_min": 11.31,
+    "dep_delay_rate_pct": 18.97,
+    "avg_arr_delay_min": 5.61,
+    "arr_delay_rate_pct": 18.21,
+    "city": "New Orleans, LA"
+  },
+  {
+    "airport_code": "TVC",
+    "total_departures": 23653,
+    "avg_dep_delay_min": 11.31,
+    "dep_delay_rate_pct": 16.77,
+    "avg_arr_delay_min": 6.63,
+    "arr_delay_rate_pct": 18.3,
+    "city": "Traverse City, MI"
+  },
+  {
+    "airport_code": "BOS",
+    "total_departures": 715355,
+    "avg_dep_delay_min": 11.29,
+    "dep_delay_rate_pct": 18.6,
+    "avg_arr_delay_min": 3.5,
+    "arr_delay_rate_pct": 19.04,
+    "city": "Boston, MA"
+  },
+  {
+    "airport_code": "ROA",
+    "total_departures": 13483,
+    "avg_dep_delay_min": 11.29,
+    "dep_delay_rate_pct": 15.56,
+    "avg_arr_delay_min": 5.86,
+    "arr_delay_rate_pct": 16.93,
+    "city": "Roanoke, VA"
+  },
+  {
+    "airport_code": "SBP",
+    "total_departures": 27616,
+    "avg_dep_delay_min": 11.27,
+    "dep_delay_rate_pct": 16.03,
+    "avg_arr_delay_min": 7.07,
+    "arr_delay_rate_pct": 16.93,
+    "city": "San Luis Obispo, CA"
+  },
+  {
+    "airport_code": "ITH",
+    "total_departures": 3955,
+    "avg_dep_delay_min": 11.26,
+    "dep_delay_rate_pct": 13.05,
+    "avg_arr_delay_min": 2.0,
+    "arr_delay_rate_pct": 13.2,
+    "city": "Ithaca/Cortland, NY"
+  },
+  {
+    "airport_code": "FSD",
+    "total_departures": 40110,
+    "avg_dep_delay_min": 11.25,
+    "dep_delay_rate_pct": 16.41,
+    "avg_arr_delay_min": 5.79,
+    "arr_delay_rate_pct": 17.94,
+    "city": "Sioux Falls, SD"
+  },
+  {
+    "airport_code": "BKG",
+    "total_departures": 399,
+    "avg_dep_delay_min": 11.14,
+    "dep_delay_rate_pct": 22.81,
+    "avg_arr_delay_min": 4.64,
+    "arr_delay_rate_pct": 20.8,
+    "city": "Branson, MO"
+  },
+  {
+    "airport_code": "ROW",
+    "total_departures": 6204,
+    "avg_dep_delay_min": 11.13,
+    "dep_delay_rate_pct": 13.81,
+    "avg_arr_delay_min": 7.94,
+    "arr_delay_rate_pct": 15.64,
+    "city": "Roswell, NM"
+  },
+  {
+    "airport_code": "SAF",
+    "total_departures": 11096,
+    "avg_dep_delay_min": 11.1,
+    "dep_delay_rate_pct": 15.77,
+    "avg_arr_delay_min": 7.36,
+    "arr_delay_rate_pct": 17.79,
+    "city": "Santa Fe, NM"
+  },
+  {
+    "airport_code": "MTJ",
+    "total_departures": 15019,
+    "avg_dep_delay_min": 11.1,
+    "dep_delay_rate_pct": 17.75,
+    "avg_arr_delay_min": 6.55,
+    "arr_delay_rate_pct": 19.16,
+    "city": "Montrose/Delta, CO"
+  },
+  {
+    "airport_code": "COS",
+    "total_departures": 62567,
+    "avg_dep_delay_min": 11.08,
+    "dep_delay_rate_pct": 16.71,
+    "avg_arr_delay_min": 6.11,
+    "arr_delay_rate_pct": 17.72,
+    "city": "Colorado Springs, CO"
+  },
+  {
+    "airport_code": "PIA",
+    "total_departures": 20620,
+    "avg_dep_delay_min": 11.05,
+    "dep_delay_rate_pct": 16.72,
+    "avg_arr_delay_min": 7.03,
+    "arr_delay_rate_pct": 18.41,
+    "city": "Peoria, IL"
+  },
+  {
+    "airport_code": "TPA",
+    "total_departures": 415437,
+    "avg_dep_delay_min": 11.02,
+    "dep_delay_rate_pct": 18.13,
+    "avg_arr_delay_min": 5.6,
+    "arr_delay_rate_pct": 17.85,
+    "city": "Tampa, FL"
+  },
+  {
+    "airport_code": "AGS",
+    "total_departures": 22844,
+    "avg_dep_delay_min": 11.01,
+    "dep_delay_rate_pct": 15.17,
+    "avg_arr_delay_min": 4.77,
+    "arr_delay_rate_pct": 15.67,
+    "city": "Augusta, GA"
+  },
+  {
+    "airport_code": "SFB",
+    "total_departures": 54683,
+    "avg_dep_delay_min": 10.99,
+    "dep_delay_rate_pct": 20.79,
+    "avg_arr_delay_min": 9.3,
+    "arr_delay_rate_pct": 22.25,
+    "city": "Sanford, FL"
+  },
+  {
+    "airport_code": "BTV",
+    "total_departures": 41472,
+    "avg_dep_delay_min": 10.96,
+    "dep_delay_rate_pct": 15.08,
+    "avg_arr_delay_min": 5.2,
+    "arr_delay_rate_pct": 17.18,
+    "city": "Burlington, VT"
+  },
+  {
+    "airport_code": "IDA",
+    "total_departures": 18984,
+    "avg_dep_delay_min": 10.91,
+    "dep_delay_rate_pct": 13.44,
+    "avg_arr_delay_min": 6.92,
+    "arr_delay_rate_pct": 15.36,
+    "city": "Idaho Falls, ID"
+  },
+  {
+    "airport_code": "BIS",
+    "total_departures": 22356,
+    "avg_dep_delay_min": 10.87,
+    "dep_delay_rate_pct": 15.34,
+    "avg_arr_delay_min": 5.2,
+    "arr_delay_rate_pct": 16.81,
+    "city": "Bismarck/Mandan, ND"
+  },
+  {
+    "airport_code": "HHH",
+    "total_departures": 13222,
+    "avg_dep_delay_min": 10.85,
+    "dep_delay_rate_pct": 16.96,
+    "avg_arr_delay_min": 7.11,
+    "arr_delay_rate_pct": 18.14,
+    "city": "Hilton Head, SC"
+  },
+  {
+    "airport_code": "RDU",
+    "total_departures": 308899,
+    "avg_dep_delay_min": 10.82,
+    "dep_delay_rate_pct": 16.7,
+    "avg_arr_delay_min": 4.73,
+    "arr_delay_rate_pct": 17.38,
+    "city": "Raleigh/Durham, NC"
+  },
+  {
+    "airport_code": "MSO",
+    "total_departures": 24997,
+    "avg_dep_delay_min": 10.8,
+    "dep_delay_rate_pct": 15.2,
+    "avg_arr_delay_min": 7.03,
+    "arr_delay_rate_pct": 17.05,
+    "city": "Missoula, MT"
+  },
+  {
+    "airport_code": "ISN",
+    "total_departures": 625,
+    "avg_dep_delay_min": 10.79,
+    "dep_delay_rate_pct": 13.28,
+    "avg_arr_delay_min": 4.79,
+    "arr_delay_rate_pct": 14.72,
+    "city": "Williston, ND"
+  },
+  {
+    "airport_code": "CAK",
+    "total_departures": 19713,
+    "avg_dep_delay_min": 10.78,
+    "dep_delay_rate_pct": 15.92,
+    "avg_arr_delay_min": 5.64,
+    "arr_delay_rate_pct": 17.54,
+    "city": "Akron, OH"
+  },
+  {
+    "airport_code": "PGD",
+    "total_departures": 34183,
+    "avg_dep_delay_min": 10.67,
+    "dep_delay_rate_pct": 20.77,
+    "avg_arr_delay_min": 9.28,
+    "arr_delay_rate_pct": 21.78,
+    "city": "Punta Gorda, FL"
+  },
+  {
+    "airport_code": "CLT",
+    "total_departures": 1183929,
+    "avg_dep_delay_min": 10.65,
+    "dep_delay_rate_pct": 18.19,
+    "avg_arr_delay_min": 6.21,
+    "arr_delay_rate_pct": 19.45,
+    "city": "Charlotte, NC"
+  },
+  {
+    "airport_code": "PAH",
+    "total_departures": 3293,
+    "avg_dep_delay_min": 10.63,
+    "dep_delay_rate_pct": 14.09,
+    "avg_arr_delay_min": 2.39,
+    "arr_delay_rate_pct": 13.97,
+    "city": "Paducah, KY"
+  },
+  {
+    "airport_code": "RKS",
+    "total_departures": 3203,
+    "avg_dep_delay_min": 10.61,
+    "dep_delay_rate_pct": 9.58,
+    "avg_arr_delay_min": 5.19,
+    "arr_delay_rate_pct": 11.83,
+    "city": "Rock Springs, WY"
+  },
+  {
+    "airport_code": "ATW",
+    "total_departures": 28008,
+    "avg_dep_delay_min": 10.59,
+    "dep_delay_rate_pct": 14.76,
+    "avg_arr_delay_min": 5.54,
+    "arr_delay_rate_pct": 17.44,
+    "city": "Appleton, WI"
+  },
+  {
+    "airport_code": "LFT",
+    "total_departures": 20562,
+    "avg_dep_delay_min": 10.56,
+    "dep_delay_rate_pct": 15.13,
+    "avg_arr_delay_min": 7.25,
+    "arr_delay_rate_pct": 17.2,
+    "city": "Lafayette, LA"
+  },
+  {
+    "airport_code": "SAV",
+    "total_departures": 97801,
+    "avg_dep_delay_min": 10.53,
+    "dep_delay_rate_pct": 17.24,
+    "avg_arr_delay_min": 5.11,
+    "arr_delay_rate_pct": 16.79,
+    "city": "Savannah, GA"
+  },
+  {
+    "airport_code": "STL",
+    "total_departures": 338347,
+    "avg_dep_delay_min": 10.53,
+    "dep_delay_rate_pct": 19.13,
+    "avg_arr_delay_min": 4.3,
+    "arr_delay_rate_pct": 17.63,
+    "city": "St. Louis, MO"
+  },
+  {
+    "airport_code": "INL",
+    "total_departures": 3651,
+    "avg_dep_delay_min": 10.5,
+    "dep_delay_rate_pct": 11.28,
+    "avg_arr_delay_min": 0.75,
+    "arr_delay_rate_pct": 10.98,
+    "city": "International Falls, MN"
+  },
+  {
+    "airport_code": "SHV",
+    "total_departures": 27895,
+    "avg_dep_delay_min": 10.49,
+    "dep_delay_rate_pct": 15.6,
+    "avg_arr_delay_min": 7.16,
+    "arr_delay_rate_pct": 17.8,
+    "city": "Shreveport, LA"
+  },
+  {
+    "airport_code": "RSW",
+    "total_departures": 202816,
+    "avg_dep_delay_min": 10.47,
+    "dep_delay_rate_pct": 17.46,
+    "avg_arr_delay_min": 6.04,
+    "arr_delay_rate_pct": 17.98,
+    "city": "Fort Myers, FL"
+  },
+  {
+    "airport_code": "FNT",
+    "total_departures": 15451,
+    "avg_dep_delay_min": 10.47,
+    "dep_delay_rate_pct": 17.44,
+    "avg_arr_delay_min": 7.27,
+    "arr_delay_rate_pct": 20.97,
+    "city": "Flint, MI"
+  },
+  {
+    "airport_code": "JAX",
+    "total_departures": 159321,
+    "avg_dep_delay_min": 10.44,
+    "dep_delay_rate_pct": 16.54,
+    "avg_arr_delay_min": 5.47,
+    "arr_delay_rate_pct": 16.87,
+    "city": "Jacksonville, FL"
+  },
+  {
+    "airport_code": "VPS",
+    "total_departures": 53924,
+    "avg_dep_delay_min": 10.41,
+    "dep_delay_rate_pct": 17.07,
+    "avg_arr_delay_min": 6.16,
+    "arr_delay_rate_pct": 17.33,
+    "city": "Valparaiso, FL"
+  },
+  {
+    "airport_code": "VEL",
+    "total_departures": 2859,
+    "avg_dep_delay_min": 10.4,
+    "dep_delay_rate_pct": 13.85,
+    "avg_arr_delay_min": 7.04,
+    "arr_delay_rate_pct": 15.67,
+    "city": "Vernal, UT"
+  },
+  {
+    "airport_code": "OWB",
+    "total_departures": 409,
+    "avg_dep_delay_min": 10.4,
+    "dep_delay_rate_pct": 24.94,
+    "avg_arr_delay_min": 9.75,
+    "arr_delay_rate_pct": 25.92,
+    "city": "Owensboro, KY"
+  },
+  {
+    "airport_code": "MFE",
+    "total_departures": 23848,
+    "avg_dep_delay_min": 10.39,
+    "dep_delay_rate_pct": 15.95,
+    "avg_arr_delay_min": 7.67,
+    "arr_delay_rate_pct": 17.72,
+    "city": "Mission/McAllen/Edinburg, TX"
+  },
+  {
+    "airport_code": "DRO",
+    "total_departures": 19834,
+    "avg_dep_delay_min": 10.38,
+    "dep_delay_rate_pct": 15.14,
+    "avg_arr_delay_min": 7.83,
+    "arr_delay_rate_pct": 18.48,
+    "city": "Durango, CO"
+  },
+  {
+    "airport_code": "EAR",
+    "total_departures": 2942,
+    "avg_dep_delay_min": 10.36,
+    "dep_delay_rate_pct": 11.35,
+    "avg_arr_delay_min": 5.71,
+    "arr_delay_rate_pct": 12.61,
+    "city": "Kearney, NE"
+  },
+  {
+    "airport_code": "ATY",
+    "total_departures": 1670,
+    "avg_dep_delay_min": 10.34,
+    "dep_delay_rate_pct": 13.35,
+    "avg_arr_delay_min": 6.91,
+    "arr_delay_rate_pct": 15.57,
+    "city": "Watertown, SD"
+  },
+  {
+    "airport_code": "SCE",
+    "total_departures": 5697,
+    "avg_dep_delay_min": 10.33,
+    "dep_delay_rate_pct": 15.06,
+    "avg_arr_delay_min": 4.51,
+    "arr_delay_rate_pct": 16.39,
+    "city": "State College, PA"
+  },
+  {
+    "airport_code": "ALB",
+    "total_departures": 62508,
+    "avg_dep_delay_min": 10.32,
+    "dep_delay_rate_pct": 16.09,
+    "avg_arr_delay_min": 3.77,
+    "arr_delay_rate_pct": 16.94,
+    "city": "Albany, NY"
+  },
+  {
+    "airport_code": "SFO",
+    "total_departures": 742901,
+    "avg_dep_delay_min": 10.32,
+    "dep_delay_rate_pct": 17.87,
+    "avg_arr_delay_min": 2.95,
+    "arr_delay_rate_pct": 17.35,
+    "city": "San Francisco, CA"
+  },
+  {
+    "airport_code": "STT",
+    "total_departures": 28558,
+    "avg_dep_delay_min": 10.32,
+    "dep_delay_rate_pct": 17.84,
+    "avg_arr_delay_min": 6.29,
+    "arr_delay_rate_pct": 19.5,
+    "city": "Charlotte Amalie, VI"
+  },
+  {
+    "airport_code": "ORF",
+    "total_departures": 116944,
+    "avg_dep_delay_min": 10.3,
+    "dep_delay_rate_pct": 15.96,
+    "avg_arr_delay_min": 4.96,
+    "arr_delay_rate_pct": 16.83,
+    "city": "Norfolk, VA"
+  },
+  {
+    "airport_code": "MEM",
+    "total_departures": 124225,
+    "avg_dep_delay_min": 10.29,
+    "dep_delay_rate_pct": 16.04,
+    "avg_arr_delay_min": 5.25,
+    "arr_delay_rate_pct": 16.7,
+    "city": "Memphis, TN"
+  },
+  {
+    "airport_code": "IAD",
+    "total_departures": 313274,
+    "avg_dep_delay_min": 10.25,
+    "dep_delay_rate_pct": 15.13,
+    "avg_arr_delay_min": 3.58,
+    "arr_delay_rate_pct": 16.7,
+    "city": "Washington, DC"
+  },
+  {
+    "airport_code": "BNA",
+    "total_departures": 487585,
+    "avg_dep_delay_min": 10.25,
+    "dep_delay_rate_pct": 18.44,
+    "avg_arr_delay_min": 4.13,
+    "arr_delay_rate_pct": 17.48,
+    "city": "Nashville, TN"
+  },
+  {
+    "airport_code": "TOL",
+    "total_departures": 5130,
+    "avg_dep_delay_min": 10.21,
+    "dep_delay_rate_pct": 17.45,
+    "avg_arr_delay_min": 6.75,
+    "arr_delay_rate_pct": 18.79,
+    "city": "Toledo, OH"
+  },
+  {
+    "airport_code": "AVP",
+    "total_departures": 12428,
+    "avg_dep_delay_min": 10.21,
+    "dep_delay_rate_pct": 14.48,
+    "avg_arr_delay_min": 1.94,
+    "arr_delay_rate_pct": 14.55,
+    "city": "Scranton/Wilkes-Barre, PA"
+  },
+  {
+    "airport_code": "BGR",
+    "total_departures": 22908,
+    "avg_dep_delay_min": 10.21,
+    "dep_delay_rate_pct": 16.32,
+    "avg_arr_delay_min": 3.79,
+    "arr_delay_rate_pct": 17.88,
+    "city": "Bangor, ME"
+  },
+  {
+    "airport_code": "MDT",
+    "total_departures": 30451,
+    "avg_dep_delay_min": 10.14,
+    "dep_delay_rate_pct": 15.32,
+    "avg_arr_delay_min": 4.58,
+    "arr_delay_rate_pct": 16.55,
+    "city": "Harrisburg, PA"
+  },
+  {
+    "airport_code": "CHO",
+    "total_departures": 19491,
+    "avg_dep_delay_min": 10.12,
+    "dep_delay_rate_pct": 14.74,
+    "avg_arr_delay_min": 5.17,
+    "arr_delay_rate_pct": 17.27,
+    "city": "Charlottesville, VA"
+  },
+  {
+    "airport_code": "BUF",
+    "total_departures": 110839,
+    "avg_dep_delay_min": 10.1,
+    "dep_delay_rate_pct": 16.27,
+    "avg_arr_delay_min": 3.91,
+    "arr_delay_rate_pct": 16.67,
+    "city": "Buffalo, NY"
+  },
+  {
+    "airport_code": "PVD",
+    "total_departures": 80005,
+    "avg_dep_delay_min": 10.06,
+    "dep_delay_rate_pct": 16.29,
+    "avg_arr_delay_min": 3.77,
+    "arr_delay_rate_pct": 16.67,
+    "city": "Providence, RI"
+  },
+  {
+    "airport_code": "CGI",
+    "total_departures": 2558,
+    "avg_dep_delay_min": 10.05,
+    "dep_delay_rate_pct": 13.17,
+    "avg_arr_delay_min": 1.71,
+    "arr_delay_rate_pct": 13.64,
+    "city": "Cape Girardeau, MO"
+  },
+  {
+    "airport_code": "PHL",
+    "total_departures": 537429,
+    "avg_dep_delay_min": 10.04,
+    "dep_delay_rate_pct": 16.71,
+    "avg_arr_delay_min": 3.48,
+    "arr_delay_rate_pct": 18.25,
+    "city": "Philadelphia, PA"
+  },
+  {
+    "airport_code": "PNS",
+    "total_departures": 68501,
+    "avg_dep_delay_min": 10.03,
+    "dep_delay_rate_pct": 16.0,
+    "avg_arr_delay_min": 5.45,
+    "arr_delay_rate_pct": 15.97,
+    "city": "Pensacola, FL"
+  },
+  {
+    "airport_code": "SYR",
+    "total_departures": 67458,
+    "avg_dep_delay_min": 10.03,
+    "dep_delay_rate_pct": 15.62,
+    "avg_arr_delay_min": 3.37,
+    "arr_delay_rate_pct": 16.83,
+    "city": "Syracuse, NY"
+  },
+  {
+    "airport_code": "AMA",
+    "total_departures": 27576,
+    "avg_dep_delay_min": 9.96,
+    "dep_delay_rate_pct": 15.52,
+    "avg_arr_delay_min": 6.42,
+    "arr_delay_rate_pct": 17.16,
+    "city": "Amarillo, TX"
+  },
+  {
+    "airport_code": "BDL",
+    "total_departures": 128771,
+    "avg_dep_delay_min": 9.91,
+    "dep_delay_rate_pct": 16.27,
+    "avg_arr_delay_min": 3.72,
+    "arr_delay_rate_pct": 17.11,
+    "city": "Hartford, CT"
+  },
+  {
+    "airport_code": "GCK",
+    "total_departures": 4137,
+    "avg_dep_delay_min": 9.89,
+    "dep_delay_rate_pct": 12.98,
+    "avg_arr_delay_min": 7.37,
+    "arr_delay_rate_pct": 15.71,
+    "city": "Garden City, KS"
+  },
+  {
+    "airport_code": "PIR",
+    "total_departures": 1790,
+    "avg_dep_delay_min": 9.89,
+    "dep_delay_rate_pct": 12.01,
+    "avg_arr_delay_min": 3.99,
+    "arr_delay_rate_pct": 13.74,
+    "city": "Pierre, SD"
+  },
+  {
+    "airport_code": "ROC",
+    "total_departures": 65784,
+    "avg_dep_delay_min": 9.88,
+    "dep_delay_rate_pct": 15.55,
+    "avg_arr_delay_min": 3.75,
+    "arr_delay_rate_pct": 16.14,
+    "city": "Rochester, NY"
+  },
+  {
+    "airport_code": "DCA",
+    "total_departures": 688076,
+    "avg_dep_delay_min": 9.85,
+    "dep_delay_rate_pct": 17.15,
+    "avg_arr_delay_min": 3.84,
+    "arr_delay_rate_pct": 18.13,
+    "city": "Washington, DC"
+  },
+  {
+    "airport_code": "BHM",
+    "total_departures": 89479,
+    "avg_dep_delay_min": 9.85,
+    "dep_delay_rate_pct": 16.18,
+    "avg_arr_delay_min": 4.87,
+    "arr_delay_rate_pct": 16.4,
+    "city": "Birmingham, AL"
+  },
+  {
+    "airport_code": "PHX",
+    "total_departures": 974995,
+    "avg_dep_delay_min": 9.8,
+    "dep_delay_rate_pct": 18.32,
+    "avg_arr_delay_min": 3.73,
+    "arr_delay_rate_pct": 17.07,
+    "city": "Phoenix, AZ"
+  },
+  {
+    "airport_code": "VCT",
+    "total_departures": 2517,
+    "avg_dep_delay_min": 9.76,
+    "dep_delay_rate_pct": 10.33,
+    "avg_arr_delay_min": -2.13,
+    "arr_delay_rate_pct": 10.17,
+    "city": "Victoria, TX"
+  },
+  {
+    "airport_code": "DIK",
+    "total_departures": 1723,
+    "avg_dep_delay_min": 9.73,
+    "dep_delay_rate_pct": 11.61,
+    "avg_arr_delay_min": 1.66,
+    "arr_delay_rate_pct": 14.45,
+    "city": "Dickinson, ND"
+  },
+  {
+    "airport_code": "ABE",
+    "total_departures": 25452,
+    "avg_dep_delay_min": 9.73,
+    "dep_delay_rate_pct": 14.09,
+    "avg_arr_delay_min": 2.11,
+    "arr_delay_rate_pct": 15.17,
+    "city": "Allentown/Bethlehem/Easton, PA"
+  },
+  {
+    "airport_code": "RIC",
+    "total_departures": 105630,
+    "avg_dep_delay_min": 9.68,
+    "dep_delay_rate_pct": 15.74,
+    "avg_arr_delay_min": 3.79,
+    "arr_delay_rate_pct": 16.64,
+    "city": "Richmond, VA"
+  },
+  {
+    "airport_code": "MLI",
+    "total_departures": 22623,
+    "avg_dep_delay_min": 9.65,
+    "dep_delay_rate_pct": 13.94,
+    "avg_arr_delay_min": 3.77,
+    "arr_delay_rate_pct": 15.84,
+    "city": "Moline, IL"
+  },
+  {
+    "airport_code": "MSN",
+    "total_departures": 63272,
+    "avg_dep_delay_min": 9.59,
+    "dep_delay_rate_pct": 14.17,
+    "avg_arr_delay_min": 4.08,
+    "arr_delay_rate_pct": 15.45,
+    "city": "Madison, WI"
+  },
+  {
+    "airport_code": "CHS",
+    "total_departures": 135373,
+    "avg_dep_delay_min": 9.57,
+    "dep_delay_rate_pct": 16.27,
+    "avg_arr_delay_min": 4.66,
+    "arr_delay_rate_pct": 16.53,
+    "city": "Charleston, SC"
+  },
+  {
+    "airport_code": "ELM",
+    "total_departures": 5793,
+    "avg_dep_delay_min": 9.56,
+    "dep_delay_rate_pct": 13.91,
+    "avg_arr_delay_min": 3.77,
+    "arr_delay_rate_pct": 14.1,
+    "city": "Elmira/Corning, NY"
+  },
+  {
+    "airport_code": "MRY",
+    "total_departures": 22869,
+    "avg_dep_delay_min": 9.52,
+    "dep_delay_rate_pct": 14.58,
+    "avg_arr_delay_min": 5.88,
+    "arr_delay_rate_pct": 15.68,
+    "city": "Monterey, CA"
+  },
+  {
+    "airport_code": "STX",
+    "total_departures": 6499,
+    "avg_dep_delay_min": 9.52,
+    "dep_delay_rate_pct": 16.94,
+    "avg_arr_delay_min": 6.24,
+    "arr_delay_rate_pct": 18.56,
+    "city": "Christiansted, VI"
+  },
+  {
+    "airport_code": "GFK",
+    "total_departures": 8448,
+    "avg_dep_delay_min": 9.5,
+    "dep_delay_rate_pct": 13.26,
+    "avg_arr_delay_min": 2.15,
+    "arr_delay_rate_pct": 13.61,
+    "city": "Grand Forks, ND"
+  },
+  {
+    "airport_code": "CVG",
+    "total_departures": 220868,
+    "avg_dep_delay_min": 9.45,
+    "dep_delay_rate_pct": 15.66,
+    "avg_arr_delay_min": 4.03,
+    "arr_delay_rate_pct": 16.88,
+    "city": "Cincinnati, OH"
+  },
+  {
+    "airport_code": "FAY",
+    "total_departures": 14299,
+    "avg_dep_delay_min": 9.43,
+    "dep_delay_rate_pct": 13.08,
+    "avg_arr_delay_min": 2.33,
+    "arr_delay_rate_pct": 13.01,
+    "city": "Fayetteville, NC"
+  },
+  {
+    "airport_code": "EUG",
+    "total_departures": 41461,
+    "avg_dep_delay_min": 9.42,
+    "dep_delay_rate_pct": 14.35,
+    "avg_arr_delay_min": 4.53,
+    "arr_delay_rate_pct": 14.48,
+    "city": "Eugene, OR"
+  },
+  {
+    "airport_code": "SBA",
+    "total_departures": 39742,
+    "avg_dep_delay_min": 9.41,
+    "dep_delay_rate_pct": 15.43,
+    "avg_arr_delay_min": 4.28,
+    "arr_delay_rate_pct": 15.55,
+    "city": "Santa Barbara, CA"
+  },
+  {
+    "airport_code": "BZN",
+    "total_departures": 53383,
+    "avg_dep_delay_min": 9.4,
+    "dep_delay_rate_pct": 15.7,
+    "avg_arr_delay_min": 5.18,
+    "arr_delay_rate_pct": 17.75,
+    "city": "Bozeman, MT"
+  },
+  {
+    "airport_code": "LIT",
+    "total_departures": 66846,
+    "avg_dep_delay_min": 9.38,
+    "dep_delay_rate_pct": 15.76,
+    "avg_arr_delay_min": 5.55,
+    "arr_delay_rate_pct": 16.69,
+    "city": "Little Rock, AR"
+  },
+  {
+    "airport_code": "FSM",
+    "total_departures": 8159,
+    "avg_dep_delay_min": 9.28,
+    "dep_delay_rate_pct": 13.94,
+    "avg_arr_delay_min": 6.39,
+    "arr_delay_rate_pct": 17.13,
+    "city": "Fort Smith, AR"
+  },
+  {
+    "airport_code": "CLE",
+    "total_departures": 226314,
+    "avg_dep_delay_min": 9.28,
+    "dep_delay_rate_pct": 15.77,
+    "avg_arr_delay_min": 2.77,
+    "arr_delay_rate_pct": 16.14,
+    "city": "Cleveland, OH"
+  },
+  {
+    "airport_code": "LAW",
+    "total_departures": 6277,
+    "avg_dep_delay_min": 9.28,
+    "dep_delay_rate_pct": 13.88,
+    "avg_arr_delay_min": 7.25,
+    "arr_delay_rate_pct": 17.32,
+    "city": "Lawton/Fort Sill, OK"
+  },
+  {
+    "airport_code": "FAT",
+    "total_departures": 64517,
+    "avg_dep_delay_min": 9.27,
+    "dep_delay_rate_pct": 15.14,
+    "avg_arr_delay_min": 4.87,
+    "arr_delay_rate_pct": 15.37,
+    "city": "Fresno, CA"
+  },
+  {
+    "airport_code": "LRD",
+    "total_departures": 10006,
+    "avg_dep_delay_min": 9.2,
+    "dep_delay_rate_pct": 13.86,
+    "avg_arr_delay_min": 7.17,
+    "arr_delay_rate_pct": 15.75,
+    "city": "Laredo, TX"
+  },
+  {
+    "airport_code": "LAX",
+    "total_departures": 1077855,
+    "avg_dep_delay_min": 9.2,
+    "dep_delay_rate_pct": 16.6,
+    "avg_arr_delay_min": 2.12,
+    "arr_delay_rate_pct": 16.19,
+    "city": "Los Angeles, CA"
+  },
+  {
+    "airport_code": "BFL",
+    "total_departures": 14617,
+    "avg_dep_delay_min": 9.18,
+    "dep_delay_rate_pct": 13.35,
+    "avg_arr_delay_min": 4.61,
+    "arr_delay_rate_pct": 14.89,
+    "city": "Bakersfield, CA"
+  },
+  {
+    "airport_code": "GRR",
+    "total_departures": 95474,
+    "avg_dep_delay_min": 9.15,
+    "dep_delay_rate_pct": 15.04,
+    "avg_arr_delay_min": 4.11,
+    "arr_delay_rate_pct": 16.88,
+    "city": "Grand Rapids, MI"
+  },
+  {
+    "airport_code": "ELP",
+    "total_departures": 91010,
+    "avg_dep_delay_min": 9.15,
+    "dep_delay_rate_pct": 15.77,
+    "avg_arr_delay_min": 4.1,
+    "arr_delay_rate_pct": 15.35,
+    "city": "El Paso, TX"
+  },
+  {
+    "airport_code": "LAN",
+    "total_departures": 11654,
+    "avg_dep_delay_min": 9.14,
+    "dep_delay_rate_pct": 13.71,
+    "avg_arr_delay_min": 4.2,
+    "arr_delay_rate_pct": 15.57,
+    "city": "Lansing, MI"
+  },
+  {
+    "airport_code": "ICT",
+    "total_departures": 53024,
+    "avg_dep_delay_min": 9.14,
+    "dep_delay_rate_pct": 14.61,
+    "avg_arr_delay_min": 4.4,
+    "arr_delay_rate_pct": 15.7,
+    "city": "Wichita, KS"
+  },
+  {
+    "airport_code": "FCA",
+    "total_departures": 23403,
+    "avg_dep_delay_min": 9.09,
+    "dep_delay_rate_pct": 13.08,
+    "avg_arr_delay_min": 4.71,
+    "arr_delay_rate_pct": 15.08,
+    "city": "Kalispell, MT"
+  },
+  {
+    "airport_code": "DSM",
+    "total_departures": 84796,
+    "avg_dep_delay_min": 9.08,
+    "dep_delay_rate_pct": 14.26,
+    "avg_arr_delay_min": 4.13,
+    "arr_delay_rate_pct": 16.01,
+    "city": "Des Moines, IA"
+  },
+  {
+    "airport_code": "RDD",
+    "total_departures": 7902,
+    "avg_dep_delay_min": 9.06,
+    "dep_delay_rate_pct": 13.01,
+    "avg_arr_delay_min": 4.81,
+    "arr_delay_rate_pct": 14.16,
+    "city": "Redding, CA"
+  },
+  {
+    "airport_code": "AEX",
+    "total_departures": 13499,
+    "avg_dep_delay_min": 9.05,
+    "dep_delay_rate_pct": 13.39,
+    "avg_arr_delay_min": 5.06,
+    "arr_delay_rate_pct": 16.07,
+    "city": "Alexandria, LA"
+  },
+  {
+    "airport_code": "VLD",
+    "total_departures": 5604,
+    "avg_dep_delay_min": 9.01,
+    "dep_delay_rate_pct": 11.24,
+    "avg_arr_delay_min": 3.97,
+    "arr_delay_rate_pct": 11.94,
+    "city": "Valdosta, GA"
+  },
+  {
+    "airport_code": "ERI",
+    "total_departures": 2699,
+    "avg_dep_delay_min": 9.0,
+    "dep_delay_rate_pct": 13.71,
+    "avg_arr_delay_min": 0.19,
+    "arr_delay_rate_pct": 13.71,
+    "city": "Erie, PA"
+  },
+  {
+    "airport_code": "CHA",
+    "total_departures": 36139,
+    "avg_dep_delay_min": 8.96,
+    "dep_delay_rate_pct": 14.62,
+    "avg_arr_delay_min": 3.33,
+    "arr_delay_rate_pct": 14.73,
+    "city": "Chattanooga, TN"
+  },
+  {
+    "airport_code": "MOB",
+    "total_departures": 19890,
+    "avg_dep_delay_min": 8.95,
+    "dep_delay_rate_pct": 14.02,
+    "avg_arr_delay_min": 3.96,
+    "arr_delay_rate_pct": 15.29,
+    "city": "Mobile, AL"
+  },
+  {
+    "airport_code": "ECP",
+    "total_departures": 43460,
+    "avg_dep_delay_min": 8.93,
+    "dep_delay_rate_pct": 15.93,
+    "avg_arr_delay_min": 4.0,
+    "arr_delay_rate_pct": 15.47,
+    "city": "Panama City, FL"
+  },
+  {
+    "airport_code": "SDF",
+    "total_departures": 124299,
+    "avg_dep_delay_min": 8.92,
+    "dep_delay_rate_pct": 14.86,
+    "avg_arr_delay_min": 3.91,
+    "arr_delay_rate_pct": 15.88,
+    "city": "Louisville, KY"
+  },
+  {
+    "airport_code": "XNA",
+    "total_departures": 64942,
+    "avg_dep_delay_min": 8.91,
+    "dep_delay_rate_pct": 15.01,
+    "avg_arr_delay_min": 5.52,
+    "arr_delay_rate_pct": 17.03,
+    "city": "Fayetteville, AR"
+  },
+  {
+    "airport_code": "RDM",
+    "total_departures": 34974,
+    "avg_dep_delay_min": 8.89,
+    "dep_delay_rate_pct": 13.26,
+    "avg_arr_delay_min": 5.2,
+    "arr_delay_rate_pct": 14.62,
+    "city": "Bend/Redmond, OR"
+  },
+  {
+    "airport_code": "RNO",
+    "total_departures": 111120,
+    "avg_dep_delay_min": 8.86,
+    "dep_delay_rate_pct": 15.43,
+    "avg_arr_delay_min": 4.11,
+    "arr_delay_rate_pct": 16.07,
+    "city": "Reno, NV"
+  },
+  {
+    "airport_code": "ABQ",
+    "total_departures": 121348,
+    "avg_dep_delay_min": 8.86,
+    "dep_delay_rate_pct": 15.83,
+    "avg_arr_delay_min": 3.55,
+    "arr_delay_rate_pct": 15.56,
+    "city": "Albuquerque, NM"
+  },
+  {
+    "airport_code": "BJI",
+    "total_departures": 4269,
+    "avg_dep_delay_min": 8.85,
+    "dep_delay_rate_pct": 11.13,
+    "avg_arr_delay_min": 1.04,
+    "arr_delay_rate_pct": 11.08,
+    "city": "Bemidji, MN"
+  },
+  {
+    "airport_code": "ILM",
+    "total_departures": 38663,
+    "avg_dep_delay_min": 8.84,
+    "dep_delay_rate_pct": 14.1,
+    "avg_arr_delay_min": 4.02,
+    "arr_delay_rate_pct": 14.97,
+    "city": "Wilmington, NC"
+  },
+  {
+    "airport_code": "LBB",
+    "total_departures": 34042,
+    "avg_dep_delay_min": 8.82,
+    "dep_delay_rate_pct": 14.8,
+    "avg_arr_delay_min": 5.21,
+    "arr_delay_rate_pct": 16.02,
+    "city": "Lubbock, TX"
+  },
+  {
+    "airport_code": "MHK",
+    "total_departures": 7674,
+    "avg_dep_delay_min": 8.81,
+    "dep_delay_rate_pct": 12.82,
+    "avg_arr_delay_min": 2.52,
+    "arr_delay_rate_pct": 14.33,
+    "city": "Manhattan/Ft. Riley, KS"
+  },
+  {
+    "airport_code": "SAT",
+    "total_departures": 203687,
+    "avg_dep_delay_min": 8.72,
+    "dep_delay_rate_pct": 15.2,
+    "avg_arr_delay_min": 3.1,
+    "arr_delay_rate_pct": 14.91,
+    "city": "San Antonio, TX"
+  },
+  {
+    "airport_code": "LBF",
+    "total_departures": 3778,
+    "avg_dep_delay_min": 8.71,
+    "dep_delay_rate_pct": 11.25,
+    "avg_arr_delay_min": 7.51,
+    "arr_delay_rate_pct": 15.22,
+    "city": "North Platte, NE"
+  },
+  {
+    "airport_code": "BFF",
+    "total_departures": 3748,
+    "avg_dep_delay_min": 8.7,
+    "dep_delay_rate_pct": 10.83,
+    "avg_arr_delay_min": 7.31,
+    "arr_delay_rate_pct": 15.18,
+    "city": "Scottsbluff, NE"
+  },
+  {
+    "airport_code": "AZA",
+    "total_departures": 33205,
+    "avg_dep_delay_min": 8.7,
+    "dep_delay_rate_pct": 18.63,
+    "avg_arr_delay_min": 6.04,
+    "arr_delay_rate_pct": 19.73,
+    "city": "Phoenix, AZ"
+  },
+  {
+    "airport_code": "SNA",
+    "total_departures": 231069,
+    "avg_dep_delay_min": 8.69,
+    "dep_delay_rate_pct": 16.91,
+    "avg_arr_delay_min": 2.83,
+    "arr_delay_rate_pct": 15.9,
+    "city": "Santa Ana, CA"
+  },
+  {
+    "airport_code": "ATL",
+    "total_departures": 1928091,
+    "avg_dep_delay_min": 8.68,
+    "dep_delay_rate_pct": 16.31,
+    "avg_arr_delay_min": 3.07,
+    "arr_delay_rate_pct": 15.63,
+    "city": "Atlanta, GA"
+  },
+  {
+    "airport_code": "DTW",
+    "total_departures": 769553,
+    "avg_dep_delay_min": 8.68,
+    "dep_delay_rate_pct": 14.56,
+    "avg_arr_delay_min": 1.74,
+    "arr_delay_rate_pct": 15.23,
+    "city": "Detroit, MI"
+  },
+  {
+    "airport_code": "HSV",
+    "total_departures": 45823,
+    "avg_dep_delay_min": 8.66,
+    "dep_delay_rate_pct": 14.94,
+    "avg_arr_delay_min": 4.12,
+    "arr_delay_rate_pct": 15.79,
+    "city": "Huntsville, AL"
+  },
+  {
+    "airport_code": "EAU",
+    "total_departures": 2561,
+    "avg_dep_delay_min": 8.62,
+    "dep_delay_rate_pct": 13.16,
+    "avg_arr_delay_min": 1.74,
+    "arr_delay_rate_pct": 13.82,
+    "city": "Eau Claire, WI"
+  },
+  {
+    "airport_code": "OAK",
+    "total_departures": 248472,
+    "avg_dep_delay_min": 8.56,
+    "dep_delay_rate_pct": 18.78,
+    "avg_arr_delay_min": 1.89,
+    "arr_delay_rate_pct": 16.25,
+    "city": "Oakland, CA"
+  },
+  {
+    "airport_code": "GRK",
+    "total_departures": 13444,
+    "avg_dep_delay_min": 8.56,
+    "dep_delay_rate_pct": 14.78,
+    "avg_arr_delay_min": 6.91,
+    "arr_delay_rate_pct": 18.48,
+    "city": "Killeen, TX"
+  },
+  {
+    "airport_code": "SAN",
+    "total_departures": 472367,
+    "avg_dep_delay_min": 8.55,
+    "dep_delay_rate_pct": 16.7,
+    "avg_arr_delay_min": 2.95,
+    "arr_delay_rate_pct": 16.94,
+    "city": "San Diego, CA"
+  },
+  {
+    "airport_code": "BMI",
+    "total_departures": 13520,
+    "avg_dep_delay_min": 8.52,
+    "dep_delay_rate_pct": 13.94,
+    "avg_arr_delay_min": 3.41,
+    "arr_delay_rate_pct": 15.92,
+    "city": "Bloomington/Normal, IL"
+  },
+  {
+    "airport_code": "MKG",
+    "total_departures": 2416,
+    "avg_dep_delay_min": 8.49,
+    "dep_delay_rate_pct": 13.78,
+    "avg_arr_delay_min": 1.08,
+    "arr_delay_rate_pct": 13.95,
+    "city": "Muskegon, MI"
+  },
+  {
+    "airport_code": "FLG",
+    "total_departures": 11102,
+    "avg_dep_delay_min": 8.48,
+    "dep_delay_rate_pct": 12.43,
+    "avg_arr_delay_min": 4.24,
+    "arr_delay_rate_pct": 13.61,
+    "city": "Flagstaff, AZ"
+  },
+  {
+    "airport_code": "LEX",
+    "total_departures": 44478,
+    "avg_dep_delay_min": 8.47,
+    "dep_delay_rate_pct": 13.89,
+    "avg_arr_delay_min": 3.44,
+    "arr_delay_rate_pct": 15.33,
+    "city": "Lexington, KY"
+  },
+  {
+    "airport_code": "BQK",
+    "total_departures": 5217,
+    "avg_dep_delay_min": 8.43,
+    "dep_delay_rate_pct": 10.96,
+    "avg_arr_delay_min": 3.49,
+    "arr_delay_rate_pct": 12.98,
+    "city": "Brunswick, GA"
+  },
+  {
+    "airport_code": "OKC",
+    "total_departures": 121058,
+    "avg_dep_delay_min": 8.35,
+    "dep_delay_rate_pct": 14.49,
+    "avg_arr_delay_min": 3.67,
+    "arr_delay_rate_pct": 15.48,
+    "city": "Oklahoma City, OK"
+  },
+  {
+    "airport_code": "GNV",
+    "total_departures": 21188,
+    "avg_dep_delay_min": 8.34,
+    "dep_delay_rate_pct": 13.74,
+    "avg_arr_delay_min": 3.81,
+    "arr_delay_rate_pct": 14.27,
+    "city": "Gainesville, FL"
+  },
+  {
+    "airport_code": "MFR",
+    "total_departures": 32417,
+    "avg_dep_delay_min": 8.3,
+    "dep_delay_rate_pct": 12.42,
+    "avg_arr_delay_min": 3.41,
+    "arr_delay_rate_pct": 13.06,
+    "city": "Medford, OR"
+  },
+  {
+    "airport_code": "OMA",
+    "total_departures": 128468,
+    "avg_dep_delay_min": 8.25,
+    "dep_delay_rate_pct": 14.69,
+    "avg_arr_delay_min": 2.44,
+    "arr_delay_rate_pct": 15.3,
+    "city": "Omaha, NE"
+  },
+  {
+    "airport_code": "MCI",
+    "total_departures": 261535,
+    "avg_dep_delay_min": 8.24,
+    "dep_delay_rate_pct": 15.28,
+    "avg_arr_delay_min": 2.63,
+    "arr_delay_rate_pct": 15.4,
+    "city": "Kansas City, MO"
+  },
+  {
+    "airport_code": "TXK",
+    "total_departures": 5796,
+    "avg_dep_delay_min": 8.22,
+    "dep_delay_rate_pct": 12.53,
+    "avg_arr_delay_min": 4.33,
+    "arr_delay_rate_pct": 15.04,
+    "city": "Texarkana, AR"
+  },
+  {
+    "airport_code": "MKE",
+    "total_departures": 149073,
+    "avg_dep_delay_min": 8.19,
+    "dep_delay_rate_pct": 14.54,
+    "avg_arr_delay_min": 2.06,
+    "arr_delay_rate_pct": 15.55,
+    "city": "Milwaukee, WI"
+  },
+  {
+    "airport_code": "ONT",
+    "total_departures": 130042,
+    "avg_dep_delay_min": 8.19,
+    "dep_delay_rate_pct": 15.32,
+    "avg_arr_delay_min": 2.61,
+    "arr_delay_rate_pct": 14.74,
+    "city": "Ontario, CA"
+  },
+  {
+    "airport_code": "MLU",
+    "total_departures": 12832,
+    "avg_dep_delay_min": 8.14,
+    "dep_delay_rate_pct": 12.39,
+    "avg_arr_delay_min": 3.68,
+    "arr_delay_rate_pct": 13.89,
+    "city": "Monroe, LA"
+  },
+  {
+    "airport_code": "BET",
+    "total_departures": 4085,
+    "avg_dep_delay_min": 8.11,
+    "dep_delay_rate_pct": 24.11,
+    "avg_arr_delay_min": 9.68,
+    "arr_delay_rate_pct": 27.29,
+    "city": "Bethel, AK"
+  },
+  {
+    "airport_code": "RST",
+    "total_departures": 12395,
+    "avg_dep_delay_min": 8.1,
+    "dep_delay_rate_pct": 12.67,
+    "avg_arr_delay_min": 1.57,
+    "arr_delay_rate_pct": 13.99,
+    "city": "Rochester, MN"
+  },
+  {
+    "airport_code": "YUM",
+    "total_departures": 10099,
+    "avg_dep_delay_min": 8.1,
+    "dep_delay_rate_pct": 11.04,
+    "avg_arr_delay_min": 4.92,
+    "arr_delay_rate_pct": 12.34,
+    "city": "Yuma, AZ"
+  },
+  {
+    "airport_code": "MYR",
+    "total_departures": 80842,
+    "avg_dep_delay_min": 8.07,
+    "dep_delay_rate_pct": 16.23,
+    "avg_arr_delay_min": 3.27,
+    "arr_delay_rate_pct": 16.27,
+    "city": "Myrtle Beach, SC"
+  },
+  {
+    "airport_code": "ADK",
+    "total_departures": 579,
+    "avg_dep_delay_min": 8.03,
+    "dep_delay_rate_pct": 32.47,
+    "avg_arr_delay_min": 6.86,
+    "arr_delay_rate_pct": 32.47,
+    "city": "Adak Island, AK"
+  },
+  {
+    "airport_code": "MAF",
+    "total_departures": 48526,
+    "avg_dep_delay_min": 8.0,
+    "dep_delay_rate_pct": 14.67,
+    "avg_arr_delay_min": 4.16,
+    "arr_delay_rate_pct": 15.08,
+    "city": "Midland/Odessa, TX"
+  },
+  {
+    "airport_code": "GSP",
+    "total_departures": 77672,
+    "avg_dep_delay_min": 8.0,
+    "dep_delay_rate_pct": 13.63,
+    "avg_arr_delay_min": 2.3,
+    "arr_delay_rate_pct": 14.53,
+    "city": "Greer, SC"
+  },
+  {
+    "airport_code": "PIE",
+    "total_departures": 44614,
+    "avg_dep_delay_min": 7.98,
+    "dep_delay_rate_pct": 18.54,
+    "avg_arr_delay_min": 6.31,
+    "arr_delay_rate_pct": 19.99,
+    "city": "St. Petersburg, FL"
+  },
+  {
+    "airport_code": "BTR",
+    "total_departures": 29269,
+    "avg_dep_delay_min": 7.97,
+    "dep_delay_rate_pct": 13.49,
+    "avg_arr_delay_min": 3.71,
+    "arr_delay_rate_pct": 15.24,
+    "city": "Baton Rouge, LA"
+  },
+  {
+    "airport_code": "LCH",
+    "total_departures": 7227,
+    "avg_dep_delay_min": 7.92,
+    "dep_delay_rate_pct": 12.51,
+    "avg_arr_delay_min": 6.08,
+    "arr_delay_rate_pct": 15.4,
+    "city": "Lake Charles, LA"
+  },
+  {
+    "airport_code": "MSP",
+    "total_departures": 737756,
+    "avg_dep_delay_min": 7.89,
+    "dep_delay_rate_pct": 13.88,
+    "avg_arr_delay_min": 0.35,
+    "arr_delay_rate_pct": 14.99,
+    "city": "Minneapolis, MN"
+  },
+  {
+    "airport_code": "IND",
+    "total_departures": 242990,
+    "avg_dep_delay_min": 7.86,
+    "dep_delay_rate_pct": 14.43,
+    "avg_arr_delay_min": 2.48,
+    "arr_delay_rate_pct": 15.47,
+    "city": "Indianapolis, IN"
+  },
+  {
+    "airport_code": "BUR",
+    "total_departures": 155146,
+    "avg_dep_delay_min": 7.85,
+    "dep_delay_rate_pct": 16.66,
+    "avg_arr_delay_min": 2.36,
+    "arr_delay_rate_pct": 16.05,
+    "city": "Burbank, CA"
+  },
+  {
+    "airport_code": "CPR",
+    "total_departures": 8741,
+    "avg_dep_delay_min": 7.84,
+    "dep_delay_rate_pct": 12.61,
+    "avg_arr_delay_min": 3.89,
+    "arr_delay_rate_pct": 15.91,
+    "city": "Casper, WY"
+  },
+  {
+    "airport_code": "SPS",
+    "total_departures": 5587,
+    "avg_dep_delay_min": 7.81,
+    "dep_delay_rate_pct": 12.58,
+    "avg_arr_delay_min": 5.23,
+    "arr_delay_rate_pct": 15.59,
+    "city": "Wichita Falls, TX"
+  },
+  {
+    "airport_code": "CSG",
+    "total_departures": 7163,
+    "avg_dep_delay_min": 7.74,
+    "dep_delay_rate_pct": 12.58,
+    "avg_arr_delay_min": 2.72,
+    "arr_delay_rate_pct": 13.5,
+    "city": "Columbus, GA"
+  },
+  {
+    "airport_code": "CMH",
+    "total_departures": 223022,
+    "avg_dep_delay_min": 7.73,
+    "dep_delay_rate_pct": 14.38,
+    "avg_arr_delay_min": 1.51,
+    "arr_delay_rate_pct": 15.08,
+    "city": "Columbus, OH"
+  },
+  {
+    "airport_code": "JAN",
+    "total_departures": 40924,
+    "avg_dep_delay_min": 7.68,
+    "dep_delay_rate_pct": 13.83,
+    "avg_arr_delay_min": 2.19,
+    "arr_delay_rate_pct": 14.01,
+    "city": "Jackson/Vicksburg, MS"
+  },
+  {
+    "airport_code": "MBS",
+    "total_departures": 10064,
+    "avg_dep_delay_min": 7.65,
+    "dep_delay_rate_pct": 12.14,
+    "avg_arr_delay_min": 2.35,
+    "arr_delay_rate_pct": 13.69,
+    "city": "Saginaw/Bay City/Midland, MI"
+  },
+  {
+    "airport_code": "PSP",
+    "total_departures": 75572,
+    "avg_dep_delay_min": 7.63,
+    "dep_delay_rate_pct": 15.06,
+    "avg_arr_delay_min": 2.85,
+    "arr_delay_rate_pct": 15.38,
+    "city": "Palm Springs, CA"
+  },
+  {
+    "airport_code": "TRI",
+    "total_departures": 15324,
+    "avg_dep_delay_min": 7.6,
+    "dep_delay_rate_pct": 13.21,
+    "avg_arr_delay_min": 0.26,
+    "arr_delay_rate_pct": 13.46,
+    "city": "Bristol/Johnson City/Kingsport, TN"
+  },
+  {
+    "airport_code": "SLC",
+    "total_departures": 649689,
+    "avg_dep_delay_min": 7.56,
+    "dep_delay_rate_pct": 13.72,
+    "avg_arr_delay_min": 1.84,
+    "arr_delay_rate_pct": 14.27,
+    "city": "Salt Lake City, UT"
+  },
+  {
+    "airport_code": "SMF",
+    "total_departures": 284060,
+    "avg_dep_delay_min": 7.54,
+    "dep_delay_rate_pct": 15.56,
+    "avg_arr_delay_min": 2.14,
+    "arr_delay_rate_pct": 14.61,
+    "city": "Sacramento, CA"
+  },
+  {
+    "airport_code": "TYS",
+    "total_departures": 81474,
+    "avg_dep_delay_min": 7.53,
+    "dep_delay_rate_pct": 14.0,
+    "avg_arr_delay_min": 3.08,
+    "arr_delay_rate_pct": 15.47,
+    "city": "Knoxville, TN"
+  },
+  {
+    "airport_code": "TUS",
+    "total_departures": 97563,
+    "avg_dep_delay_min": 7.46,
+    "dep_delay_rate_pct": 13.57,
+    "avg_arr_delay_min": 2.26,
+    "arr_delay_rate_pct": 13.6,
+    "city": "Tucson, AZ"
+  },
+  {
+    "airport_code": "TYR",
+    "total_departures": 7130,
+    "avg_dep_delay_min": 7.44,
+    "dep_delay_rate_pct": 13.69,
+    "avg_arr_delay_min": 4.11,
+    "arr_delay_rate_pct": 17.03,
+    "city": "Tyler, TX"
+  },
+  {
+    "airport_code": "LGB",
+    "total_departures": 84958,
+    "avg_dep_delay_min": 7.43,
+    "dep_delay_rate_pct": 16.31,
+    "avg_arr_delay_min": 1.48,
+    "arr_delay_rate_pct": 14.77,
+    "city": "Long Beach, CA"
+  },
+  {
+    "airport_code": "TUL",
+    "total_departures": 87534,
+    "avg_dep_delay_min": 7.43,
+    "dep_delay_rate_pct": 13.43,
+    "avg_arr_delay_min": 2.55,
+    "arr_delay_rate_pct": 14.31,
+    "city": "Tulsa, OK"
+  },
+  {
+    "airport_code": "ABY",
+    "total_departures": 5310,
+    "avg_dep_delay_min": 7.43,
+    "dep_delay_rate_pct": 10.96,
+    "avg_arr_delay_min": 2.54,
+    "arr_delay_rate_pct": 11.6,
+    "city": "Albany, GA"
+  },
+  {
+    "airport_code": "GJT",
+    "total_departures": 22420,
+    "avg_dep_delay_min": 7.41,
+    "dep_delay_rate_pct": 12.36,
+    "avg_arr_delay_min": 4.89,
+    "arr_delay_rate_pct": 14.9,
+    "city": "Grand Junction, CO"
+  },
+  {
+    "airport_code": "CMI",
+    "total_departures": 9810,
+    "avg_dep_delay_min": 7.35,
+    "dep_delay_rate_pct": 13.45,
+    "avg_arr_delay_min": 2.33,
+    "arr_delay_rate_pct": 15.64,
+    "city": "Champaign/Urbana, IL"
+  },
+  {
+    "airport_code": "DRT",
+    "total_departures": 2624,
+    "avg_dep_delay_min": 7.34,
+    "dep_delay_rate_pct": 11.81,
+    "avg_arr_delay_min": 3.56,
+    "arr_delay_rate_pct": 12.65,
+    "city": "Del Rio, TX"
+  },
+  {
+    "airport_code": "SEA",
+    "total_departures": 898131,
+    "avg_dep_delay_min": 7.34,
+    "dep_delay_rate_pct": 15.8,
+    "avg_arr_delay_min": 2.16,
+    "arr_delay_rate_pct": 16.75,
+    "city": "Seattle, WA"
+  },
+  {
+    "airport_code": "PHF",
+    "total_departures": 4737,
+    "avg_dep_delay_min": 7.33,
+    "dep_delay_rate_pct": 12.71,
+    "avg_arr_delay_min": 0.77,
+    "arr_delay_rate_pct": 12.05,
+    "city": "Newport News/Williamsburg, VA"
+  },
+  {
+    "airport_code": "LWS",
+    "total_departures": 5570,
+    "avg_dep_delay_min": 7.32,
+    "dep_delay_rate_pct": 9.37,
+    "avg_arr_delay_min": 3.06,
+    "arr_delay_rate_pct": 10.63,
+    "city": "Lewiston, ID"
+  },
+  {
+    "airport_code": "GRB",
+    "total_departures": 24460,
+    "avg_dep_delay_min": 7.31,
+    "dep_delay_rate_pct": 11.61,
+    "avg_arr_delay_min": 1.67,
+    "arr_delay_rate_pct": 13.64,
+    "city": "Green Bay, WI"
+  },
+  {
+    "airport_code": "GSO",
+    "total_departures": 60727,
+    "avg_dep_delay_min": 7.29,
+    "dep_delay_rate_pct": 13.2,
+    "avg_arr_delay_min": 1.05,
+    "arr_delay_rate_pct": 14.68,
+    "city": "Greensboro/High Point, NC"
+  },
+  {
+    "airport_code": "LSE",
+    "total_departures": 7810,
+    "avg_dep_delay_min": 7.29,
+    "dep_delay_rate_pct": 11.55,
+    "avg_arr_delay_min": 0.11,
+    "arr_delay_rate_pct": 12.68,
+    "city": "La Crosse, WI"
+  },
+  {
+    "airport_code": "SUN",
+    "total_departures": 9970,
+    "avg_dep_delay_min": 7.29,
+    "dep_delay_rate_pct": 10.98,
+    "avg_arr_delay_min": 4.08,
+    "arr_delay_rate_pct": 13.86,
+    "city": "Sun Valley/Hailey/Ketchum, ID"
+  },
+  {
+    "airport_code": "BPT",
+    "total_departures": 4716,
+    "avg_dep_delay_min": 7.24,
+    "dep_delay_rate_pct": 12.49,
+    "avg_arr_delay_min": 5.17,
+    "arr_delay_rate_pct": 15.95,
+    "city": "Beaumont/Port Arthur, TX"
+  },
+  {
+    "airport_code": "PUW",
+    "total_departures": 2292,
+    "avg_dep_delay_min": 7.18,
+    "dep_delay_rate_pct": 14.44,
+    "avg_arr_delay_min": 5.63,
+    "arr_delay_rate_pct": 14.66,
+    "city": "Pullman, WA"
+  },
+  {
+    "airport_code": "EVV",
+    "total_departures": 14590,
+    "avg_dep_delay_min": 7.16,
+    "dep_delay_rate_pct": 12.91,
+    "avg_arr_delay_min": 1.71,
+    "arr_delay_rate_pct": 15.33,
+    "city": "Evansville, IN"
+  },
+  {
+    "airport_code": "LBL",
+    "total_departures": 3503,
+    "avg_dep_delay_min": 7.16,
+    "dep_delay_rate_pct": 12.85,
+    "avg_arr_delay_min": 3.03,
+    "arr_delay_rate_pct": 13.82,
+    "city": "Liberal, KS"
+  },
+  {
+    "airport_code": "PIT",
+    "total_departures": 232335,
+    "avg_dep_delay_min": 7.16,
+    "dep_delay_rate_pct": 13.82,
+    "avg_arr_delay_min": 1.19,
+    "arr_delay_rate_pct": 14.96,
+    "city": "Pittsburgh, PA"
+  },
+  {
+    "airport_code": "MHT",
+    "total_departures": 35721,
+    "avg_dep_delay_min": 7.15,
+    "dep_delay_rate_pct": 14.27,
+    "avg_arr_delay_min": 0.66,
+    "arr_delay_rate_pct": 14.88,
+    "city": "Manchester, NH"
+  },
+  {
+    "airport_code": "GGG",
+    "total_departures": 4614,
+    "avg_dep_delay_min": 7.13,
+    "dep_delay_rate_pct": 12.12,
+    "avg_arr_delay_min": 4.9,
+    "arr_delay_rate_pct": 15.5,
+    "city": "Longview, TX"
+  },
+  {
+    "airport_code": "ABI",
+    "total_departures": 11151,
+    "avg_dep_delay_min": 7.12,
+    "dep_delay_rate_pct": 13.35,
+    "avg_arr_delay_min": 4.98,
+    "arr_delay_rate_pct": 16.27,
+    "city": "Abilene, TX"
+  },
+  {
+    "airport_code": "OAJ",
+    "total_departures": 12710,
+    "avg_dep_delay_min": 7.1,
+    "dep_delay_rate_pct": 11.8,
+    "avg_arr_delay_min": 0.16,
+    "arr_delay_rate_pct": 11.71,
+    "city": "Jacksonville/Camp Lejeune, NC"
+  },
+  {
+    "airport_code": "HRL",
+    "total_departures": 21679,
+    "avg_dep_delay_min": 7.09,
+    "dep_delay_rate_pct": 14.37,
+    "avg_arr_delay_min": 2.51,
+    "arr_delay_rate_pct": 14.83,
+    "city": "Harlingen/San Benito, TX"
+  },
+  {
+    "airport_code": "GPT",
+    "total_departures": 20145,
+    "avg_dep_delay_min": 7.09,
+    "dep_delay_rate_pct": 12.41,
+    "avg_arr_delay_min": 4.17,
+    "arr_delay_rate_pct": 14.3,
+    "city": "Gulfport/Biloxi, MS"
+  },
+  {
+    "airport_code": "SHR",
+    "total_departures": 3104,
+    "avg_dep_delay_min": 7.09,
+    "dep_delay_rate_pct": 10.41,
+    "avg_arr_delay_min": 6.73,
+    "arr_delay_rate_pct": 15.5,
+    "city": "Sheridan, WY"
+  },
+  {
+    "airport_code": "BRO",
+    "total_departures": 10248,
+    "avg_dep_delay_min": 7.02,
+    "dep_delay_rate_pct": 12.11,
+    "avg_arr_delay_min": 5.01,
+    "arr_delay_rate_pct": 13.89,
+    "city": "Brownsville, TX"
+  },
+  {
+    "airport_code": "RHI",
+    "total_departures": 4613,
+    "avg_dep_delay_min": 7.01,
+    "dep_delay_rate_pct": 11.79,
+    "avg_arr_delay_min": -6.52,
+    "arr_delay_rate_pct": 11.19,
+    "city": "Rhinelander, WI"
+  },
+  {
+    "airport_code": "BRD",
+    "total_departures": 3820,
+    "avg_dep_delay_min": 6.96,
+    "dep_delay_rate_pct": 9.79,
+    "avg_arr_delay_min": -2.31,
+    "arr_delay_rate_pct": 11.02,
+    "city": "Brainerd, MN"
+  },
+  {
+    "airport_code": "CAE",
+    "total_departures": 35143,
+    "avg_dep_delay_min": 6.87,
+    "dep_delay_rate_pct": 12.51,
+    "avg_arr_delay_min": 1.96,
+    "arr_delay_rate_pct": 13.69,
+    "city": "Columbia, SC"
+  },
+  {
+    "airport_code": "DAB",
+    "total_departures": 17268,
+    "avg_dep_delay_min": 6.83,
+    "dep_delay_rate_pct": 12.86,
+    "avg_arr_delay_min": 0.86,
+    "arr_delay_rate_pct": 12.06,
+    "city": "Daytona Beach, FL"
+  },
+  {
+    "airport_code": "TLH",
+    "total_departures": 31560,
+    "avg_dep_delay_min": 6.74,
+    "dep_delay_rate_pct": 13.13,
+    "avg_arr_delay_min": 3.1,
+    "arr_delay_rate_pct": 13.97,
+    "city": "Tallahassee, FL"
+  },
+  {
+    "airport_code": "HIB",
+    "total_departures": 3767,
+    "avg_dep_delay_min": 6.72,
+    "dep_delay_rate_pct": 8.92,
+    "avg_arr_delay_min": -2.9,
+    "arr_delay_rate_pct": 9.4,
+    "city": "Hibbing, MN"
+  },
+  {
+    "airport_code": "DHN",
+    "total_departures": 5719,
+    "avg_dep_delay_min": 6.7,
+    "dep_delay_rate_pct": 11.61,
+    "avg_arr_delay_min": -0.84,
+    "arr_delay_rate_pct": 12.57,
+    "city": "Dothan, AL"
+  },
+  {
+    "airport_code": "STS",
+    "total_departures": 19187,
+    "avg_dep_delay_min": 6.69,
+    "dep_delay_rate_pct": 13.85,
+    "avg_arr_delay_min": 5.29,
+    "arr_delay_rate_pct": 16.25,
+    "city": "Santa Rosa, CA"
+  },
+  {
+    "airport_code": "GTF",
+    "total_departures": 13836,
+    "avg_dep_delay_min": 6.66,
+    "dep_delay_rate_pct": 10.22,
+    "avg_arr_delay_min": 2.27,
+    "arr_delay_rate_pct": 12.75,
+    "city": "Great Falls, MT"
+  },
+  {
+    "airport_code": "PQI",
+    "total_departures": 116,
+    "avg_dep_delay_min": 6.64,
+    "dep_delay_rate_pct": 10.34,
+    "avg_arr_delay_min": 1.58,
+    "arr_delay_rate_pct": 11.21,
+    "city": "Presque Isle/Houlton, ME"
+  },
+  {
+    "airport_code": "ACY",
+    "total_departures": 17067,
+    "avg_dep_delay_min": 6.62,
+    "dep_delay_rate_pct": 14.88,
+    "avg_arr_delay_min": 2.26,
+    "arr_delay_rate_pct": 16.47,
+    "city": "Atlantic City, NJ"
+  },
+  {
+    "airport_code": "AZO",
+    "total_departures": 9138,
+    "avg_dep_delay_min": 6.6,
+    "dep_delay_rate_pct": 11.18,
+    "avg_arr_delay_min": 0.29,
+    "arr_delay_rate_pct": 13.06,
+    "city": "Kalamazoo, MI"
+  },
+  {
+    "airport_code": "PGV",
+    "total_departures": 232,
+    "avg_dep_delay_min": 6.6,
+    "dep_delay_rate_pct": 12.07,
+    "avg_arr_delay_min": -0.4,
+    "arr_delay_rate_pct": 12.07,
+    "city": "Greenville, NC"
+  },
+  {
+    "airport_code": "ACT",
+    "total_departures": 8098,
+    "avg_dep_delay_min": 6.58,
+    "dep_delay_rate_pct": 13.46,
+    "avg_arr_delay_min": 4.89,
+    "arr_delay_rate_pct": 16.46,
+    "city": "Waco, TX"
+  },
+  {
+    "airport_code": "EWN",
+    "total_departures": 6272,
+    "avg_dep_delay_min": 6.57,
+    "dep_delay_rate_pct": 13.23,
+    "avg_arr_delay_min": 0.4,
+    "arr_delay_rate_pct": 11.7,
+    "city": "New Bern/Morehead/Beaufort, NC"
+  },
+  {
+    "airport_code": "DAY",
+    "total_departures": 48656,
+    "avg_dep_delay_min": 6.57,
+    "dep_delay_rate_pct": 13.03,
+    "avg_arr_delay_min": 1.36,
+    "arr_delay_rate_pct": 14.62,
+    "city": "Dayton, OH"
+  },
+  {
+    "airport_code": "PUB",
+    "total_departures": 2718,
+    "avg_dep_delay_min": 6.54,
+    "dep_delay_rate_pct": 12.21,
+    "avg_arr_delay_min": 4.08,
+    "arr_delay_rate_pct": 14.42,
+    "city": "Pueblo, CO"
+  },
+  {
+    "airport_code": "BRW",
+    "total_departures": 2503,
+    "avg_dep_delay_min": 6.4,
+    "dep_delay_rate_pct": 21.89,
+    "avg_arr_delay_min": 7.83,
+    "arr_delay_rate_pct": 23.49,
+    "city": "Barrow, AK"
+  },
+  {
+    "airport_code": "PSC",
+    "total_departures": 27961,
+    "avg_dep_delay_min": 6.39,
+    "dep_delay_rate_pct": 11.45,
+    "avg_arr_delay_min": 1.91,
+    "arr_delay_rate_pct": 12.97,
+    "city": "Pasco/Kennewick/Richland, WA"
+  },
+  {
+    "airport_code": "BFM",
+    "total_departures": 190,
+    "avg_dep_delay_min": 6.31,
+    "dep_delay_rate_pct": 18.95,
+    "avg_arr_delay_min": 6.35,
+    "arr_delay_rate_pct": 24.21,
+    "city": "Mobile, AL"
+  },
+  {
+    "airport_code": "EAT",
+    "total_departures": 1378,
+    "avg_dep_delay_min": 6.31,
+    "dep_delay_rate_pct": 12.77,
+    "avg_arr_delay_min": 5.33,
+    "arr_delay_rate_pct": 13.93,
+    "city": "Wenatchee, WA"
+  },
+  {
+    "airport_code": "CWA",
+    "total_departures": 9669,
+    "avg_dep_delay_min": 6.15,
+    "dep_delay_rate_pct": 11.49,
+    "avg_arr_delay_min": -0.4,
+    "arr_delay_rate_pct": 12.86,
+    "city": "Mosinee, WI"
+  },
+  {
+    "airport_code": "OGG",
+    "total_departures": 151874,
+    "avg_dep_delay_min": 6.13,
+    "dep_delay_rate_pct": 14.65,
+    "avg_arr_delay_min": 2.51,
+    "arr_delay_rate_pct": 15.52,
+    "city": "Kahului, HI"
+  },
+  {
+    "airport_code": "GEG",
+    "total_departures": 95160,
+    "avg_dep_delay_min": 6.06,
+    "dep_delay_rate_pct": 12.54,
+    "avg_arr_delay_min": 1.53,
+    "arr_delay_rate_pct": 13.43,
+    "city": "Spokane, WA"
+  },
+  {
+    "airport_code": "CRP",
+    "total_departures": 23820,
+    "avg_dep_delay_min": 5.95,
+    "dep_delay_rate_pct": 12.96,
+    "avg_arr_delay_min": 2.63,
+    "arr_delay_rate_pct": 14.24,
+    "city": "Corpus Christi, TX"
+  },
+  {
+    "airport_code": "GTR",
+    "total_departures": 5599,
+    "avg_dep_delay_min": 5.87,
+    "dep_delay_rate_pct": 10.04,
+    "avg_arr_delay_min": -3.44,
+    "arr_delay_rate_pct": 10.13,
+    "city": "Columbus, MS"
+  },
+  {
+    "airport_code": "SJC",
+    "total_departures": 283665,
+    "avg_dep_delay_min": 5.82,
+    "dep_delay_rate_pct": 14.55,
+    "avg_arr_delay_min": 0.14,
+    "arr_delay_rate_pct": 13.8,
+    "city": "San Jose, CA"
+  },
+  {
+    "airport_code": "PDX",
+    "total_departures": 325850,
+    "avg_dep_delay_min": 5.78,
+    "dep_delay_rate_pct": 12.91,
+    "avg_arr_delay_min": 1.64,
+    "arr_delay_rate_pct": 13.8,
+    "city": "Portland, OR"
+  },
+  {
+    "airport_code": "BIL",
+    "total_departures": 24316,
+    "avg_dep_delay_min": 5.78,
+    "dep_delay_rate_pct": 11.53,
+    "avg_arr_delay_min": 3.31,
+    "arr_delay_rate_pct": 14.91,
+    "city": "Billings, MT"
+  },
+  {
+    "airport_code": "HNL",
+    "total_departures": 305088,
+    "avg_dep_delay_min": 5.68,
+    "dep_delay_rate_pct": 13.28,
+    "avg_arr_delay_min": 1.95,
+    "arr_delay_rate_pct": 13.76,
+    "city": "Honolulu, HI"
+  },
+  {
+    "airport_code": "BOI",
+    "total_departures": 127201,
+    "avg_dep_delay_min": 5.67,
+    "dep_delay_rate_pct": 11.94,
+    "avg_arr_delay_min": 1.63,
+    "arr_delay_rate_pct": 13.52,
+    "city": "Boise, ID"
+  },
+  {
+    "airport_code": "IPT",
+    "total_departures": 71,
+    "avg_dep_delay_min": 5.66,
+    "dep_delay_rate_pct": 9.86,
+    "avg_arr_delay_min": -15.7,
+    "arr_delay_rate_pct": 8.45,
+    "city": "Williamsport, PA"
+  },
+  {
+    "airport_code": "CLL",
+    "total_departures": 8345,
+    "avg_dep_delay_min": 5.65,
+    "dep_delay_rate_pct": 12.01,
+    "avg_arr_delay_min": 4.48,
+    "arr_delay_rate_pct": 15.59,
+    "city": "College Station/Bryan, TX"
+  },
+  {
+    "airport_code": "SGU",
+    "total_departures": 17416,
+    "avg_dep_delay_min": 5.58,
+    "dep_delay_rate_pct": 10.25,
+    "avg_arr_delay_min": 2.26,
+    "arr_delay_rate_pct": 12.42,
+    "city": "St. George, UT"
+  },
+  {
+    "airport_code": "SWO",
+    "total_departures": 4043,
+    "avg_dep_delay_min": 5.35,
+    "dep_delay_rate_pct": 9.89,
+    "avg_arr_delay_min": 2.49,
+    "arr_delay_rate_pct": 12.09,
+    "city": "Stillwater, OK"
+  },
+  {
+    "airport_code": "SJT",
+    "total_departures": 8593,
+    "avg_dep_delay_min": 5.25,
+    "dep_delay_rate_pct": 12.65,
+    "avg_arr_delay_min": 3.5,
+    "arr_delay_rate_pct": 15.59,
+    "city": "San Angelo, TX"
+  },
+  {
+    "airport_code": "EKO",
+    "total_departures": 2965,
+    "avg_dep_delay_min": 5.19,
+    "dep_delay_rate_pct": 5.56,
+    "avg_arr_delay_min": 1.88,
+    "arr_delay_rate_pct": 6.68,
+    "city": "Elko, NV"
+  },
+  {
+    "airport_code": "DLG",
+    "total_departures": 1318,
+    "avg_dep_delay_min": 5.11,
+    "dep_delay_rate_pct": 19.88,
+    "avg_arr_delay_min": 6.45,
+    "arr_delay_rate_pct": 22.46,
+    "city": "Dillingham, AK"
+  },
+  {
+    "airport_code": "HLN",
+    "total_departures": 8337,
+    "avg_dep_delay_min": 5.08,
+    "dep_delay_rate_pct": 8.17,
+    "avg_arr_delay_min": -0.28,
+    "arr_delay_rate_pct": 10.4,
+    "city": "Helena, MT"
+  },
+  {
+    "airport_code": "LBE",
+    "total_departures": 4740,
+    "avg_dep_delay_min": 5.04,
+    "dep_delay_rate_pct": 14.11,
+    "avg_arr_delay_min": 1.08,
+    "arr_delay_rate_pct": 15.44,
+    "city": "Latrobe, PA"
+  },
+  {
+    "airport_code": "ALO",
+    "total_departures": 2382,
+    "avg_dep_delay_min": 5.0,
+    "dep_delay_rate_pct": 11.67,
+    "avg_arr_delay_min": 1.86,
+    "arr_delay_rate_pct": 14.61,
+    "city": "Waterloo, IA"
+  },
+  {
+    "airport_code": "MLB",
+    "total_departures": 14897,
+    "avg_dep_delay_min": 4.88,
+    "dep_delay_rate_pct": 12.14,
+    "avg_arr_delay_min": 0.11,
+    "arr_delay_rate_pct": 12.43,
+    "city": "Melbourne, FL"
+  },
+  {
+    "airport_code": "PAE",
+    "total_departures": 9965,
+    "avg_dep_delay_min": 4.86,
+    "dep_delay_rate_pct": 13.38,
+    "avg_arr_delay_min": 3.21,
+    "arr_delay_rate_pct": 15.83,
+    "city": "Everett, WA"
+  },
+  {
+    "airport_code": "BLI",
+    "total_departures": 13607,
+    "avg_dep_delay_min": 4.61,
+    "dep_delay_rate_pct": 11.96,
+    "avg_arr_delay_min": 1.21,
+    "arr_delay_rate_pct": 12.37,
+    "city": "Bellingham, WA"
+  },
+  {
+    "airport_code": "TBN",
+    "total_departures": 594,
+    "avg_dep_delay_min": 4.22,
+    "dep_delay_rate_pct": 9.93,
+    "avg_arr_delay_min": -14.29,
+    "arr_delay_rate_pct": 7.74,
+    "city": "Fort Leonard Wood, MO"
+  },
+  {
+    "airport_code": "AKN",
+    "total_departures": 1545,
+    "avg_dep_delay_min": 4.22,
+    "dep_delay_rate_pct": 21.68,
+    "avg_arr_delay_min": 3.49,
+    "arr_delay_rate_pct": 23.17,
+    "city": "King Salmon, AK"
+  },
+  {
+    "airport_code": "TWF",
+    "total_departures": 4886,
+    "avg_dep_delay_min": 4.12,
+    "dep_delay_rate_pct": 9.35,
+    "avg_arr_delay_min": -1.0,
+    "arr_delay_rate_pct": 10.25,
+    "city": "Twin Falls, ID"
+  },
+  {
+    "airport_code": "LIH",
+    "total_departures": 78435,
+    "avg_dep_delay_min": 3.77,
+    "dep_delay_rate_pct": 11.3,
+    "avg_arr_delay_min": 1.18,
+    "arr_delay_rate_pct": 12.91,
+    "city": "Lihue, HI"
+  },
+  {
+    "airport_code": "ANC",
+    "total_departures": 105279,
+    "avg_dep_delay_min": 3.7,
+    "dep_delay_rate_pct": 12.74,
+    "avg_arr_delay_min": 0.63,
+    "arr_delay_rate_pct": 14.27,
+    "city": "Anchorage, AK"
+  },
+  {
+    "airport_code": "KOA",
+    "total_departures": 86955,
+    "avg_dep_delay_min": 3.69,
+    "dep_delay_rate_pct": 11.63,
+    "avg_arr_delay_min": 0.51,
+    "arr_delay_rate_pct": 12.53,
+    "city": "Kona, HI"
+  },
+  {
+    "airport_code": "DBQ",
+    "total_departures": 2433,
+    "avg_dep_delay_min": 3.5,
+    "dep_delay_rate_pct": 11.71,
+    "avg_arr_delay_min": -1.38,
+    "arr_delay_rate_pct": 13.4,
+    "city": "Dubuque, IA"
+  },
+  {
+    "airport_code": "YKM",
+    "total_departures": 1333,
+    "avg_dep_delay_min": 3.19,
+    "dep_delay_rate_pct": 10.65,
+    "avg_arr_delay_min": 2.35,
+    "arr_delay_rate_pct": 10.65,
+    "city": "Yakima, WA"
+  },
+  {
+    "airport_code": "ALW",
+    "total_departures": 2182,
+    "avg_dep_delay_min": 2.95,
+    "dep_delay_rate_pct": 9.62,
+    "avg_arr_delay_min": 2.16,
+    "arr_delay_rate_pct": 11.59,
+    "city": "Walla Walla, WA"
+  },
+  {
+    "airport_code": "HVN",
+    "total_departures": 1589,
+    "avg_dep_delay_min": 2.93,
+    "dep_delay_rate_pct": 10.01,
+    "avg_arr_delay_min": 1.89,
+    "arr_delay_rate_pct": 12.15,
+    "city": "New Haven, CT"
+  },
+  {
+    "airport_code": "LYH",
+    "total_departures": 1894,
+    "avg_dep_delay_min": 2.76,
+    "dep_delay_rate_pct": 10.93,
+    "avg_arr_delay_min": -4.39,
+    "arr_delay_rate_pct": 11.03,
+    "city": "Lynchburg, VA"
+  },
+  {
+    "airport_code": "CDC",
+    "total_departures": 3653,
+    "avg_dep_delay_min": 2.55,
+    "dep_delay_rate_pct": 7.45,
+    "avg_arr_delay_min": -3.37,
+    "arr_delay_rate_pct": 8.46,
+    "city": "Cedar City, UT"
+  },
+  {
+    "airport_code": "FAI",
+    "total_departures": 22700,
+    "avg_dep_delay_min": 2.47,
+    "dep_delay_rate_pct": 12.91,
+    "avg_arr_delay_min": -0.2,
+    "arr_delay_rate_pct": 13.79,
+    "city": "Fairbanks, AK"
+  },
+  {
+    "airport_code": "FLO",
+    "total_departures": 109,
+    "avg_dep_delay_min": 2.02,
+    "dep_delay_rate_pct": 8.26,
+    "avg_arr_delay_min": -2.83,
+    "arr_delay_rate_pct": 9.17,
+    "city": "Florence, SC"
+  },
+  {
+    "airport_code": "ITO",
+    "total_departures": 35131,
+    "avg_dep_delay_min": 1.9,
+    "dep_delay_rate_pct": 9.29,
+    "avg_arr_delay_min": 1.54,
+    "arr_delay_rate_pct": 10.7,
+    "city": "Hilo, HI"
+  },
+  {
+    "airport_code": "KTN",
+    "total_departures": 13291,
+    "avg_dep_delay_min": 0.95,
+    "dep_delay_rate_pct": 13.06,
+    "avg_arr_delay_min": -0.02,
+    "arr_delay_rate_pct": 15.11,
+    "city": "Ketchikan, AK"
+  },
+  {
+    "airport_code": "SIT",
+    "total_departures": 7239,
+    "avg_dep_delay_min": 0.65,
+    "dep_delay_rate_pct": 12.1,
+    "avg_arr_delay_min": 0.66,
+    "arr_delay_rate_pct": 13.61,
+    "city": "Sitka, AK"
+  },
+  {
+    "airport_code": "JNU",
+    "total_departures": 25381,
+    "avg_dep_delay_min": 0.61,
+    "dep_delay_rate_pct": 12.25,
+    "avg_arr_delay_min": 0.97,
+    "arr_delay_rate_pct": 15.0,
+    "city": "Juneau, AK"
+  },
+  {
+    "airport_code": "BTM",
+    "total_departures": 3943,
+    "avg_dep_delay_min": 0.4,
+    "dep_delay_rate_pct": 6.31,
+    "avg_arr_delay_min": -5.59,
+    "arr_delay_rate_pct": 8.55,
+    "city": "Butte, MT"
+  },
+  {
+    "airport_code": "GUM",
+    "total_departures": 4280,
+    "avg_dep_delay_min": 0.03,
+    "dep_delay_rate_pct": 7.48,
+    "avg_arr_delay_min": -4.77,
+    "arr_delay_rate_pct": 7.34,
+    "city": "Guam, TT"
+  },
+  {
+    "airport_code": "PIH",
+    "total_departures": 4413,
+    "avg_dep_delay_min": -0.49,
+    "dep_delay_rate_pct": 5.89,
+    "avg_arr_delay_min": -6.03,
+    "arr_delay_rate_pct": 6.82,
+    "city": "Pocatello, ID"
+  },
+  {
+    "airport_code": "PSG",
+    "total_departures": 4217,
+    "avg_dep_delay_min": -0.66,
+    "dep_delay_rate_pct": 12.97,
+    "avg_arr_delay_min": 0.29,
+    "arr_delay_rate_pct": 14.87,
+    "city": "Petersburg, AK"
+  },
+  {
+    "airport_code": "WRG",
+    "total_departures": 4221,
+    "avg_dep_delay_min": -0.9,
+    "dep_delay_rate_pct": 12.15,
+    "avg_arr_delay_min": -0.3,
+    "arr_delay_rate_pct": 13.86,
+    "city": "Wrangell, AK"
+  },
+  {
+    "airport_code": "ADQ",
+    "total_departures": 4404,
+    "avg_dep_delay_min": -0.96,
+    "dep_delay_rate_pct": 12.17,
+    "avg_arr_delay_min": 0.57,
+    "arr_delay_rate_pct": 14.4,
+    "city": "Kodiak, AK"
+  },
+  {
+    "airport_code": "CDV",
+    "total_departures": 4164,
+    "avg_dep_delay_min": -2.44,
+    "dep_delay_rate_pct": 14.46,
+    "avg_arr_delay_min": -0.93,
+    "arr_delay_rate_pct": 16.16,
+    "city": "Cordova, AK"
+  },
+  {
+    "airport_code": "YAK",
+    "total_departures": 4099,
+    "avg_dep_delay_min": -3.95,
+    "dep_delay_rate_pct": 13.61,
+    "avg_arr_delay_min": -2.84,
+    "arr_delay_rate_pct": 14.98,
+    "city": "Yakutat, AK"
+  },
+  {
+    "airport_code": "OTZ",
+    "total_departures": 3144,
+    "avg_dep_delay_min": -4.1,
+    "dep_delay_rate_pct": 10.21,
+    "avg_arr_delay_min": -3.46,
+    "arr_delay_rate_pct": 10.66,
+    "city": "Kotzebue, AK"
+  },
+  {
+    "airport_code": "SPN",
+    "total_departures": 2102,
+    "avg_dep_delay_min": -4.43,
+    "dep_delay_rate_pct": 6.28,
+    "avg_arr_delay_min": -5.58,
+    "arr_delay_rate_pct": 6.61,
+    "city": "Saipan, TT"
+  },
+  {
+    "airport_code": "OME",
+    "total_departures": 3172,
+    "avg_dep_delay_min": -4.84,
+    "dep_delay_rate_pct": 10.44,
+    "avg_arr_delay_min": -3.44,
+    "arr_delay_rate_pct": 11.98,
+    "city": "Nome, AK"
+  },
+  {
+    "airport_code": "GST",
+    "total_departures": 510,
+    "avg_dep_delay_min": -5.54,
+    "dep_delay_rate_pct": 8.82,
+    "avg_arr_delay_min": -3.79,
+    "arr_delay_rate_pct": 11.37,
+    "city": "Gustavus, AK"
+  },
+  {
+    "airport_code": "SCC",
+    "total_departures": 3332,
+    "avg_dep_delay_min": -7.7,
+    "dep_delay_rate_pct": 7.8,
+    "avg_arr_delay_min": -6.14,
+    "arr_delay_rate_pct": 9.72,
+    "city": "Deadhorse, AK"
+  }
+]

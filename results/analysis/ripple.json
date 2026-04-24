@@ -1,0 +1,118 @@
+{
+  "overall": {
+    "delayed_flights": 12813739,
+    "ripple_flights": 3458812,
+    "propagation_rate_pct": 26.99,
+    "avg_recovery_min": 1.84
+  },
+  "by_carrier": [
+    {
+      "airline": "WN",
+      "delayed_flights": 2690834,
+      "propagation_rate_pct": 35.8,
+      "avg_recovery_min": 3.02
+    },
+    {
+      "airline": "F9",
+      "delayed_flights": 366246,
+      "propagation_rate_pct": 35.5,
+      "avg_recovery_min": 1.99
+    },
+    {
+      "airline": "G4",
+      "delayed_flights": 268285,
+      "propagation_rate_pct": 34.96,
+      "avg_recovery_min": -2.93
+    },
+    {
+      "airline": "B6",
+      "delayed_flights": 564543,
+      "propagation_rate_pct": 34.23,
+      "avg_recovery_min": 2.76
+    },
+    {
+      "airline": "AA",
+      "delayed_flights": 1799278,
+      "propagation_rate_pct": 30.16,
+      "avg_recovery_min": 1.82
+    },
+    {
+      "airline": "OH",
+      "delayed_flights": 432132,
+      "propagation_rate_pct": 29.85,
+      "avg_recovery_min": 0.87
+    },
+    {
+      "airline": "MQ",
+      "delayed_flights": 514128,
+      "propagation_rate_pct": 27.45,
+      "avg_recovery_min": -2.24
+    },
+    {
+      "airline": "9E",
+      "delayed_flights": 313374,
+      "propagation_rate_pct": 26.55,
+      "avg_recovery_min": 0.64
+    },
+    {
+      "airline": "EV",
+      "delayed_flights": 63445,
+      "propagation_rate_pct": 25.82,
+      "avg_recovery_min": 0.04
+    },
+    {
+      "airline": "UA",
+      "delayed_flights": 1151537,
+      "propagation_rate_pct": 25.14,
+      "avg_recovery_min": 4.23
+    },
+    {
+      "airline": "YV",
+      "delayed_flights": 205122,
+      "propagation_rate_pct": 23.66,
+      "avg_recovery_min": 2.01
+    },
+    {
+      "airline": "YX",
+      "delayed_flights": 481579,
+      "propagation_rate_pct": 22.83,
+      "avg_recovery_min": -1.61
+    },
+    {
+      "airline": "HA",
+      "delayed_flights": 170932,
+      "propagation_rate_pct": 19.74,
+      "avg_recovery_min": -2.66
+    },
+    {
+      "airline": "NK",
+      "delayed_flights": 476092,
+      "propagation_rate_pct": 19.46,
+      "avg_recovery_min": 3.03
+    },
+    {
+      "airline": "DL",
+      "delayed_flights": 1480640,
+      "propagation_rate_pct": 19.34,
+      "avg_recovery_min": 2.44
+    },
+    {
+      "airline": "AS",
+      "delayed_flights": 478387,
+      "propagation_rate_pct": 19.1,
+      "avg_recovery_min": -0.22
+    },
+    {
+      "airline": "QX",
+      "delayed_flights": 68433,
+      "propagation_rate_pct": 17.27,
+      "avg_recovery_min": -0.23
+    },
+    {
+      "airline": "OO",
+      "delayed_flights": 1288752,
+      "propagation_rate_pct": 15.69,
+      "avg_recovery_min": 0.47
+    }
+  ]
+}

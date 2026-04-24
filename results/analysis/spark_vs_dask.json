@@ -1,0 +1,176 @@
+{
+  "task": "Average Arrival Delay by Origin Airport \u2014 Top 20",
+  "dataset": "/data/processed/features/final",
+  "Spark_SQL_time_seconds": 218.433,
+  "Dask_DataFrame_time_seconds": 379.92,
+  "faster_engine": "Spark SQL",
+  "spark_top20": [
+    {
+      "Origin": "MGW",
+      "avg_arr_delay_min": 69.05
+    },
+    {
+      "Origin": "PPG",
+      "avg_arr_delay_min": 32.04
+    },
+    {
+      "Origin": "MMH",
+      "avg_arr_delay_min": 26.85
+    },
+    {
+      "Origin": "HTS",
+      "avg_arr_delay_min": 23.79
+    },
+    {
+      "Origin": "ILG",
+      "avg_arr_delay_min": 23.43
+    },
+    {
+      "Origin": "HYA",
+      "avg_arr_delay_min": 22.8
+    },
+    {
+      "Origin": "SMX",
+      "avg_arr_delay_min": 21.16
+    },
+    {
+      "Origin": "HGR",
+      "avg_arr_delay_min": 21.0
+    },
+    {
+      "Origin": "CDB",
+      "avg_arr_delay_min": 20.94
+    },
+    {
+      "Origin": "SCK",
+      "avg_arr_delay_min": 20.19
+    },
+    {
+      "Origin": "LCK",
+      "avg_arr_delay_min": 19.28
+    },
+    {
+      "Origin": "ASE",
+      "avg_arr_delay_min": 19.11
+    },
+    {
+      "Origin": "USA",
+      "avg_arr_delay_min": 18.47
+    },
+    {
+      "Origin": "OTH",
+      "avg_arr_delay_min": 18.44
+    },
+    {
+      "Origin": "BLV",
+      "avg_arr_delay_min": 18.27
+    },
+    {
+      "Origin": "BIH",
+      "avg_arr_delay_min": 17.33
+    },
+    {
+      "Origin": "MVY",
+      "avg_arr_delay_min": 16.23
+    },
+    {
+      "Origin": "SWF",
+      "avg_arr_delay_min": 15.67
+    },
+    {
+      "Origin": "BQN",
+      "avg_arr_delay_min": 15.48
+    },
+    {
+      "Origin": "OGD",
+      "avg_arr_delay_min": 14.86
+    }
+  ],
+  "dask_top20": [
+    {
+      "Origin": "MGW",
+      "avg_arr_delay_min": 69.05
+    },
+    {
+      "Origin": "PPG",
+      "avg_arr_delay_min": 32.04
+    },
+    {
+      "Origin": "MMH",
+      "avg_arr_delay_min": 26.85
+    },
+    {
+      "Origin": "HTS",
+      "avg_arr_delay_min": 23.79
+    },
+    {
+      "Origin": "ILG",
+      "avg_arr_delay_min": 23.43
+    },
+    {
+      "Origin": "HYA",
+      "avg_arr_delay_min": 22.8
+    },
+    {
+      "Origin": "SMX",
+      "avg_arr_delay_min": 21.16
+    },
+    {
+      "Origin": "HGR",
+      "avg_arr_delay_min": 21.0
+    },
+    {
+      "Origin": "CDB",
+      "avg_arr_delay_min": 20.94
+    },
+    {
+      "Origin": "SCK",
+      "avg_arr_delay_min": 20.19
+    },
+    {
+      "Origin": "LCK",
+      "avg_arr_delay_min": 19.28
+    },
+    {
+      "Origin": "ASE",
+      "avg_arr_delay_min": 19.11
+    },
+    {
+      "Origin": "USA",
+      "avg_arr_delay_min": 18.47
+    },
+    {
+      "Origin": "OTH",
+      "avg_arr_delay_min": 18.44
+    },
+    {
+      "Origin": "BLV",
+      "avg_arr_delay_min": 18.27
+    },
+    {
+      "Origin": "BIH",
+      "avg_arr_delay_min": 17.33
+    },
+    {
+      "Origin": "MVY",
+      "avg_arr_delay_min": 16.23
+    },
+    {
+      "Origin": "SWF",
+      "avg_arr_delay_min": 15.67
+    },
+    {
+      "Origin": "BQN",
+      "avg_arr_delay_min": 15.48
+    },
+    {
+      "Origin": "OGD",
+      "avg_arr_delay_min": 14.86
+    }
+  ],
+  "conclusion_points": [
+    "Spark SQL leverages cluster-level parallelism and the Catalyst query optimiser; it typically dominates on large HDFS datasets distributed across many nodes.",
+    "Dask is a single-machine (or small-cluster) scheduler with lower startup overhead; it can outperform Spark on datasets that fit in local memory.",
+    "For this dataset the observed difference was 161.487s in favour of Spark SQL."
+  ]
+}

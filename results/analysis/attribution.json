@@ -1,0 +1,30 @@
+{
+  "total_delay_minutes": 481540458,
+  "causes": [
+    {
+      "cause": "Late Aircraft",
+      "total_min": 184575570,
+      "share_pct": 38.33
+    },
+    {
+      "cause": "Carrier",
+      "total_min": 175349418,
+      "share_pct": 36.41
+    },
+    {
+      "cause": "Nas",
+      "total_min": 92504620,
+      "share_pct": 19.21
+    },
+    {
+      "cause": "Weather",
+      "total_min": 28105456,
+      "share_pct": 5.84
+    },
+    {
+      "cause": "Security",
+      "total_min": 1005394,
+      "share_pct": 0.21
+    }
+  ]
+}

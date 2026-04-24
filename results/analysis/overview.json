@@ -1,0 +1,8 @@
+{
+  "total_flights": 37786688,
+  "avg_arr_delay_min": 4.65,
+  "avg_dep_delay_min": 10.44,
+  "on_time_rate_pct": 81.99,
+  "cancellation_rate_pct": 0.0,
+  "diversion_rate_pct": 0.0
+}

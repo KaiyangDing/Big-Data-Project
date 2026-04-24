@@ -1,0 +1,272 @@
+{
+  "by_month": [
+    {
+      "Month": 1,
+      "total_flights": 3078531,
+      "avg_arr_delay_min": 3.61,
+      "on_time_rate_pct": 82.35
+    },
+    {
+      "Month": 2,
+      "total_flights": 2878940,
+      "avg_arr_delay_min": 3.07,
+      "on_time_rate_pct": 82.67
+    },
+    {
+      "Month": 3,
+      "total_flights": 3305370,
+      "avg_arr_delay_min": 2.9,
+      "on_time_rate_pct": 83.01
+    },
+    {
+      "Month": 4,
+      "total_flights": 2895732,
+      "avg_arr_delay_min": 3.96,
+      "on_time_rate_pct": 82.59
+    },
+    {
+      "Month": 5,
+      "total_flights": 3022593,
+      "avg_arr_delay_min": 5.67,
+      "on_time_rate_pct": 81.4
+    },
+    {
+      "Month": 6,
+      "total_flights": 3100752,
+      "avg_arr_delay_min": 10.43,
+      "on_time_rate_pct": 77.08
+    },
+    {
+      "Month": 7,
+      "total_flights": 3346463,
+      "avg_arr_delay_min": 11.14,
+      "on_time_rate_pct": 76.91
+    },
+    {
+      "Month": 8,
+      "total_flights": 3347331,
+      "avg_arr_delay_min": 7.22,
+      "on_time_rate_pct": 80.08
+    },
+    {
+      "Month": 9,
+      "total_flights": 3133062,
+      "avg_arr_delay_min": 0.89,
+      "on_time_rate_pct": 85.79
+    },
+    {
+      "Month": 10,
+      "total_flights": 3302339,
+      "avg_arr_delay_min": 0.93,
+      "on_time_rate_pct": 85.54
+    },
+    {
+      "Month": 11,
+      "total_flights": 3175852,
+      "avg_arr_delay_min": -0.14,
+      "on_time_rate_pct": 86.2
+    },
+    {
+      "Month": 12,
+      "total_flights": 3199723,
+      "avg_arr_delay_min": 5.74,
+      "on_time_rate_pct": 80.55
+    }
+  ],
+  "by_weekday": [
+    {
+      "DayOfWeek": 1,
+      "total_flights": 5515245,
+      "avg_arr_delay_min": 5.93,
+      "on_time_rate_pct": 80.81
+    },
+    {
+      "DayOfWeek": 2,
+      "total_flights": 5634506,
+      "avg_arr_delay_min": 5.05,
+      "on_time_rate_pct": 81.85
+    },
+    {
+      "DayOfWeek": 3,
+      "total_flights": 5240010,
+      "avg_arr_delay_min": 2.09,
+      "on_time_rate_pct": 84.26
+    },
+    {
+      "DayOfWeek": 4,
+      "total_flights": 5298252,
+      "avg_arr_delay_min": 2.88,
+      "on_time_rate_pct": 83.53
+    },
+    {
+      "DayOfWeek": 5,
+      "total_flights": 5593234,
+      "avg_arr_delay_min": 5.84,
+      "on_time_rate_pct": 80.91
+    },
+    {
+      "DayOfWeek": 6,
+      "total_flights": 5638351,
+      "avg_arr_delay_min": 6.45,
+      "on_time_rate_pct": 80.24
+    },
+    {
+      "DayOfWeek": 7,
+      "total_flights": 4867090,
+      "avg_arr_delay_min": 3.96,
+      "on_time_rate_pct": 82.67
+    }
+  ],
+  "by_hour": [
+    {
+      "dep_hour": 0,
+      "total_flights": 69036,
+      "avg_dep_delay_min": 12.08,
+      "avg_arr_delay_min": 2.95
+    },
+    {
+      "dep_hour": 1,
+      "total_flights": 24997,
+      "avg_dep_delay_min": 13.69,
+      "avg_arr_delay_min": 6.46
+    },
+    {
+      "dep_hour": 2,
+      "total_flights": 9124,
+      "avg_dep_delay_min": 13.33,
+      "avg_arr_delay_min": 8.16
+    },
+    {
+      "dep_hour": 3,
+      "total_flights": 6782,
+      "avg_dep_delay_min": 11.9,
+      "avg_arr_delay_min": 6.64
+    },
+    {
+      "dep_hour": 4,
+      "total_flights": 3577,
+      "avg_dep_delay_min": 10.45,
+      "avg_arr_delay_min": 6.35
+    },
+    {
+      "dep_hour": 5,
+      "total_flights": 873143,
+      "avg_dep_delay_min": 4.34,
+      "avg_arr_delay_min": -2.62
+    },
+    {
+      "dep_hour": 6,
+      "total_flights": 2651091,
+      "avg_dep_delay_min": 3.6,
+      "avg_arr_delay_min": -2.51
+    },
+    {
+      "dep_hour": 7,
+      "total_flights": 2591937,
+      "avg_dep_delay_min": 4.22,
+      "avg_arr_delay_min": -1.38
+    },
+    {
+      "dep_hour": 8,
+      "total_flights": 2600280,
+      "avg_dep_delay_min": 4.86,
+      "avg_arr_delay_min": -0.97
+    },
+    {
+      "dep_hour": 9,
+      "total_flights": 2215969,
+      "avg_dep_delay_min": 5.79,
+      "avg_arr_delay_min": -0.08
+    },
+    {
+      "dep_hour": 10,
+      "total_flights": 2407217,
+      "avg_dep_delay_min": 6.99,
+      "avg_arr_delay_min": 0.9
+    },
+    {
+      "dep_hour": 11,
+      "total_flights": 2398009,
+      "avg_dep_delay_min": 7.82,
+      "avg_arr_delay_min": 1.68
+    },
+    {
+      "dep_hour": 12,
+      "total_flights": 2306512,
+      "avg_dep_delay_min": 9.17,
+      "avg_arr_delay_min": 3.39
+    },
+    {
+      "dep_hour": 13,
+      "total_flights": 2276757,
+      "avg_dep_delay_min": 10.5,
+      "avg_arr_delay_min": 4.89
+    },
+    {
+      "dep_hour": 14,
+      "total_flights": 2218557,
+      "avg_dep_delay_min": 11.94,
+      "avg_arr_delay_min": 6.66
+    },
+    {
+      "dep_hour": 15,
+      "total_flights": 2239214,
+      "avg_dep_delay_min": 12.95,
+      "avg_arr_delay_min": 7.65
+    },
+    {
+      "dep_hour": 16,
+      "total_flights": 2182176,
+      "avg_dep_delay_min": 14.18,
+      "avg_arr_delay_min": 9.19
+    },
+    {
+      "dep_hour": 17,
+      "total_flights": 2374865,
+      "avg_dep_delay_min": 14.9,
+      "avg_arr_delay_min": 9.64
+    },
+    {
+      "dep_hour": 18,
+      "total_flights": 2269466,
+      "avg_dep_delay_min": 16.21,
+      "avg_arr_delay_min": 10.81
+    },
+    {
+      "dep_hour": 19,
+      "total_flights": 2002307,
+      "avg_dep_delay_min": 17.38,
+      "avg_arr_delay_min": 11.34
+    },
+    {
+      "dep_hour": 20,
+      "total_flights": 1710244,
+      "avg_dep_delay_min": 17.25,
+      "avg_arr_delay_min": 11.13
+    },
+    {
+      "dep_hour": 21,
+      "total_flights": 1189071,
+      "avg_dep_delay_min": 17.58,
+      "avg_arr_delay_min": 11.2
+    },
+    {
+      "dep_hour": 22,
+      "total_flights": 879611,
+      "avg_dep_delay_min": 16.67,
+      "avg_arr_delay_min": 10.26
+    },
+    {
+      "dep_hour": 23,
+      "total_flights": 286745,
+      "avg_dep_delay_min": 14.25,
+      "avg_arr_delay_min": 6.09
+    },
+    {
+      "dep_hour": 24,
+      "total_flights": 1,
+      "avg_dep_delay_min": 1.0,
+      "avg_arr_delay_min": -19.0
+    }
+  ]
+}
