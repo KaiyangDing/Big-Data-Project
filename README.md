@@ -319,7 +319,7 @@ need to run from your stage onward — upstream outputs are already in `data/` o
 | 1. ETL | Kaiyang | ✅ done | `data/raw/flights/`, `data/raw/weather/`, `data/raw/airports.csv` | `data/processed/flights_clean/`, `data/processed/weather_clean/` |
 | 2. Feature engineering | Zeshen | ✅ done | `data/processed/flights_clean/`, `data/processed/weather_clean/` | `data/processed/features/final/` (37.8M rows, 57 cols) |
 | 3. Statistical analysis | Runzhe | ✅ done | `data/processed/features/final/` | `results/analysis/*.json`, `results/figures/*` |
-| 4. ML training + API | Xingyu | 🔜 not started | `data/processed/features/final/` | `models/`, `api/` (REST service) |
+| 4. ML training + API | Xingyu | ✅ done | `data/processed/features/final/` | `models/`, `api/` (REST service) |
 | 5. Dashboard | Yiqi | 🔜 not started | `results/analysis/*.json`, REST API | `frontend/` (React app) |
 
 ### Per-member quick start
@@ -345,15 +345,19 @@ All 8 analysis tasks completed on the full 37,786,688-row dataset. Outputs in `r
 
 Charts (PNG) also in `results/analysis/`: `carrier_ontime.png`, `monthly_delay.png`, `attribution_pie.png`, `spark_vs_dask.png`.
 
-#### Xingyu — ML & REST API
-Read `data/processed/features/final/`. Two things worth flagging that aren't obvious from the
-data alone:
+#### Xingyu — ✅ done (ML & REST API)
 
-- **Don't leak 2024 into training.** Use `Year <= 2023` for train, `Year == 2024` for test.
-  The `route_*` / `carrier_*` / `origin_*` columns in the feature table are already computed
-  on 2019-2023 only, so they're safe to use as features.
-- **Weather-null rows**: either filter to `has_weather_data == 1` (hub airports only), or
-  impute and keep `has_weather_data` as a feature — up to you, but document the choice.
+Two GBT model versions trained on 30.8M flights (2019–2023) and evaluated on 6.96M held-out 2024 flights:
+
+- **Post-departure model** (with `DepDelay`): classifier AUC 0.9345, F1 0.8876; regressor RMSE 20.70 min, R² 0.9199
+- **Pre-departure model** (without `DepDelay`): classifier AUC 0.8102, F1 0.7633; regressor RMSE 64.62 min, R² 0.2192
+
+A FastAPI service (`api/app.py`) loads both models at startup and exposes prediction + analysis endpoints on port 8000. All results are stored in MongoDB.
+
+**Detailed documentation:**
+- [docs/ml_modeling.md](docs/ml_modeling.md) — feature selection rationale, two-model design, hyperparameters, evaluation metrics, feature importance
+- [docs/api_reference.md](docs/api_reference.md) — all 7 endpoints with request/response schemas, example `curl` calls, and test results
+- [docs/how_to_run.md](docs/how_to_run.md) — Docker startup sequence, MongoDB initialization (when required and when not), and troubleshooting
 
 #### Yiqi — React Dashboard
 You don't need the Docker / Spark environment. Work from `frontend/` with Node 18+. Data
