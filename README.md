@@ -10,7 +10,7 @@ The system ingests 37M+ U.S. domestic flight records (2019-2024) and meteorologi
 |------|-------|------|
 | Kaiyang Ding | kd3375 | Data Engineering Lead |
 | Zeshen Zhang | zz10740 | Feature Engineering |
-| Ruznhe Xu | rx2380 | Analytics & Modeling |
+| Runzhe Xu | rx2380 | Analytics & Modeling |
 | Xingyu Li | xl5936 | ML & Prediction |
 | Yiqi Zhang | yz12072 | Frontend Dashboard |
 
@@ -46,7 +46,7 @@ Big-Data-Project/
 │   └── models/                 # ML training & inference code
 ├── notebooks/                  # Jupyter notebooks (exploratory & pipeline)
 │   ├── 04_feature_engineering.ipynb   # Zeshen: weather join + ripple + historical features ✅
-│   ├── 05_analysis.ipynb              # Ruznhe: statistical analysis + Spark SQL + Dask ✅
+│   ├── 05_analysis.ipynb              # Runzhe: statistical analysis + Spark SQL + Dask ✅
 │   └── 06_modeling.ipynb              # Xingyu: ML training & evaluation (TBD)
 ├── api/                        # REST API for prediction serving
 ├── frontend/                   # React dashboard
@@ -126,7 +126,7 @@ This starts one container with Jupyter Lab + PySpark (Spark runs in local mode):
    data/raw/airports.csv             (already in repo)
    ```
 
-**Option A+: skip feature engineering too (recommended for Ruznhe / Xingyu)**
+**Option A+: skip feature engineering too (recommended for Runzhe / Xingyu)**
 
 If you're picking up from Stage 3+ and don't want to run Zeshen's feature engineering
 notebook (15-30 min on 8 GB driver), also grab the pre-computed feature table:
@@ -243,7 +243,7 @@ docker compose down
 
 > **Note on weather coverage**: Weather data covers 24 major hub airports (ATL, ORD, DFW, DEN, LAX, JFK, LGA, EWR, SFO, SEA, MIA, MCO, FLL, CLT, PHX, LAS, BOS, MSP, DTW, IAH, AUS, PHL, MDW, SAN). Flights from other airports will have null weather fields after the join. Tail Number Tracking and historical features are computed on the full 37.8M dataset regardless of weather coverage.
 
-**features/final** (57 columns, 37,786,688 rows) — the main feature table Ruznhe and Xingyu read from. Full derivation logic lives in [notebooks/04_feature_engineering.ipynb](notebooks/04_feature_engineering.ipynb); the 57 columns break down by purpose:
+**features/final** (57 columns, 37,786,688 rows) — the main feature table Runzhe and Xingyu read from. Full derivation logic lives in [notebooks/04_feature_engineering.ipynb](notebooks/04_feature_engineering.ipynb); the 57 columns break down by purpose:
 
 | Group | # cols | Key fields | Source |
 |-------|-------:|------------|--------|
@@ -253,7 +253,7 @@ docker compose down
 | Weather (joined) | 8 | `temperature`, `dewpoint`, `humidity`, `wind_direction`, `wind_speed`, `visibility`, `precipitation`, `weather_codes` | Zeshen — UTC-aligned hourly left join |
 | Weather derived | 4 | `has_weather_data` (0/1), `is_low_visibility`, `is_high_wind`, `has_precipitation` (null-safe — null = unknown, not "clear") | Zeshen |
 | Ripple (safe for prediction) | 5 | `flight_leg`, `prev_arr_delay`, `prev_origin`, `prev_dest`, `inherited_delay` | Zeshen — window over `(Tail_Number, FlightDate)` ordered by `CRSDepTime` |
-| Ripple ⚠️ **analysis-only** | 2 | `cumulative_delay`, `delay_recovery` | Zeshen — **these two include the current row's `ArrDelay` in their formula, so using them as features for an `ArrDelay` prediction model is leakage.** Use them for Ruznhe's descriptive statistics only. If Xingyu wants a "prior cumulative" signal, derive it inline: `cumulative_delay - ArrDelay`. |
+| Ripple ⚠️ **analysis-only** | 2 | `cumulative_delay`, `delay_recovery` | Zeshen — **these two include the current row's `ArrDelay` in their formula, so using them as features for an `ArrDelay` prediction model is leakage.** Use them for Runzhe's descriptive statistics only. If Xingyu wants a "prior cumulative" signal, derive it inline: `cumulative_delay - ArrDelay`. |
 | Historical aggregates (leak-safe) | 7 | `route_total_flights`, `route_avg_delay`, `route_on_time_rate`, `carrier_avg_delay`, `carrier_on_time_rate`, `origin_avg_dep_delay`, `origin_std_dep_delay` | Zeshen — computed on `Year <= 2023` subset only, so 2024 predictions don't leak |
 
 Two caveats that affect downstream code:
@@ -318,7 +318,7 @@ need to run from your stage onward — upstream outputs are already in `data/` o
 |-------|-------|--------|-----------|----------|
 | 1. ETL | Kaiyang | ✅ done | `data/raw/flights/`, `data/raw/weather/`, `data/raw/airports.csv` | `data/processed/flights_clean/`, `data/processed/weather_clean/` |
 | 2. Feature engineering | Zeshen | ✅ done | `data/processed/flights_clean/`, `data/processed/weather_clean/` | `data/processed/features/final/` (37.8M rows, 57 cols) |
-| 3. Statistical analysis | Ruznhe | ✅ done | `data/processed/features/final/` | `results/analysis/*.json`, `results/figures/*` |
+| 3. Statistical analysis | Runzhe | ✅ done | `data/processed/features/final/` | `results/analysis/*.json`, `results/figures/*` |
 | 4. ML training + API | Xingyu | 🔜 not started | `data/processed/features/final/` | `models/`, `api/` (REST service) |
 | 5. Dashboard | Yiqi | 🔜 not started | `results/analysis/*.json`, REST API | `frontend/` (React app) |
 
@@ -329,7 +329,7 @@ The feature notebook has been run. `data/processed/features/final/` has 37,786,6
 columns, with 56.2% weather-matched (≈100% on hub-origin flights) and 100% ripple feature
 coverage. Downstream can proceed.
 
-#### Ruznhe — ✅ done
+#### Runzhe — ✅ done
 All 8 analysis tasks completed on the full 37,786,688-row dataset. Outputs in `results/analysis/`:
 
 | File | Content |
@@ -357,7 +357,7 @@ data alone:
 
 #### Yiqi — React Dashboard
 You don't need the Docker / Spark environment. Work from `frontend/` with Node 18+. Data
-contract is the REST API (Xingyu) + the analysis JSONs (Ruznhe). Airport lat/lon for the map
+contract is the REST API (Xingyu) + the analysis JSONs (Runzhe). Airport lat/lon for the map
 come from `data/raw/airports.csv` (already in repo).
 
 ## Tech Stack
