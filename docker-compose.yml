@@ -35,3 +35,33 @@ services:
       done &&
       exec start-notebook.sh
       "
+
+  skypath-mongo:
+    image: mongo:7
+    container_name: skypath-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  skypath-api:
+    image: jupyter/pyspark-notebook:spark-3.5.0
+    container_name: skypath-api
+    working_dir: /api
+    command: >
+      bash -c "pip install fastapi 'uvicorn[standard]' pymongo pydantic --quiet &&
+               uvicorn app:app --host 0.0.0.0 --port 8000 --reload"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/api
+      - ./models:/models
+      - ./results:/results
+    depends_on:
+      - skypath-mongo
+    environment:
+      - MONGO_URI=mongodb://skypath-mongo:27017/
+      - SPARK_OPTS=--driver-memory 4g
+
+volumes:
+  mongo_data:

@@ -38,6 +38,8 @@ frontend/dist/
 .DS_Store
 Thumbs.db
 
-# ─── Models (large binary files) ───
+# ─── Models ───
 models/*.bin
 models/*.pkl
+models/**/_SUCCESS
+models/**/.*.crc
