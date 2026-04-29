@@ -19,11 +19,24 @@ from pyspark.ml.regression import GBTRegressionModel
 _spark    = None
 _mongo_db = None
 _models   = {}   # keyed by "post" / "pre"
+_airport_coords: dict = {}  # iata_code -> {lat, lon, name}
 
 _ANALYSIS_NAMES = {
     "airports", "carriers", "overview", "temporal",
     "attribution", "ripple", "routes", "spark_vs_dask",
 }
+
+
+def _load_airport_coords() -> dict:
+    """Load iata_code -> {lat, lon} from pre-generated results/analysis/airport_coords.json."""
+    path = "/results/analysis/airport_coords.json"
+    if not os.path.exists(path):
+        print(f"[coords] {path} not found, map will have no coordinates")
+        return {}
+    with open(path) as f:
+        coords = json.load(f)
+    print(f"[coords] loaded {len(coords)} IATA → lat/lon entries")
+    return coords
 
 
 def _seed_mongo(db) -> None:
@@ -80,6 +93,9 @@ async def lifespan(app: FastAPI):
     _mongo_db = MongoClient(mongo_uri)["skypath"]
 
     _seed_mongo(_mongo_db)
+
+    global _airport_coords
+    _airport_coords = _load_airport_coords()
 
     yield
 
@@ -205,9 +221,16 @@ def get_airports(limit: int = 50, min_flights: int = 10000):
         return []
     data = doc["data"]
     airports = data if isinstance(data, list) else data.get("airports", [])
-    # support both field name variants from different analysis output formats
     airports = [a for a in airports
                 if a.get("total_departures", a.get("departures", 0)) >= min_flights]
+    for a in airports:
+        coord = _airport_coords.get(a.get("airport_code", ""))
+        if coord:
+            a["lat"] = coord["lat"]
+            a["lon"] = coord["lon"]
+        else:
+            a["lat"] = None
+            a["lon"] = None
     return airports[:limit]
 
 
