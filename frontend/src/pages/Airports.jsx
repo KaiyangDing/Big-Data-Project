@@ -1,10 +1,6 @@
 import { useEffect, useState, useMemo, useRef } from 'react'
-import { Row, Col, Card, Statistic, Spin, Alert, Typography, Table, Input, Select, Button, Space } from 'antd'
+import { Row, Col, Card, Spin, Alert, Typography, Table, Input, Select, Button, Space } from 'antd'
 import {
-  EnvironmentOutlined,
-  WarningOutlined,
-  RocketOutlined,
-  ClockCircleOutlined,
   ZoomInOutlined,
   ZoomOutOutlined,
   ReloadOutlined,
@@ -371,13 +367,6 @@ export default function Airports() {
     )
   }, [airports, search])
 
-  const busiest = useMemo(() =>
-    airports.reduce((a, b) => (b.total_departures > (a?.total_departures ?? 0) ? b : a), null),
-  [airports])
-  const mostDelayed = useMemo(() => {
-    const c = airports.filter(a => a.total_departures >= 10000)
-    return c.reduce((a, b) => (b.avg_arr_delay_min > (a?.avg_arr_delay_min ?? 0) ? b : a), null)
-  }, [airports])
   const avgDelay = useMemo(() => {
     const big = airports.filter(a => a.total_departures >= 10000)
     return big.length ? big.reduce((s, a) => s + a.avg_arr_delay_min, 0) / big.length : 0
@@ -395,82 +384,32 @@ export default function Airports() {
     <div style={{ padding: 24 }}>
       {error && <Alert type="error" showIcon message={error} style={{ marginBottom: 20 }} />}
 
-      <Title level={4} style={{ marginBottom: 20, color: '#262626' }}>
-        Airport Delay Analysis · 2019 – 2024
-      </Title>
-
-      {/* KPI Cards */}
-      <Row gutter={[16, 16]} style={{ marginBottom: 16 }}>
-        <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 8 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 10, background: '#e6f4ff', flexShrink: 0,
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, color: '#1677ff' }}>
-                <EnvironmentOutlined />
-              </div>
-              <Statistic
-                title={<span style={{ fontSize: 13, color: '#888' }}>Airports Analyzed</span>}
-                value={airports.length}
-                valueStyle={{ color: '#1677ff', fontSize: 26, fontWeight: 600 }}
-              />
+      <div style={{
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        gap: 16,
+        flexWrap: 'wrap',
+        marginBottom: 16,
+      }}>
+        <Title level={4} style={{ margin: 0, color: '#262626' }}>
+          Airport Delay Analysis · 2019 – 2024
+        </Title>
+        <Space size={20} wrap style={{ justifyContent: 'flex-end' }}>
+          <div style={{ minWidth: 128, textAlign: 'right' }}>
+            <div style={{ fontSize: 12, color: '#8c8c8c', lineHeight: 1.2 }}>Airports Analyzed</div>
+            <div style={{ fontSize: 22, color: '#1677ff', fontWeight: 700, lineHeight: 1.25 }}>
+              {airports.length}
             </div>
-          </Card>
-        </Col>
-        <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 8 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 10, background: '#e6f4ff', flexShrink: 0,
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, color: '#1677ff' }}>
-                <RocketOutlined />
-              </div>
-              <div>
-                <div style={{ fontSize: 13, color: '#888' }}>Busiest Airport</div>
-                <div style={{ fontSize: 22, fontWeight: 600, color: '#1677ff', lineHeight: 1.2 }}>
-                  {busiest?.airport_code ?? '—'}
-                </div>
-                <div style={{ fontSize: 12, color: '#aaa' }}>
-                  {busiest ? `${(busiest.total_departures / 1e6).toFixed(2)}M departures` : ''}
-                </div>
-              </div>
+          </div>
+          <div style={{ minWidth: 148, textAlign: 'right' }}>
+            <div style={{ fontSize: 12, color: '#8c8c8c', lineHeight: 1.2 }}>Avg Arrival Delay</div>
+            <div style={{ fontSize: 22, color: '#fa8c16', fontWeight: 700, lineHeight: 1.25 }}>
+              {avgDelay.toFixed(2)} min
             </div>
-          </Card>
-        </Col>
-        <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 8 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 10, background: '#fff1f0', flexShrink: 0,
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, color: '#ff4d4f' }}>
-                <WarningOutlined />
-              </div>
-              <div>
-                <div style={{ fontSize: 13, color: '#888' }}>Most Delayed (≥10k flights)</div>
-                <div style={{ fontSize: 22, fontWeight: 600, color: '#ff4d4f', lineHeight: 1.2 }}>
-                  {mostDelayed?.airport_code ?? '—'}
-                </div>
-                <div style={{ fontSize: 12, color: '#aaa' }}>
-                  {mostDelayed ? `${mostDelayed.avg_arr_delay_min.toFixed(1)} min avg arrival delay` : ''}
-                </div>
-              </div>
-            </div>
-          </Card>
-        </Col>
-        <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 8 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 10, background: '#fff7e6', flexShrink: 0,
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, color: '#fa8c16' }}>
-                <ClockCircleOutlined />
-              </div>
-              <Statistic
-                title={<span style={{ fontSize: 13, color: '#888' }}>Avg Arrival Delay (major)</span>}
-                value={avgDelay.toFixed(2)}
-                suffix=" min"
-                valueStyle={{ color: '#fa8c16', fontSize: 26, fontWeight: 600 }}
-              />
-            </div>
-          </Card>
-        </Col>
-      </Row>
+          </div>
+        </Space>
+      </div>
 
       {/* Map (wide) + Top 5 Bar (narrow) */}
       <Row gutter={[16, 16]}>

@@ -22,6 +22,8 @@ The `docker-compose.yml` defines three services:
 | `skypath-api` | `skypath-api` | 8000 | FastAPI + PySpark inference server |
 | `jupyter` | `skypath-jupyter` | 8888, 4040 | JupyterLab with PySpark for notebooks |
 
+The React frontend dashboard is run separately with Vite from the `frontend/` directory. It is not defined as a Docker Compose service.
+
 ---
 
 ## Startup Sequence
@@ -62,7 +64,25 @@ If you see a connection error, the container may still be initializing. Wait a f
 docker compose logs -f skypath-api
 ```
 
-### Step 3 — (Optional) Start Jupyter
+### Step 3 — Start the Frontend Dashboard
+
+The frontend is a React + Vite dashboard. It expects the API to be available at `http://localhost:8000`.
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open the dashboard at:
+
+```text
+http://localhost:3000
+```
+
+The Vite dev server proxies `/api`, `/route`, `/predict`, and `/health` requests to the backend API automatically. For a full page-by-page frontend usage guide, see [`../frontend/README.md`](../frontend/README.md).
+
+### Step 4 — (Optional) Start Jupyter
 
 Only needed if you want to run notebooks interactively.
 
@@ -81,6 +101,8 @@ docker compose up -d
 ```
 
 The `depends_on` constraint in `docker-compose.yml` ensures `skypath-api` starts after `skypath-mongo`. Still wait ~60 seconds before calling the API health endpoint.
+
+This command starts the Docker services only. Start the frontend separately from `frontend/` with `npm run dev`.
 
 ---
 

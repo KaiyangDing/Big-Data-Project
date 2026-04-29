@@ -49,12 +49,15 @@ Big-Data-Project/
 │   ├── 05_analysis.ipynb              # Runzhe: statistical analysis + Spark SQL + Dask ✅
 │   └── 06_modeling.ipynb              # Xingyu: ML training & evaluation (TBD)
 ├── api/                        # REST API for prediction serving
-├── frontend/                   # React dashboard
+├── frontend/                   # React dashboard (see frontend/README.md)
 ├── results/
 │   ├── analysis/               # Analysis output (JSON)
 │   └── figures/                # Charts and plots
 ├── models/                     # Saved ML models
 └── docs/
+    ├── how_to_run.md           # Full stack startup and verification guide
+    ├── api_reference.md        # Backend API endpoints
+    ├── ml_modeling.md          # Model training and evaluation notes
     ├── data_dictionary.md      # Field definitions for all datasets
     └── final_proposal.pdf      # Project proposal
 ```
