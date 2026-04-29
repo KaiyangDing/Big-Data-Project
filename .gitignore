@@ -43,3 +43,6 @@ models/*.bin
 models/*.pkl
 models/**/_SUCCESS
 models/**/.*.crc
+
+# --- Local Environment ---
+docker-compose.override.yml
