@@ -122,8 +122,9 @@ Use this page to run ML-backed delay prediction:
 
 - Choose `Pre-Departure` when only scheduled flight information is available.
 - Choose `Post-Departure` when the actual departure delay is already known.
-- Fill in airline, origin, destination, month, day of week, departure hour, and distance.
+- Fill in airline, origin, destination, month, day of week, and departure hour.
 - In post-departure mode, also enter actual departure delay in minutes.
+- Distance is looked up automatically from the selected origin and destination airports.
 - Click `Predict Delay`.
 - Read the probability gauge, delay risk label, and estimated delay minutes.
 
@@ -137,7 +138,6 @@ Example values for a quick test:
 | Month | June |
 | Day of Week | Monday |
 | Departure Hour | `09:00` |
-| Distance | `2475` |
 | Actual Departure Delay | `20` for post-departure mode |
 
 ## Build for Production

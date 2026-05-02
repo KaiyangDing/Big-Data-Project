@@ -117,13 +117,34 @@ function mapOption(airports, geoReady) {
 
 // ── top-5 bar chart ───────────────────────────────────────────────────────────
 
+const METRIC_CONFIG = {
+  avg_arr_delay_min: {
+    name: 'Avg Arrival Delay',
+    unit: 'min',
+    labelSuffix: 'm',
+    isRate: false,
+  },
+  arr_delay_rate_pct: {
+    name: 'Arrival Delay Rate',
+    unit: '%',
+    labelSuffix: '%',
+    isRate: true,
+  },
+  avg_dep_delay_min: {
+    name: 'Avg Dep Delay',
+    unit: 'min',
+    labelSuffix: 'm',
+    isRate: false,
+  },
+}
+
 function rankOption(airports, metric) {
+  const config = METRIC_CONFIG[metric]
   const sorted = [...airports]
     .sort((a, b) => b[metric] - a[metric])
     .slice(0, 5)
   const labels = sorted.map(a => a.airport_code)
   const values = sorted.map(a => +a[metric].toFixed(1))
-  const isDelay = metric.includes('delay')
 
   return {
     tooltip: {
@@ -134,7 +155,7 @@ function rankOption(airports, metric) {
         const a = sorted[p.dataIndex]
         return [
           `<b>${a.airport_code}</b> — ${a.city || ''}`,
-          `${p.seriesName}: <b>${p.value}${isDelay ? ' min' : '%'}</b>`,
+          `${p.seriesName}: <b>${p.value}${config.unit}</b>`,
         ].join('<br/>')
       },
     },
@@ -146,24 +167,22 @@ function rankOption(airports, metric) {
     },
     yAxis: {
       type: 'value',
-      name: isDelay ? 'min' : '%',
+      name: config.unit,
       nameTextStyle: { fontSize: 10 },
       splitLine: { lineStyle: { color: '#f0f0f0' } },
     },
     series: [{
-      name: metric === 'avg_arr_delay_min'  ? 'Avg Arrival Delay'
-          : metric === 'arr_delay_rate_pct' ? 'Delay Rate'
-          : 'Avg Dep Delay',
+      name: config.name,
       type: 'bar',
       data: values,
       barMaxWidth: 48,
       label: { show: true, position: 'top', fontSize: 11,
-        formatter: p => `${p.value}${isDelay ? 'm' : '%'}` },
+        formatter: p => `${p.value}${config.labelSuffix}` },
       itemStyle: {
         color: p => {
           const v = p.value
-          if (v >= 15 || (metric.includes('rate') && v >= 30)) return '#ff4d4f'
-          if (v >= 8  || (metric.includes('rate') && v >= 20)) return '#fa8c16'
+          if (config.isRate ? v >= 30 : v >= 15) return '#ff4d4f'
+          if (config.isRate ? v >= 20 : v >= 8) return '#fa8c16'
           return '#1677ff'
         },
         borderRadius: [4, 4, 0, 0],

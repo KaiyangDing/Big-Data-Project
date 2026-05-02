@@ -121,15 +121,14 @@ export default function Predict() {
       DayOfWeek: values.dayOfWeek,
       DepHour: values.depHour,
       CRSDepTime: values.depHour * 100,
-      Distance: values.distance,
       ...(mode === 'post' ? { DepDelay: values.depDelay ?? 0 } : {}),
     }
 
     try {
       const res = mode === 'pre' ? await predictPre(body) : await predictPost(body)
       setResult(res)
-    } catch {
-      setError('Prediction failed. Make sure the API server is running.')
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Prediction failed. Make sure the API server is running.')
     } finally {
       setLoading(false)
     }
@@ -231,15 +230,6 @@ export default function Predict() {
                 <Col span={12}>
                   <Form.Item label="Departure Hour" name="depHour" rules={[{ required: true, message: 'Select hour' }]}>
                     <Select placeholder="Select departure hour" options={HOURS} />
-                  </Form.Item>
-                </Col>
-                <Col span={12}>
-                  <Form.Item
-                    label="Distance (miles)"
-                    name="distance"
-                    rules={[{ required: true, message: 'Enter distance' }]}
-                  >
-                    <InputNumber min={1} max={6000} style={{ width: '100%' }} placeholder="e.g. 2475" />
                   </Form.Item>
                 </Col>
               </Row>
