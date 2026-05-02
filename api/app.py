@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from pymongo import MongoClient
 
 from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
 from pyspark.ml import PipelineModel
 from pyspark.ml.classification import GBTClassificationModel
 from pyspark.ml.regression import GBTRegressionModel
@@ -20,6 +21,7 @@ _spark    = None
 _mongo_db = None
 _models   = {}   # keyed by "post" / "pre"
 _airport_coords: dict = {}  # iata_code -> {lat, lon, name}
+_ROUTE_DISTANCE_VIEW = "route_distances"
 
 _ANALYSIS_NAMES = {
     "airports", "carriers", "overview", "temporal",
@@ -37,6 +39,29 @@ def _load_airport_coords() -> dict:
         coords = json.load(f)
     print(f"[coords] loaded {len(coords)} IATA → lat/lon entries")
     return coords
+
+
+def _load_route_distances() -> None:
+    """Load route distance lookup into Spark for prediction-time enrichment."""
+    path = "/results/analysis/routes.json"
+    if not os.path.exists(path):
+        print(f"[routes] {path} not found, prediction distance lookup unavailable")
+        return
+
+    routes_df = (
+        _spark.read
+        .option("multiLine", "true")
+        .json(path)
+        .select(
+            F.upper(F.col("Origin")).alias("Origin"),
+            F.upper(F.col("Dest")).alias("Dest"),
+            F.col("avg_distance_miles").cast("double").alias("Distance"),
+        )
+        .where(F.col("Distance").isNotNull())
+        .cache()
+    )
+    routes_df.createOrReplaceTempView(_ROUTE_DISTANCE_VIEW)
+    print(f"[routes] loaded {routes_df.count()} route distance entries into Spark")
 
 
 def _seed_mongo(db) -> None:
@@ -96,6 +121,7 @@ async def lifespan(app: FastAPI):
 
     global _airport_coords
     _airport_coords = _load_airport_coords()
+    _load_route_distances()
 
     yield
 
@@ -117,7 +143,7 @@ class PreDepartureRequest(BaseModel):
     DayOfWeek: int                  # 1=Sun ... 7=Sat
     DepHour: int                    # 0-23
     CRSDepTime: int                 # e.g. 1430
-    Distance: float
+    Distance: Optional[float] = None # accepted for compatibility; overwritten from Spark route lookup
     flight_leg: int = 1
     prev_arr_delay: float = 0.0
     cumulative_delay_prior: float = 0.0
@@ -179,6 +205,31 @@ def _predict(row: dict, model_key: str) -> dict:
     }
 
 
+def _resolve_distance(origin: str, dest: str) -> float:
+    if not _spark.catalog.tableExists(_ROUTE_DISTANCE_VIEW):
+        raise HTTPException(status_code=500, detail="Route distance lookup is not available")
+
+    origin = origin.upper()
+    dest = dest.upper()
+    distance_row = (
+        _spark.table(_ROUTE_DISTANCE_VIEW)
+        .where((F.col("Origin") == origin) & (F.col("Dest") == dest))
+        .select("Distance")
+        .first()
+    )
+    if not distance_row:
+        raise HTTPException(status_code=404, detail=f"No distance data for {origin} -> {dest}")
+    return float(distance_row["Distance"])
+
+
+def _request_with_distance(req: PreDepartureRequest) -> dict:
+    row = req.model_dump()
+    row["Origin"] = row["Origin"].strip().upper()
+    row["Dest"] = row["Dest"].strip().upper()
+    row["Distance"] = _resolve_distance(row["Origin"], row["Dest"])
+    return row
+
+
 # ---------------------------------------------------------------------------
 # Endpoints
 # ---------------------------------------------------------------------------
@@ -190,18 +241,20 @@ def health():
 
 @app.post("/predict/pre")
 def predict_pre(req: PreDepartureRequest):
-    result = _predict(req.model_dump(), "pre")
+    row = _request_with_distance(req)
+    result = _predict(row, "pre")
     result["model"] = "pre_departure"
-    _mongo_db.predictions.insert_one({**result, "input": req.model_dump(),
+    _mongo_db.predictions.insert_one({**result, "input": row,
                                       "timestamp": datetime.datetime.utcnow()})
     return result
 
 
 @app.post("/predict/post")
 def predict_post(req: PostDepartureRequest):
-    result = _predict(req.model_dump(), "post")
+    row = _request_with_distance(req)
+    result = _predict(row, "post")
     result["model"] = "post_departure"
-    _mongo_db.predictions.insert_one({**result, "input": req.model_dump(),
+    _mongo_db.predictions.insert_one({**result, "input": row,
                                       "timestamp": datetime.datetime.utcnow()})
     return result
 

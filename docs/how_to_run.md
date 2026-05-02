@@ -156,15 +156,14 @@ curl http://localhost:8000/health
 curl -s -X POST http://localhost:8000/predict/pre \
   -H "Content-Type: application/json" \
   -d '{"Reporting_Airline":"AA","Origin":"JFK","Dest":"LAX",
-       "Month":6,"DayOfWeek":1,"DepHour":9,"CRSDepTime":900,
-       "Distance":2475.0}'
+       "Month":6,"DayOfWeek":1,"DepHour":9,"CRSDepTime":900}'
 
 # Post-departure prediction (with DepDelay)
 curl -s -X POST http://localhost:8000/predict/post \
   -H "Content-Type: application/json" \
   -d '{"Reporting_Airline":"AA","Origin":"JFK","Dest":"LAX",
        "Month":6,"DayOfWeek":1,"DepHour":9,"CRSDepTime":900,
-       "Distance":2475.0,"DepDelay":20.0}'
+       "DepDelay":20.0}'
 
 # Check a pre-computed analysis document
 curl http://localhost:8000/api/analysis/carriers

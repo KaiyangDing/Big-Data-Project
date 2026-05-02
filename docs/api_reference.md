@@ -10,6 +10,8 @@ Base URL (local Docker): `http://localhost:8000`
 
 The API starts a single **SparkSession** at startup (via FastAPI's `lifespan` context manager) and loads all six model artifacts into memory once. Every prediction request reuses this session — there is no per-request Spark overhead beyond actual inference.
 
+At startup, the same Spark session also loads `/results/analysis/routes.json` as a route-distance lookup. Prediction requests derive `Distance` automatically from `Origin` and `Dest`; clients should not send a distance value.
+
 Results of every prediction are persisted to MongoDB (`skypath.predictions` collection) with a UTC timestamp for auditing.
 
 ---
@@ -48,7 +50,6 @@ Returns the service health status and confirms Spark is initialized.
 | `DayOfWeek` | int | yes | Day of week (1=Sun, 7=Sat) |
 | `DepHour` | int | yes | Scheduled departure hour (0–23) |
 | `CRSDepTime` | int | yes | Scheduled departure time in HHMM format (e.g. `1430`) |
-| `Distance` | float | yes | Flight distance in miles |
 | `DepDelay` | float | no | Actual departure delay in minutes (default `0.0`) |
 | `flight_leg` | int | no | Leg number for this aircraft today (default `1`) |
 | `prev_arr_delay` | float | no | Previous leg arrival delay in minutes (default `0.0`) |
@@ -86,7 +87,6 @@ curl -s -X POST http://localhost:8000/predict/post \
     "DayOfWeek": 5,
     "DepHour": 8,
     "CRSDepTime": 800,
-    "Distance": 2475.0,
     "DepDelay": 25.0
   }'
 ```
@@ -117,7 +117,7 @@ curl -s -X POST http://localhost:8000/predict/post \
 
 **Pre-departure prediction** — use this before the flight departs. Does not use `DepDelay`. This model achieves AUC 0.8102 / R² 0.2192.
 
-The request schema is identical to `/predict/post` **except `DepDelay` is not used** (it is accepted for schema compatibility but ignored by the model). All other fields and defaults are the same.
+The request schema is identical to `/predict/post` **except `DepDelay` is not used**. `Distance` is derived automatically from the Spark route-distance lookup for the supplied `Origin` and `Dest`.
 
 **Example request**
 
@@ -131,8 +131,7 @@ curl -s -X POST http://localhost:8000/predict/pre \
     "Month": 1,
     "DayOfWeek": 2,
     "DepHour": 14,
-    "CRSDepTime": 1430,
-    "Distance": 716.0
+    "CRSDepTime": 1430
   }'
 ```
 
@@ -249,7 +248,7 @@ curl -s -X POST http://localhost:8000/predict/post \
   -H "Content-Type: application/json" \
   -d '{"Reporting_Airline":"AA","Origin":"JFK","Dest":"LAX",
        "Month":7,"DayOfWeek":5,"DepHour":8,"CRSDepTime":800,
-       "Distance":2475.0,"DepDelay":25.0}'
+       "DepDelay":25.0}'
 # → {"delay_probability":0.8712,"is_delayed_predicted":true,
 #    "estimated_delay_minutes":31.4,"model":"post_departure"}
 ```
@@ -262,8 +261,7 @@ A 25-minute departure delay on a JFK→LAX flight in July correctly produces a h
 curl -s -X POST http://localhost:8000/predict/pre \
   -H "Content-Type: application/json" \
   -d '{"Reporting_Airline":"DL","Origin":"ATL","Dest":"ORD",
-       "Month":1,"DayOfWeek":2,"DepHour":14,"CRSDepTime":1430,
-       "Distance":716.0}'
+       "Month":1,"DayOfWeek":2,"DepHour":14,"CRSDepTime":1430}'
 # → {"delay_probability":0.3421,"is_delayed_predicted":false,
 #    "estimated_delay_minutes":8.3,"model":"pre_departure"}
 ```
@@ -276,8 +274,7 @@ A routine ATL→ORD Delta flight in January with no departure delay information 
 curl -s -X POST http://localhost:8000/predict/pre \
   -H "Content-Type: application/json" \
   -d '{"Reporting_Airline":"UA","Origin":"ORD","Dest":"SFO",
-       "Month":3,"DayOfWeek":3,"DepHour":10,"CRSDepTime":1000,
-       "Distance":1846.0}'
+       "Month":3,"DayOfWeek":3,"DepHour":10,"CRSDepTime":1000}'
 # → prediction with weather fields imputed to training-set means
 ```
 
@@ -318,5 +315,5 @@ curl -s http://localhost:8000/route/JFK/LAX
 | Status | Cause |
 |--------|-------|
 | 422 | Missing required field in request body (FastAPI validation) |
-| 404 | Named analysis document not found in MongoDB |
+| 404 | Named analysis document not found in MongoDB, or no route-distance data exists for the supplied `Origin`/`Dest` |
 | 500 | Spark or model inference failure (check container logs) |
