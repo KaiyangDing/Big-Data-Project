@@ -146,11 +146,13 @@ function hourlyOption(byHour) {
 // ── KPI config ───────────────────────────────────────────────────────────────
 
 const KPI_CONFIG = [
-  { key: 'total_flights',    title: 'Total Flights',      icon: <RocketOutlined />,      color: '#1677ff', bg: '#e6f4ff',
+  { key: 'total_flights',    title: 'Total Flights',        icon: <RocketOutlined />,      color: '#1677ff', bg: '#e6f4ff',
     fmt: v => ({ value: (v / 1_000_000).toFixed(2), suffix: 'M' }) },
-  { key: 'avg_arr_delay_min', title: 'Avg Arrival Delay', icon: <ClockCircleOutlined />, color: '#fa8c16', bg: '#fff7e6',
+  { key: 'avg_dep_delay_min', title: 'Avg Departure Delay', icon: <ClockCircleOutlined />, color: '#fa8c16', bg: '#fff7e6',
     fmt: v => ({ value: v, suffix: ' min', precision: 2 }) },
-  { key: 'on_time_rate_pct', title: 'On-Time Rate',       icon: <CheckCircleOutlined />, color: '#52c41a', bg: '#f6ffed',
+  { key: 'avg_arr_delay_min', title: 'Avg Arrival Delay',   icon: <ClockCircleOutlined />, color: '#722ed1', bg: '#f9f0ff',
+    fmt: v => ({ value: v, suffix: ' min', precision: 2 }) },
+  { key: 'on_time_rate_pct', title: 'On-Time Rate',         icon: <CheckCircleOutlined />, color: '#52c41a', bg: '#f6ffed',
     fmt: v => ({ value: v, suffix: '%', precision: 2 }) },
   { key: 'cancellation_rate_pct', title: 'Cancellation Rate', icon: <CloseCircleOutlined />, color: '#ff4d4f', bg: '#fff1f0',
     fmt: v => ({ value: v, suffix: '%', precision: 2 }) },
@@ -190,39 +192,51 @@ export default function Overview() {
         <Alert type="error" showIcon message={error} style={{ marginBottom: 20 }} />
       )}
 
-      <Title level={4} style={{ marginBottom: 20, color: '#262626' }}>
-        Flight Overview · 2019 – 2024
-      </Title>
+      {/* Title row with Total Flights on the right */}
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 20 }}>
+        <Title level={4} style={{ margin: 0, color: '#262626' }}>
+          Flight Overview · 2019 – 2024
+        </Title>
+        {summary && (() => {
+          const cfg = KPI_CONFIG.find(k => k.key === 'total_flights')
+          const { value, suffix } = cfg.fmt(summary.total_flights)
+          return (
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <RocketOutlined style={{ color: '#1677ff', fontSize: 16 }} />
+              <span style={{ color: '#888', fontSize: 13 }}>Total Flights</span>
+              <span style={{ color: '#1677ff', fontWeight: 600, fontSize: 20 }}>{value}{suffix}</span>
+            </span>
+          )
+        })()}
+      </div>
 
-      {/* KPI Cards */}
-      <Row gutter={[16, 16]}>
-        {KPI_CONFIG.map(({ key, title, icon, color, bg, fmt }) => {
+      {/* KPI Cards (4 metrics, Total Flights shown in title row) */}
+      <div style={{ display: 'flex', gap: 16 }}>
+        {KPI_CONFIG.filter(c => c.key !== 'total_flights').map(({ key, title, icon, color, bg, fmt }) => {
           const raw = summary?.[key] ?? 0
           const { value, suffix, precision } = fmt(raw)
           return (
-            <Col xs={24} sm={12} lg={6} key={key}>
-              <Card style={{ borderRadius: 8 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <div style={{
-                    width: 52, height: 52, borderRadius: 10, background: bg, flexShrink: 0,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 24, color,
-                  }}>
-                    {icon}
-                  </div>
-                  <Statistic
-                    title={<span style={{ fontSize: 13, color: '#888' }}>{title}</span>}
-                    value={value}
-                    suffix={suffix}
-                    precision={precision}
-                    valueStyle={{ color, fontSize: 26, fontWeight: 600 }}
-                  />
+            <Card key={key} style={{ borderRadius: 8, flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                <div style={{
+                  width: 52, height: 52, borderRadius: 10, background: bg, flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 24, color,
+                }}>
+                  {icon}
                 </div>
-              </Card>
-            </Col>
+                <Statistic
+                  title={<span style={{ fontSize: 13, color: '#888' }}>{title}</span>}
+                  value={value}
+                  suffix={suffix}
+                  precision={precision}
+                  valueStyle={{ color, fontSize: 26, fontWeight: 600 }}
+                />
+              </div>
+            </Card>
           )
         })}
-      </Row>
+      </div>
 
       {temporal && <>
         {/* Monthly Pattern */}

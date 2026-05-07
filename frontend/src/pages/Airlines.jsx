@@ -186,12 +186,12 @@ function delayCauseOption(sorted) {
         return `<b>${airlines[ai]}</b><br/>${causes[ci]}: <b>${v} min</b>`
       },
     },
-    grid: { left: 140, right: 80, top: 16, bottom: 16 },
+    grid: { left: 140, right: 80, top: 16, bottom: 40 },
     xAxis: {
       type: 'category',
       data: causes,
       axisTick: { alignWithLabel: true },
-      axisLabel: { fontSize: 12 },
+      axisLabel: { fontSize: 11, interval: 0, rotate: 15 },
       splitArea: { show: true },
     },
     yAxis: {
