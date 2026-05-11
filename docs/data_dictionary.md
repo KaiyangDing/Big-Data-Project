@@ -1,80 +1,80 @@
-# 数据字典
+# Data Dictionary
 
-**项目**: 美国航班延误分析  
-**负责人**: Kaiyang Ding  
-**更新日期**: 2026-04-16  
-**数据时间范围**: 2019-01-01 ~ 2024-12-31
-
----
-
-## 目录
-
-1. [航班数据 flights_clean](#1-航班数据-flights_clean)
-2. [天气数据 weather_clean](#2-天气数据-weather_clean)
-3. [分区说明](#3-分区说明)
-4. [缺失值约定](#4-缺失值约定)
-5. [数据来源](#5-数据来源)
+**Project**: U.S. Flight Delay Analysis
+**Owner**: Kaiyang Ding
+**Updated**: 2026-04-16
+**Date range**: 2019-01-01 to 2024-12-31
 
 ---
 
-## 1. 航班数据 flights_clean
+## Contents
 
-**文件路径**: `data/processed/flights_clean/`  
-**文件格式**: Parquet，Snappy 压缩，按 `Year`/`Month` 分区  
-**原始来源**: Bureau of Transportation Statistics (BTS)  
-**覆盖范围**: 美国国内所有商业航班，2019年1月 ~ 2024年12月  
-**清洗后记录数**: 约 3,400 万条（过滤取消和备降后）
-
-### 字段说明
-
-| 字段名 | 类型 | 描述 | 取值示例 | 备注 |
-|--------|------|------|----------|------|
-| `FlightDate` | Date | 航班日期 | `2019-01-04` | 格式 yyyy-MM-dd |
-| `Reporting_Airline` | String | 航司 IATA 代码 | `AA`, `DL`, `UA`, `WN` | 二字母代码 |
-| `Tail_Number` | String | 飞机尾号 | `N945SW` | 用于涟漪效应追踪 |
-| `Flight_Number_Reporting_Airline` | Int | 航班号 | `5657` | 同一航班号可重复出现 |
-| `Origin` | String | 出发机场 IATA 代码 | `SFO`, `LAX`, `JFK` | 三字母代码 |
-| `OriginCityName` | String | 出发城市名 | `San Francisco, CA` | 含州名缩写 |
-| `Dest` | String | 到达机场 IATA 代码 | `ORD`, `ATL`, `DFW` | 三字母代码 |
-| `DestCityName` | String | 到达城市名 | `Chicago, IL` | 含州名缩写 |
-| `CRSDepTime` | Int | 计划起飞时间 | `1430` | HHMM 格式，如 1430 = 14:30 |
-| `DepTime` | Int | 实际起飞时间 | `1437` | HHMM 格式，取消航班为 null |
-| `DepDelay` | Float | 起飞延误分钟数 | `7.0`, `-3.0` | 负数表示提前，正数表示晚点 |
-| `CRSArrTime` | Int | 计划到达时间 | `1720` | HHMM 格式 |
-| `ArrTime` | Int | 实际到达时间 | `1731` | HHMM 格式 |
-| `ArrDelay` | Float | 到达延误分钟数 | `11.0`, `-5.0` | 核心预测目标 |
-| `Cancelled` | Int | 是否取消 | `0` | 清洗后全部为 0（已过滤取消） |
-| `CancellationCode` | String | 取消原因代码 | `null` | 清洗后全部为 null；原始含义：A=航司，B=天气，C=NAS，D=安全 |
-| `Diverted` | Int | 是否备降 | `0` | 清洗后全部为 0（已过滤备降） |
-| `Distance` | Float | 飞行距离 | `347.0` | 单位：英里 |
-| `CarrierDelay` | Float | 航司原因延误分钟数 | `45.0`, `null` | 无延误时为 null，正常现象 |
-| `WeatherDelay` | Float | 天气原因延误分钟数 | `0.0`, `null` | 无延误时为 null |
-| `NASDelay` | Float | 空管原因延误分钟数 | `12.0`, `null` | NAS = National Airspace System |
-| `SecurityDelay` | Float | 安检原因延误分钟数 | `0.0`, `null` | 极少发生 |
-| `LateAircraftDelay` | Float | 前序航班延误分钟数 | `38.0`, `null` | 涟漪效应的直接证据 |
-| `Year` | Int | 年（衍生字段） | `2019` ~ `2024` | 由 FlightDate 提取，同时作为分区键 |
-| `Month` | Int | 月（衍生字段） | `1` ~ `12` | 由 FlightDate 提取，同时作为分区键 |
-| `DayOfWeek` | Int | 星期几（衍生字段） | `1`=周日，`7`=周六 | Spark dayofweek() 约定 |
-| `DepHour` | Int | 计划起飞小时（衍生字段） | `0` ~ `23` | 由 CRSDepTime / 100 取整 |
-
-### 延误原因字段说明
-
-`CarrierDelay`、`WeatherDelay`、`NASDelay`、`SecurityDelay`、`LateAircraftDelay` 五个字段仅在航班**发生到达延误（ArrDelay > 0）且 BTS 有完整归因记录**时才有值，其余情况均为 null。这是 BTS 数据的固有特性，**不代表数据质量问题**。
+1. [Flight data — flights_clean](#1-flight-data--flights_clean)
+2. [Weather data — weather_clean](#2-weather-data--weather_clean)
+3. [Partitioning](#3-partitioning)
+4. [Missing-value conventions](#4-missing-value-conventions)
+5. [Data sources](#5-data-sources)
 
 ---
 
-## 2. 天气数据 weather_clean
+## 1. Flight data — flights_clean
 
-**文件路径**: `data/processed/weather_clean/`  
-**文件格式**: Parquet，Snappy 压缩，按 `Year`/`Month` 分区  
-**原始来源**: Iowa Environmental Mesonet (IEM) ASOS 网络  
-**覆盖范围**: 美国 24 个主要枢纽机场，2019年1月 ~ 2024年12月  
-**清洗后记录数**: 约 147 万条
+**Path**: `data/processed/flights_clean/`
+**Format**: Parquet (Snappy), partitioned by `Year`/`Month`
+**Source**: Bureau of Transportation Statistics (BTS)
+**Coverage**: All U.S. domestic commercial flights, Jan 2019 – Dec 2024
+**Row count after cleaning**: ~34 million (cancelled and diverted flights removed)
 
-### 覆盖机场列表
+### Fields
 
-| 州 | 机场 IATA 代码 |
-|----|---------------|
+| Field | Type | Description | Example | Notes |
+|-------|------|-------------|---------|-------|
+| `FlightDate` | Date | Flight date | `2019-01-04` | `yyyy-MM-dd` |
+| `Reporting_Airline` | String | Carrier IATA code | `AA`, `DL`, `UA`, `WN` | 2-letter code |
+| `Tail_Number` | String | Aircraft tail number | `N945SW` | Used for ripple-effect tracking |
+| `Flight_Number_Reporting_Airline` | Int | Flight number | `5657` | Can repeat on different dates |
+| `Origin` | String | Origin airport IATA | `SFO`, `LAX`, `JFK` | 3-letter code |
+| `OriginCityName` | String | Origin city | `San Francisco, CA` | With state abbreviation |
+| `Dest` | String | Destination airport IATA | `ORD`, `ATL`, `DFW` | 3-letter code |
+| `DestCityName` | String | Destination city | `Chicago, IL` | With state abbreviation |
+| `CRSDepTime` | Int | Scheduled departure time | `1430` | HHMM format (1430 = 14:30) |
+| `DepTime` | Int | Actual departure time | `1437` | HHMM; null for cancelled flights |
+| `DepDelay` | Float | Departure delay (min) | `7.0`, `-3.0` | Negative = early, positive = late |
+| `CRSArrTime` | Int | Scheduled arrival time | `1720` | HHMM |
+| `ArrTime` | Int | Actual arrival time | `1731` | HHMM |
+| `ArrDelay` | Float | Arrival delay (min) | `11.0`, `-5.0` | Main prediction target |
+| `Cancelled` | Int | Cancelled flag | `0` | Always 0 after cleaning |
+| `CancellationCode` | String | Cancellation reason | `null` | Always null after cleaning; original codes: A=carrier, B=weather, C=NAS, D=security |
+| `Diverted` | Int | Diverted flag | `0` | Always 0 after cleaning |
+| `Distance` | Float | Flight distance | `347.0` | Miles |
+| `CarrierDelay` | Float | Delay caused by carrier (min) | `45.0`, `null` | Null when no delay (normal) |
+| `WeatherDelay` | Float | Delay caused by weather (min) | `0.0`, `null` | Null when no delay |
+| `NASDelay` | Float | Delay caused by NAS / ATC (min) | `12.0`, `null` | NAS = National Airspace System |
+| `SecurityDelay` | Float | Delay caused by security (min) | `0.0`, `null` | Very rare |
+| `LateAircraftDelay` | Float | Delay carried in from previous leg (min) | `38.0`, `null` | Direct evidence of the ripple effect |
+| `Year` | Int | Year (derived) | `2019` – `2024` | Derived from `FlightDate`, also a partition key |
+| `Month` | Int | Month (derived) | `1` – `12` | Derived from `FlightDate`, also a partition key |
+| `DayOfWeek` | Int | Day of week (derived) | `1` = Sunday, `7` = Saturday | Spark `dayofweek()` convention |
+| `DepHour` | Int | Scheduled departure hour (derived) | `0` – `23` | `CRSDepTime` / 100 |
+
+### Note on delay-cause fields
+
+`CarrierDelay`, `WeatherDelay`, `NASDelay`, `SecurityDelay`, and `LateAircraftDelay` only carry values when the flight had an arrival delay (`ArrDelay > 0`) AND BTS recorded a full attribution; otherwise they are null. This is how BTS publishes the data — it isn't a data quality issue.
+
+---
+
+## 2. Weather data — weather_clean
+
+**Path**: `data/processed/weather_clean/`
+**Format**: Parquet (Snappy), partitioned by `Year`/`Month`
+**Source**: Iowa Environmental Mesonet (IEM) ASOS network
+**Coverage**: 24 major U.S. hub airports, Jan 2019 – Dec 2024
+**Row count after cleaning**: ~1.47 million
+
+### Covered airports
+
+| State | IATA codes |
+|-------|-----------|
 | Arizona | PHX |
 | California | LAX, SFO, SAN |
 | Colorado | DEN |
@@ -92,75 +92,75 @@
 | Texas | DFW, IAH, AUS |
 | Washington | SEA |
 
-### 字段说明
+### Fields
 
-| 字段名 | 类型 | 描述 | 取值示例 | 备注 |
-|--------|------|------|----------|------|
-| `iata_code` | String | 机场 IATA 代码（IEM 站点代码） | `PHX`, `LAX` | 与航班数据 Origin/Dest 直接关联 |
-| `obs_time` | Timestamp | 观测时间（UTC） | `2019-01-01 05:00:00` | 注意为 UTC，非本地时间 |
-| `obs_date` | Date | 观测日期（UTC） | `2019-01-01` | 由 obs_time 提取 |
-| `obs_hour` | Int | 观测小时（UTC） | `0` ~ `23` | 由 obs_time 提取，用于与航班时间关联 |
-| `tmpf` | Float | 气温 | `43.0` | 单位：华氏度（°F） |
-| `dwpf` | Float | 露点温度 | `42.0` | 单位：华氏度（°F），反映空气湿度 |
-| `relh` | Float | 相对湿度 | `96.6` | 单位：%，范围 0~100 |
-| `drct` | Float | 风向 | `270.0` | 单位：度，0/360=正北，90=正东，null 表示静风 |
-| `sknt` | Float | 风速 | `9.0` | 单位：节（knots），1节≈1.85km/h |
-| `p01i` | Float | 过去1小时降水量 | `0.03` | 单位：英寸；IEM 中 T（微量）已转为 0.0 |
-| `vsby` | Float | 能见度 | `10.0` | 单位：英里；10.0 为仪器上限，表示"至少10英里" |
-| `wxcodes` | String | 天气现象代码 | `-RA`, `SN`, `FG` | METAR 标准代码；晴好天气为 null（约占82%） |
-| `airport_name` | String | 机场全名 | `Phoenix Sky Harbor International Airport` | 来自 OurAirports 映射 |
-| `latitude_deg` | Float | 机场纬度 | `33.4373` | 十进制度，北纬为正 |
-| `longitude_deg` | Float | 机场经度 | `-112.007` | 十进制度，西经为负 |
-| `Year` | Int | 年（衍生字段） | `2019` ~ `2024` | 同时作为分区键 |
-| `Month` | Int | 月（衍生字段） | `1` ~ `12` | 同时作为分区键 |
+| Field | Type | Description | Example | Notes |
+|-------|------|-------------|---------|-------|
+| `iata_code` | String | Airport IATA (IEM station code) | `PHX`, `LAX` | Joins directly with flight `Origin`/`Dest` |
+| `obs_time` | Timestamp | Observation time (UTC) | `2019-01-01 05:00:00` | UTC, not local |
+| `obs_date` | Date | Observation date (UTC) | `2019-01-01` | Derived from `obs_time` |
+| `obs_hour` | Int | Observation hour (UTC) | `0` – `23` | Derived; used as the join key with flights |
+| `tmpf` | Float | Temperature | `43.0` | Fahrenheit |
+| `dwpf` | Float | Dew point | `42.0` | Fahrenheit; proxy for humidity |
+| `relh` | Float | Relative humidity | `96.6` | Percent, 0–100 |
+| `drct` | Float | Wind direction | `270.0` | Degrees (0/360 = N, 90 = E); null = calm |
+| `sknt` | Float | Wind speed | `9.0` | Knots (1 knot ≈ 1.85 km/h) |
+| `p01i` | Float | Precipitation in the past hour | `0.03` | Inches; IEM 'T' (trace) was converted to 0.0 |
+| `vsby` | Float | Visibility | `10.0` | Miles; 10.0 is the instrument max ("at least 10 mi") |
+| `wxcodes` | String | METAR weather codes | `-RA`, `SN`, `FG` | Null on clear weather (~82% of rows) |
+| `airport_name` | String | Full airport name | `Phoenix Sky Harbor International Airport` | From OurAirports |
+| `latitude_deg` | Float | Latitude | `33.4373` | Decimal degrees, north positive |
+| `longitude_deg` | Float | Longitude | `-112.007` | Decimal degrees, west negative |
+| `Year` | Int | Year (derived) | `2019` – `2024` | Partition key |
+| `Month` | Int | Month (derived) | `1` – `12` | Partition key |
 
-### 常见 wxcodes 含义
+### Common `wxcodes`
 
-| 代码 | 含义 |
-|------|------|
-| `RA` | 降雨（Rain） |
-| `-RA` | 小雨（Light Rain） |
-| `+RA` | 大雨（Heavy Rain） |
-| `SN` | 降雪（Snow） |
-| `FG` | 雾（Fog） |
-| `TS` | 雷暴（Thunderstorm） |
-| `DZ` | 毛毛雨（Drizzle） |
-| `BR` | 薄雾（Mist） |
-| `null` | 无特殊天气现象（晴好） |
+| Code | Meaning |
+|------|---------|
+| `RA` | Rain |
+| `-RA` | Light rain |
+| `+RA` | Heavy rain |
+| `SN` | Snow |
+| `FG` | Fog |
+| `TS` | Thunderstorm |
+| `DZ` | Drizzle |
+| `BR` | Mist |
+| `null` | No notable weather (clear) |
 
 ---
 
-## 3. 分区说明
+## 3. Partitioning
 
-两张表均按 `Year` / `Month` 双层分区存储，读取时可利用分区裁剪加速查询：
+Both tables are partitioned by `Year`/`Month`. Filters on those columns benefit from partition pruning:
 
 ```python
-# 只读取 2022 年的数据
+# Read just 2022
 df = spark.read.parquet("data/processed/flights_clean") \
     .filter(F.col("Year") == 2022)
 
-# 只读取 2023 年夏季（6-8月）
+# Read summer 2023 weather
 df = spark.read.parquet("data/processed/weather_clean") \
     .filter((F.col("Year") == 2023) & F.col("Month").isin([6, 7, 8]))
 ```
 
 ---
 
-## 4. 缺失值约定
+## 4. Missing-value conventions
 
-| 来源 | 标记 | 处理方式 | Parquet 中的值 |
-|------|------|----------|---------------|
-| BTS 空字段 | 空字符串 | 转为 null | `null` |
-| IEM 缺失 | `M` | 转为 null | `null` |
-| IEM 微量降水 | `T` | 转为 0.0 | `0.0` |
-| 延误归因字段（无延误） | 空字符串 | 转为 null | `null`（正常，非数据缺失） |
+| Source | Sentinel in raw | Handling | Stored Parquet value |
+|--------|-----------------|----------|----------------------|
+| BTS empty field | empty string | Converted to null | `null` |
+| IEM missing | `M` | Converted to null | `null` |
+| IEM trace precip | `T` | Converted to 0.0 | `0.0` |
+| Delay attribution (no delay) | empty string | Converted to null | `null` (expected, not missing data) |
 
 ---
 
-## 5. 数据来源
+## 5. Data sources
 
-| 数据集 | 来源网站 | 说明 |
-|--------|----------|------|
-| 航班数据 | https://www.transtats.bts.gov | BTS Airline On-Time Performance，72个月度文件 |
-| 天气数据 | https://mesonet.agron.iastate.edu | IEM ASOS 网络，16个州文件 |
-| 机场数据 | https://ourairports.com/data/ | OurAirports airports.csv，含 IATA/ICAO 映射及经纬度 |
+| Dataset | Source | Notes |
+|---------|--------|-------|
+| Flights | https://www.transtats.bts.gov | BTS Airline On-Time Performance, 72 monthly files |
+| Weather | https://mesonet.agron.iastate.edu | IEM ASOS network, 16 state-level files |
+| Airports | https://ourairports.com/data/ | OurAirports airports.csv (IATA/ICAO mapping, lat/lon) |

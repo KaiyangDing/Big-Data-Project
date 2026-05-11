@@ -17,9 +17,9 @@ from pyspark.ml.classification import GBTClassificationModel
 from pyspark.ml.regression import GBTRegressionModel
 
 
-_spark    = None
+_spark = None
 _mongo_db = None
-_models   = {}   # keyed by "post" / "pre"
+_models = {}  # "post" / "pre"
 _airport_coords: dict = {}  # iata_code -> {lat, lon, name}
 _ROUTE_DISTANCE_VIEW = "route_distances"
 
@@ -131,19 +131,17 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="SkyPath Analytics API", lifespan=lifespan)
 
 
-# ---------------------------------------------------------------------------
 # Request schemas
-# ---------------------------------------------------------------------------
 
 class PreDepartureRequest(BaseModel):
     Reporting_Airline: str
     Origin: str
     Dest: str
     Month: int
-    DayOfWeek: int                  # 1=Sun ... 7=Sat
-    DepHour: int                    # 0-23
-    CRSDepTime: int                 # e.g. 1430
-    Distance: Optional[float] = None # accepted for compatibility; overwritten from Spark route lookup
+    DayOfWeek: int  # 1=Sun, 7=Sat
+    DepHour: int  # 0-23
+    CRSDepTime: int  # HHMM, e.g. 1430
+    Distance: Optional[float] = None  # accepted but ignored — overwritten from route lookup
     flight_leg: int = 1
     prev_arr_delay: float = 0.0
     cumulative_delay_prior: float = 0.0
@@ -172,19 +170,16 @@ class PostDepartureRequest(PreDepartureRequest):
     DepDelay: float = 0.0
 
 
-# ---------------------------------------------------------------------------
-# Prediction helper
-# ---------------------------------------------------------------------------
+# Prediction
 
 def _predict(row: dict, model_key: str) -> dict:
-    # delay_recovery is required by the Imputer stage in the saved pipeline
-    # but is excluded from features (leaky). Always supply None so the Imputer
-    # replaces it with the training-set mean, which has no effect on the output.
+    # The Imputer stage in the saved pipeline still expects delay_recovery as input,
+    # even though it's leaky and not used as a feature. Set it to None so the Imputer
+    # fills in the training mean.
     row["delay_recovery"] = None
 
     pdf = pd.DataFrame([row])
-    # Cast all non-string columns to float64 so Spark can infer types even when
-    # optional fields (e.g. weather) are None/NaN.
+    # Force non-string columns to numeric so Spark doesn't choke on None/NaN weather fields
     str_cols = {"Reporting_Airline", "Origin", "Dest"}
     for col in pdf.columns:
         if col not in str_cols:
@@ -230,9 +225,7 @@ def _request_with_distance(req: PreDepartureRequest) -> dict:
     return row
 
 
-# ---------------------------------------------------------------------------
 # Endpoints
-# ---------------------------------------------------------------------------
 
 @app.get("/health")
 def health():

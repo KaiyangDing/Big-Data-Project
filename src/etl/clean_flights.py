@@ -5,9 +5,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType, FloatType
 
-# ─────────────────────────────────────────
-# 0. 启动 Spark Session
-# ─────────────────────────────────────────
+
+# Spark session. 8g driver is enough for the full 6 years of data.
 spark = (
     SparkSession.builder
     .appName("ETL-Flights")
@@ -17,17 +16,13 @@ spark = (
     .getOrCreate()
 )
 spark.sparkContext.setLogLevel("WARN")
-print("Spark 启动成功")
+print("Spark up")
 
-# ─────────────────────────────────────────
-# 1. 路径配置（Docker 容器内路径）
-# ─────────────────────────────────────────
+# Container paths
 INPUT_DIR   = "/data/raw/flights"
 OUTPUT_PATH = "/data/processed/flights_clean"
 
-# ─────────────────────────────────────────
-# 2. 目标字段（共 23 个）
-# ─────────────────────────────────────────
+# Columns we actually need from BTS (23 of them)
 KEEP_COLS = [
     "FlightDate",
     "Reporting_Airline",
@@ -54,56 +49,46 @@ KEEP_COLS = [
     "LateAircraftDelay",
 ]
 
-# ─────────────────────────────────────────
-# 3. 用 Python glob 列出所有文件
-# ─────────────────────────────────────────
-print("正在扫描 CSV 文件...")
+# Find the monthly CSVs (should be 72 of them, 2019-01 .. 2024-12)
+print("Scanning CSV files...")
 flight_files = glob.glob(os.path.join(INPUT_DIR, "*.csv"))
-print(f"   找到文件数 : {len(flight_files)}")
+print(f"  Found {len(flight_files)} files")
 
 if len(flight_files) == 0:
-    raise FileNotFoundError(f"没有找到任何 CSV 文件，请检查路径：{INPUT_DIR}")
+    raise FileNotFoundError(f"No CSV files found under {INPUT_DIR}")
 
-# 打印前3个文件名确认
 for f in sorted(flight_files)[:3]:
-    print(f"   示例文件  : {os.path.basename(f)}")
-print(f"   ...")
+    print(f"  e.g. {os.path.basename(f)}")
+print("  ...")
 
-# ─────────────────────────────────────────
-# 4. 读取所有 CSV
-# ─────────────────────────────────────────
-print("\n正在读取所有 CSV（72个文件，请耐心等待）...")
+# Read everything as string first — BTS has surprises like "0.00" in int columns,
+# so we control the casts ourselves below.
+print("\nReading 72 CSVs (will take a minute)...")
 raw_df = spark.read.csv(
     flight_files,
     header=True,
-    inferSchema=False,   # 全部读为 String，手动控制类型
+    inferSchema=False,
     nullValue="",
 )
-print(f"   原始字段数 : {len(raw_df.columns)}")
+print(f"  Raw columns: {len(raw_df.columns)}")
 
-# ─────────────────────────────────────────
-# 5. 只保留目标字段
-# ─────────────────────────────────────────
+# Keep only the columns we declared above
 existing_cols = set(raw_df.columns)
 missing_cols  = [c for c in KEEP_COLS if c not in existing_cols]
 if missing_cols:
-    print(f"以下字段在 CSV 中不存在，将跳过：{missing_cols}")
+    print(f"  Missing from CSV (will skip): {missing_cols}")
 
 select_cols = [c for c in KEEP_COLS if c in existing_cols]
 df = raw_df.select(select_cols)
-print(f"   保留字段数 : {len(select_cols)}")
+print(f"  Kept: {len(select_cols)} columns")
 
-# ─────────────────────────────────────────
-# 6. 类型转换
-#    BTS 所有数字字段均为带小数点字符串（如 '0.00'）
-#    Int 字段必须先转 Float 再转 Int
-# ─────────────────────────────────────────
+# Type casting.
+# Note: most int fields come through as "0.00" strings — direct cast to Int fails,
+# so we float-cast first and then int-cast.
 df = (
     df
-    # Date
     .withColumn("FlightDate", F.to_date("FlightDate", "yyyy-MM-dd"))
 
-    # Int（先 Float → 再 Int，避免 '0.00' 报错）
     .withColumn("Flight_Number_Reporting_Airline",
                 F.col("Flight_Number_Reporting_Airline").cast(FloatType()).cast(IntegerType()))
     .withColumn("CRSDepTime",  F.col("CRSDepTime").cast(FloatType()).cast(IntegerType()))
@@ -113,7 +98,6 @@ df = (
     .withColumn("Cancelled",   F.col("Cancelled").cast(FloatType()).cast(IntegerType()))
     .withColumn("Diverted",    F.col("Diverted").cast(FloatType()).cast(IntegerType()))
 
-    # Float
     .withColumn("DepDelay",          F.col("DepDelay").cast(FloatType()))
     .withColumn("ArrDelay",          F.col("ArrDelay").cast(FloatType()))
     .withColumn("Distance",          F.col("Distance").cast(FloatType()))
@@ -124,89 +108,78 @@ df = (
     .withColumn("LateAircraftDelay", F.col("LateAircraftDelay").cast(FloatType()))
 )
 
-# ─────────────────────────────────────────
-# 7. 过滤取消 & 备降航班
-# ─────────────────────────────────────────
-print("\n过滤取消/备降航班...")
+# Drop cancelled / diverted flights — they don't have meaningful arrival delay data
+print("\nFiltering out cancelled and diverted flights...")
 total_before = df.count()
-print(f"   过滤前记录数 : {total_before:>10,}")
+print(f"  Before filter: {total_before:>10,}")
 
 df = df.filter(
     (F.col("Cancelled") == 0) &
     (F.col("Diverted")  == 0)
 )
 total_after = df.count()
-print(f"   过滤后记录数 : {total_after:>10,}  (移除 {total_before - total_after:,} 条)")
+print(f"  After filter:  {total_after:>10,}  (removed {total_before - total_after:,})")
 
-# ─────────────────────────────────────────
-# 8. 删除关键字段缺失的记录
-# ─────────────────────────────────────────
+# Drop rows where critical fields are null
 CRITICAL_COLS = [
     "FlightDate", "Reporting_Airline",
     "Origin", "Dest",
     "CRSDepTime", "DepDelay", "ArrDelay",
 ]
 df = df.dropna(subset=CRITICAL_COLS)
-print(f"   去除关键字段缺失后 : {df.count():>10,}")
+print(f"  After dropping null criticals: {df.count():>10,}")
 
-# ─────────────────────────────────────────
-# 9. 添加衍生时间特征
-# ─────────────────────────────────────────
+# Add some derived time features for downstream
 df = (
     df
     .withColumn("Year",      F.year("FlightDate"))
     .withColumn("Month",     F.month("FlightDate"))
-    .withColumn("DayOfWeek", F.dayofweek("FlightDate"))  # 1=周日 ... 7=周六
+    .withColumn("DayOfWeek", F.dayofweek("FlightDate"))  # 1 = Sunday
     .withColumn("DepHour",   (F.col("CRSDepTime") / 100).cast(IntegerType()))
 )
 
-# ─────────────────────────────────────────
-# 10. 数据质量简报
-# ─────────────────────────────────────────
+# Quick data quality look
 final_count = df.count()
-print(f"\n清洗后数据概览")
-print(f"   最终记录数 : {final_count:>10,}")
-print(f"   最终字段数 : {len(df.columns):>10}")
+print(f"\nCleaned dataset summary")
+print(f"  Rows:    {final_count:>10,}")
+print(f"  Columns: {len(df.columns):>10}")
 
-print("\n   延误字段空值率（延误原因字段对非延误航班为空属正常）：")
+# The delay-cause columns are null on on-time flights, that's expected
+print("\n  Null rate per delay column (null on on-time flights is normal):")
 for col_name in ["DepDelay", "ArrDelay",
                  "CarrierDelay", "WeatherDelay", "NASDelay",
                  "SecurityDelay", "LateAircraftDelay"]:
     null_count = df.filter(F.col(col_name).isNull()).count()
-    print(f"   {col_name:<22} : {null_count:>8,}  ({null_count / final_count * 100:.1f}%)")
+    print(f"  {col_name:<22} : {null_count:>8,}  ({null_count / final_count * 100:.1f}%)")
 
-print("\n   时间范围：")
+print("\n  Date range:")
 df.select(
-    F.min("FlightDate").alias("最早日期"),
-    F.max("FlightDate").alias("最晚日期"),
+    F.min("FlightDate").alias("min_date"),
+    F.max("FlightDate").alias("max_date"),
 ).show(truncate=False)
 
-print("   航司分布（Top 10）：")
+print("  Top 10 carriers:")
 df.groupBy("Reporting_Airline").count() \
   .orderBy(F.desc("count")).show(10, truncate=False)
 
-# ─────────────────────────────────────────
-# 11. 写出 Parquet（按 Year / Month 分区）
-# ─────────────────────────────────────────
-print(f"\n正在写出 Parquet 到：{OUTPUT_PATH}")
-print("   （按 Year/Month 分区，共约 72 个分区，请耐心等待...）")
+# Write out as Parquet, partitioned by Year/Month
+print(f"\nWriting Parquet to {OUTPUT_PATH}")
+print("  (partitioned by Year/Month, ~72 partitions)")
 (
     df.write
     .partitionBy("Year", "Month")
     .mode("overwrite")
     .parquet(OUTPUT_PATH)
 )
-print("写出完成！")
+print("Done writing.")
 
-# ─────────────────────────────────────────
-# 12. 验证写出结果
-# ─────────────────────────────────────────
-print("\n验证输出文件...")
+# Sanity check: read it back
+print("\nVerifying output...")
 verify_df = spark.read.parquet(OUTPUT_PATH)
-print(f"   读回记录数 : {verify_df.count():>10,}")
-print(f"   读回字段数 : {len(verify_df.columns):>10}")
-print("\n   Schema：")
+print(f"  Rows read back: {verify_df.count():>10,}")
+print(f"  Columns:        {len(verify_df.columns):>10}")
+print("\n  Schema:")
 verify_df.printSchema()
 
 spark.stop()
-print("\n全部完成，Spark 已关闭。")
+print("\nAll done.")
