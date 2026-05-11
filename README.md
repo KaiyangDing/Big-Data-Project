@@ -26,7 +26,7 @@ On a held-out 2024 test set the post-departure model reaches **AUC 0.9345 / RMSE
 
 | Service | URL | Purpose |
 |---------|-----|---------|
-| **React Dashboard** | http://localhost:3000 | 5 pages — Overview, Airlines, Airports (Mapbox), Routes, Predict |
+| **React Dashboard** | http://localhost:3000 | 5 pages — Overview, Airlines, Airports (interactive U.S. map), Routes, Predict |
 | **FastAPI Service** | http://localhost:8000 | REST endpoints for prediction + analysis JSON |
 | **Jupyter Lab** | http://localhost:8888 | Notebooks (token: `bigdata2024`) — only needed if you want to retrain |
 | **Spark UI** | http://localhost:4040 | Visible while a Spark job is running |
@@ -160,7 +160,7 @@ Big-Data-Project/
 │   └── ml_data_validation.ipynb       # Quick data sanity check
 ├── api/
 │   └── app.py                  # FastAPI service (predictions + analysis endpoints)
-├── frontend/                   # React 19 + Vite + ECharts + Mapbox dashboard
+├── frontend/                   # React 19 + Vite + ECharts dashboard
 ├── models/                     # Saved Spark MLlib pipelines (pre/post variants)
 ├── results/
 │   ├── analysis/               # 8 analysis JSONs + airport_coords.json
@@ -222,7 +222,7 @@ OurAirports CSV ─────────────────────�
 | Serving store | MongoDB 7 — `skypath.analysis`, `skypath.model_metrics`, `skypath.predictions` collections |
 | ML | Spark MLlib — Gradient Boosted Trees (classifier + regressor) |
 | API | FastAPI + Uvicorn (Python) — port 8000 |
-| Frontend | React 19 + Vite 8 + ECharts 6 + Mapbox GL JS 3 + Ant Design 6 |
+| Frontend | React 19 + Vite 8 + ECharts 6 + Ant Design 6 |
 | Infrastructure | Docker Compose |
 
 ---
