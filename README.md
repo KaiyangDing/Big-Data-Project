@@ -6,7 +6,7 @@ A distributed analytics platform for U.S. flight delay prediction. The system in
 
 On a held-out 2024 test set the post-departure model reaches **AUC 0.9345 / RMSE 20.7 min**, and the pre-departure model — built without observed `DepDelay` — reaches **AUC 0.8102**. Statistical analysis surfaces a 20-point spread in delay-propagation rate across carriers (Southwest 35.8% vs. SkyWest 15.7%), which is larger than the spread on any individual BTS cause.
 
-> *Note: this README was drafted with the help of an AI assistant.*
+> *Note: all README files were drafted with the help of an AI assistant.*
 
 ---
 
